@@ -6,6 +6,10 @@ Echo Engine is a learning project to be familiar with OpenGL, understand the pri
 
 ## Dependencies
 
+Echo Engine uses the following open-source libraries:
+
+* [spdlog](https://github.com/gabime/spdlog) - C++ logging library
+
 ## Reference
 
 - [The Cherno Game Engine Series](https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT)
