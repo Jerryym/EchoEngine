@@ -6,6 +6,12 @@ extern Echo::Application* Echo::CreateApplication();
 
 int main(int argc, char** argv)
 {
+	Echo::Log::Init();
+	//Echo::Log::GetCoreLogger()->warn("Initialiazed Log!");
+	//Echo::Log::GetClientLogger()->info("Hello Echo Engine!");
+	ECHO_CORE_WARN("Initialiazed Log!");
+	ECHO_CLIENT_INFO("Hello Echo Engine!");
+
 	auto app = Echo::CreateApplication();
 	app->Run();
 	delete app;
