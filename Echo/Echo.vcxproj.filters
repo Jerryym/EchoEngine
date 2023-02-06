@@ -4,6 +4,9 @@
     <Filter Include="Echo">
       <UniqueIdentifier>{A498847C-90CF-850D-39BC-6B1025D2010F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Echo\Events">
+      <UniqueIdentifier>{08A40BFC-7459-84F1-FD4D-7EC869027BF5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Echo.h" />
@@ -15,6 +18,9 @@
     </ClInclude>
     <ClInclude Include="src\Echo\EntryPoint.h">
       <Filter>Echo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Echo\Events\Event.h">
+      <Filter>Echo\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Echo\Log.h">
       <Filter>Echo</Filter>
