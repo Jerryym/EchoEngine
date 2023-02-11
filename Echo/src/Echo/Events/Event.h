@@ -28,19 +28,62 @@ namespace Echo {
 		EventCategoryMouseButton	= BIT(4)
 	};
 
+// 使用宏定义来替重复性代长语句
+#define EVENT_CLASS_TYPE(type)	static EventType GetStaticType() { return EventType::type; }\
+								virtual EventType GetEventType() const override { return GetStaticType(); }\
+								virtual const char* GetName() const override { return #type; }
 
+#define EVENT_CLASS_CATEGORY(category)	virtual int GetCategory() const override { return category; }
+	
 	class ECHO_API Event
 	{
 	public:
-		Event();
 		virtual ~Event() = default;
 
 		//获取事件类型
 		virtual EventType GetEventType() const = 0;
 		//获取事件类型名称
 		virtual const char* GetName() const = 0;
+		//过滤筛选事件
+		virtual int GetCategory() const = 0;
 		//将事件值转换为字符串
 		virtual std::string ToString() const = 0;
+
+		inline bool IsInCategory(EventCategory category)
+		{
+			if (GetCategory() == category)
+				return true;
+
+			return false;
+		}
+
+	protected:
+		bool m_bHandled = false; // 事件是否已被处理
+	};
+
+	/// @brief 事件调度
+	class EventDispatcher
+	{
+	public:
+		EventDispatcher(Event& event)
+			: m_Event(event)
+		{
+
+		}
+
+		template<typename T, typename F>
+		bool dispatcher(const F& func)
+		{
+			if (m_Event.GetEventType() == T::GetStaticType())
+			{
+				m_Event.m_bHandled |= func(static_cast<T&>m_Event);
+				return true;
+			}
+			return false;
+		}
+
+	private:
+		Event& m_Event;
 	};
 
 }
