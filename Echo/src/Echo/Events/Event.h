@@ -86,5 +86,9 @@ namespace Echo {
 		Event& m_Event;
 	};
 
+	inline std::ostream& operator<<(std::ostream& os, const Event& event)
+	{
+		return os << event.ToString();
+	}
 }
 

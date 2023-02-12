@@ -11,9 +11,7 @@ namespace Echo {
 	{
 	public:
 		MouseMovedEvent(const float x, const float y)
-			: m_PositionX(x), m_PositionY(y)
-		{
-		}
+			: m_PositionX(x), m_PositionY(y) {}
 
 		float getX() const { return m_PositionX; }
 		float getY() const { return m_PositionY; }
@@ -22,7 +20,7 @@ namespace Echo {
 		{
 			// 使用 std::stringstream 实现数据类型转换
 			std::stringstream ss{};
-			ss << "MouseMoved: " << m_PositionX << ", " << m_PositionY;
+			ss << "MouseMovedEvent: " << m_PositionX << ", " << m_PositionY;
 			return ss.str();
 		}
 
@@ -39,9 +37,7 @@ namespace Echo {
 	{
 	public:
 		MouseScrolledEvent(const float x, const float y)
-			: m_XOffset(x), m_YOffset(y)
-		{
-		}
+			: m_XOffset(x), m_YOffset(y) {}
 
 		float getXOffset() const { return m_XOffset; }
 		float getYOffset() const { return m_YOffset; }
@@ -50,7 +46,7 @@ namespace Echo {
 		{
 			// 使用 std::stringstream 实现数据类型转换
 			std::stringstream ss{};
-			ss << "MouseScrolled: " << m_XOffset << ", " << m_YOffset;
+			ss << "MouseScrolledEvent: " << m_XOffset << ", " << m_YOffset;
 			return ss.str();
 		}
 
@@ -75,9 +71,7 @@ namespace Echo {
 		/// @brief Constructor
 		/// @param Button 
 		MouseButtonEvent(const unsigned int Button) 
-			: m_ButtonCode(Button)
-		{
-		}
+			: m_ButtonCode(Button) {}
 
 		unsigned int m_ButtonCode;//鼠标按钮编号
 	};
@@ -87,14 +81,12 @@ namespace Echo {
 	{
 	public:
 		MouseButtonPressedEvent(const unsigned int Button)
-			: MouseButtonEvent(Button)
-		{
-		}
+			: MouseButtonEvent(Button) {}
 
 		std::string ToString() const override
 		{
 			std::stringstream ss{};
-			ss << "MouseButtonPressed: " << m_ButtonCode;
+			ss << "MouseButtonPressedEvent: " << m_ButtonCode;
 			return ss.str();
 		}
 
@@ -106,14 +98,12 @@ namespace Echo {
 	{
 	public:
 		MouseButtonPressedEvent(const unsigned int Button)
-			: MouseButtonEvent(Button)
-		{
-		}
+			: MouseButtonEvent(Button) {}
 
 		std::string ToString() const override
 		{
 			std::stringstream ss{};
-			ss << "MouseButtonReleased: " << m_ButtonCode;
+			ss << "MouseButtonReleasedEvent: " << m_ButtonCode;
 			return ss.str();
 		}
 

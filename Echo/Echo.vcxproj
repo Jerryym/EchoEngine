@@ -138,7 +138,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Echo\Events\MouseEvent.h" />
+    <ClInclude Include="src\Echo\Events\ApplicationEvent.hpp" />
+    <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
+    <ClInclude Include="src\Echo\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Echo.h" />
     <ClInclude Include="src\Echo\Application.h" />
     <ClInclude Include="src\Echo\Core.h" />
