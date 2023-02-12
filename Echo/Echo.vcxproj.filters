@@ -25,6 +25,11 @@
     <ClInclude Include="src\Echo\Log.h">
       <Filter>Echo</Filter>
     </ClInclude>
+    <ClInclude Include="src\Echo\Events\MouseEvent.hpp">
+      <Filter>Echo\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
+    <ClInclude Include="src\Echo\Events\ApplicationEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp">

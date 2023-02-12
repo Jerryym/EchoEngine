@@ -9,3 +9,5 @@
 #else
 	#error Echo only supports Windows!
 #endif // ECHO_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)
