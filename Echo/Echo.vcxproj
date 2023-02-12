@@ -76,7 +76,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>echopch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ECHO_PLATFORM_WINDOWS;ECHO_BUILD_DLL;ECHO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -97,7 +98,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>echopch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ECHO_PLATFORM_WINDOWS;ECHO_BUILD_DLL;ECHO_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -118,7 +120,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>echopch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>ECHO_PLATFORM_WINDOWS;ECHO_BUILD_DLL;ECHO_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -138,19 +141,23 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Echo\Events\ApplicationEvent.hpp" />
-    <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
-    <ClInclude Include="src\Echo\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Echo.h" />
     <ClInclude Include="src\Echo\Application.h" />
     <ClInclude Include="src\Echo\Core.h" />
     <ClInclude Include="src\Echo\EntryPoint.h" />
+    <ClInclude Include="src\Echo\Events\ApplicationEvent.hpp" />
     <ClInclude Include="src\Echo\Events\Event.h" />
+    <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
+    <ClInclude Include="src\Echo\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Echo\Log.h" />
+    <ClInclude Include="src\echopch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp" />
     <ClCompile Include="src\Echo\Log.cpp" />
+    <ClCompile Include="src\echopch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

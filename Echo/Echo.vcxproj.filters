@@ -19,17 +19,22 @@
     <ClInclude Include="src\Echo\EntryPoint.h">
       <Filter>Echo</Filter>
     </ClInclude>
+    <ClInclude Include="src\Echo\Events\ApplicationEvent.hpp">
+      <Filter>Echo\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Echo\Events\Event.h">
+      <Filter>Echo\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Echo\Events\KeyEvent.hpp">
+      <Filter>Echo\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Echo\Events\MouseEvent.hpp">
       <Filter>Echo\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Echo\Log.h">
       <Filter>Echo</Filter>
     </ClInclude>
-    <ClInclude Include="src\Echo\Events\MouseEvent.hpp">
-      <Filter>Echo\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
-    <ClInclude Include="src\Echo\Events\ApplicationEvent.hpp" />
+    <ClInclude Include="src\echopch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp">
@@ -38,5 +43,6 @@
     <ClCompile Include="src\Echo\Log.cpp">
       <Filter>Echo</Filter>
     </ClCompile>
+    <ClCompile Include="src\echopch.cpp" />
   </ItemGroup>
 </Project>

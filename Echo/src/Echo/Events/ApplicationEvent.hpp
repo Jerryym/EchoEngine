@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Echo/Events/Event.h"
-#include <sstream>
 
 namespace Echo {
 

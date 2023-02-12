@@ -1,3 +1,4 @@
+#include "echopch.h"
 #include "Log.h"
 
 namespace Echo {

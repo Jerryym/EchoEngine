@@ -1,3 +1,4 @@
+#include "echopch.h"
 #include "Application.h"
 
 #include "Echo/Events/ApplicationEvent.hpp"

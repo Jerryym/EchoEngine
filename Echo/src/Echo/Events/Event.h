@@ -1,9 +1,7 @@
 #pragma once
 
+#include "echopch.h"
 #include "Echo/Core.h"
-
-#include <functional>
-#include <string>
 
 namespace Echo {
 

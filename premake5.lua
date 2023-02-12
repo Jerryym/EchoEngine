@@ -12,6 +12,9 @@ project "Echo"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --输出目录
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --中间目录
 
+    pchheader "echopch.h"
+    pchsource "Echo/src/echopch.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",
@@ -62,7 +65,7 @@ project "Sandbox"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.hpp"
+        "%{prj.name}/src/**.hpp",
         "%{prj.name}/src/**.cpp"
     }
 
