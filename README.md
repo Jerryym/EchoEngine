@@ -9,6 +9,7 @@ Echo Engine is a learning project to be familiar with OpenGL, understand the pri
 Echo Engine uses the following open-source libraries:
 
 * [spdlog](https://github.com/gabime/spdlog) - C++ logging library
+* [GLFW](https://github.com/glfw/glfw) - A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input
 
 ## Reference
 
@@ -17,4 +18,5 @@ Echo Engine uses the following open-source libraries:
 - [LearnOpenGL](https://learnopengl-cn.github.io/)
 - [Games101](https://www.bilibili.com/video/BV1X7411F744/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=4e4414251af07bbefb2bd982cc7213b8)
 - [Games104](https://www.bilibili.com/video/BV1oU4y1R7Km/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=4e4414251af07bbefb2bd982cc7213b8)
-- 《Game Engine Architecture 2rd》
+- 《Game Engine Architecture, Second Edition》 Jason Gregory
+- 《Windows游戏编程之从零开始》 毛星云
