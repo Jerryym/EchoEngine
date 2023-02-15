@@ -20,15 +20,15 @@ namespace Echo {
 	{
 	public:
 		WindowResizeEvent(const unsigned int width, const unsigned int height)
-			: m_Width(width), m_Height(height) {}
+			: m_nWidth(width), m_nHeight(height) {}
 
-		unsigned int getWidth() const { return m_Width; }
-		unsigned int getHeight() const { return m_Height; }
+		unsigned int getWidth() const { return m_nWidth; }
+		unsigned int getHeight() const { return m_nHeight; }
 
 		std::string ToString() const override
 		{
 			std::stringstream ss{};
-			ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
+			ss << "WindowResizeEvent: " << m_nWidth << ", " << m_nHeight;
 			return ss.str();
 		}
 
@@ -36,8 +36,8 @@ namespace Echo {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 
 	private:
-		unsigned int m_Width;		//窗口宽
-		unsigned int m_Height;		//窗口长
+		unsigned int m_nWidth;		//窗口宽
+		unsigned int m_nHeight;		//窗口长
 	};
 
 	/// @brief AppTick事件

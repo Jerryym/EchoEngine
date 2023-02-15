@@ -10,16 +10,16 @@ namespace Echo {
 	{
 	public:
 		MouseMovedEvent(const float x, const float y)
-			: m_PositionX(x), m_PositionY(y) {}
+			: m_rPositionX(x), m_rPositionY(y) {}
 
-		float getX() const { return m_PositionX; }
-		float getY() const { return m_PositionY; }
+		float getX() const { return m_rPositionX; }
+		float getY() const { return m_rPositionY; }
 
 		std::string ToString() const override
 		{
 			// 使用 std::stringstream 实现数据类型转换
 			std::stringstream ss{};
-			ss << "MouseMovedEvent: " << m_PositionX << ", " << m_PositionY;
+			ss << "MouseMovedEvent: " << m_rPositionX << ", " << m_rPositionY;
 			return ss.str();
 		}
 
@@ -27,8 +27,8 @@ namespace Echo {
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private: 
-		float m_PositionX;
-		float m_PositionY;
+		float m_rPositionX;
+		float m_rPositionY;
 	};
 
 	/// @brief 鼠标滚动事件
@@ -36,16 +36,16 @@ namespace Echo {
 	{
 	public:
 		MouseScrolledEvent(const float x, const float y)
-			: m_XOffset(x), m_YOffset(y) {}
+			: m_rOffsetX(x), m_rOffsetY(y) {}
 
-		float getXOffset() const { return m_XOffset; }
-		float getYOffset() const { return m_YOffset; }
+		float getXOffset() const { return m_rOffsetX; }
+		float getYOffset() const { return m_rOffsetY; }
 
 		std::string ToString() const override
 		{
 			// 使用 std::stringstream 实现数据类型转换
 			std::stringstream ss{};
-			ss << "MouseScrolledEvent: " << m_XOffset << ", " << m_YOffset;
+			ss << "MouseScrolledEvent: " << m_rOffsetX << ", " << m_rOffsetY;
 			return ss.str();
 		}
 
@@ -53,8 +53,8 @@ namespace Echo {
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private:
-		float m_XOffset;	// x轴偏移
-		float m_YOffset;	// y轴偏移
+		float m_rOffsetX;	// x轴偏移
+		float m_rOffsetY;	// y轴偏移
 	};
 
 	/// @brief 鼠标按钮事件
@@ -62,7 +62,7 @@ namespace Echo {
 	{
 	public:
 		//获取鼠标按钮
-		unsigned int getMouseButton() const { return m_ButtonCode; }
+		unsigned int getMouseButton() const { return m_nButtonCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryInput)
 
@@ -70,9 +70,9 @@ namespace Echo {
 		/// @brief Constructor
 		/// @param Button 
 		MouseButtonEvent(const unsigned int Button) 
-			: m_ButtonCode(Button) {}
+			: m_nButtonCode(Button) {}
 
-		unsigned int m_ButtonCode;//鼠标按钮编号
+		unsigned int m_nButtonCode;//鼠标按钮编号
 	};
 
 	/// @brief 鼠标按下事件
@@ -85,7 +85,7 @@ namespace Echo {
 		std::string ToString() const override
 		{
 			std::stringstream ss{};
-			ss << "MouseButtonPressedEvent: " << m_ButtonCode;
+			ss << "MouseButtonPressedEvent: " << m_nButtonCode;
 			return ss.str();
 		}
 
@@ -102,7 +102,7 @@ namespace Echo {
 		std::string ToString() const override
 		{
 			std::stringstream ss{};
-			ss << "MouseButtonReleasedEvent: " << m_ButtonCode;
+			ss << "MouseButtonReleasedEvent: " << m_nButtonCode;
 			return ss.str();
 		}
 

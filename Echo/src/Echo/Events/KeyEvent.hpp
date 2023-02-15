@@ -8,15 +8,15 @@ namespace Echo {
 	class KeyEvent : public Event
 	{
 	public:
-		unsigned int getKeyCode() const { return m_KeyCode; }
+		unsigned int getKeyCode() const { return m_nKeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 
 	protected:
 		KeyEvent(const unsigned int KeyCode)
-			: m_KeyCode(KeyCode) {}
+			: m_nKeyCode(KeyCode) {}
 
-		unsigned int m_KeyCode; //键盘按键编号
+		unsigned int m_nKeyCode; //键盘按键编号
 	};
 
 	/// @brief 键盘按下事件
@@ -32,7 +32,7 @@ namespace Echo {
 		std::string ToString() const override
 		{
 			std::stringstream ss{};
-			ss << "KeyPressedEvent: " << m_KeyCode << ", repeat = " << m_bIsRepeat;
+			ss << "KeyPressedEvent: " << m_nKeyCode << ", repeat = " << m_bIsRepeat;
 			return ss.str();
 		}
 
@@ -52,7 +52,7 @@ namespace Echo {
 		std::string ToString() const override
 		{
 			std::stringstream ss{};
-			ss << "KeyReleasedEvent: " << m_KeyCode;
+			ss << "KeyReleasedEvent: " << m_nKeyCode;
 			return ss.str();
 		}
 
