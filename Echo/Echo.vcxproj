@@ -59,6 +59,8 @@
     <IntDir>..\bin-int\Debug-windows-x86_64\Echo\</IntDir>
     <TargetName>Echo</TargetName>
     <TargetExt>.dll</TargetExt>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -154,6 +156,8 @@
     <ClInclude Include="src\Echo\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Echo\Log.h" />
     <ClInclude Include="src\echopch.h" />
+    <ClInclude Include="src\Echo\Window.h" />
+    <ClInclude Include="src\Platform\Windows\Windows_Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp" />
@@ -161,6 +165,7 @@
     <ClCompile Include="src\echopch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\Windows_Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

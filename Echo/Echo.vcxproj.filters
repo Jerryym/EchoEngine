@@ -35,6 +35,8 @@
       <Filter>Echo</Filter>
     </ClInclude>
     <ClInclude Include="src\echopch.h" />
+    <ClInclude Include="src\Echo\Window.h" />
+    <ClInclude Include="src\Platform\Windows\Windows_Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp">
@@ -44,5 +46,6 @@
       <Filter>Echo</Filter>
     </ClCompile>
     <ClCompile Include="src\echopch.cpp" />
+    <ClCompile Include="src\Platform\Windows\Windows_Window.cpp" />
   </ItemGroup>
 </Project>
