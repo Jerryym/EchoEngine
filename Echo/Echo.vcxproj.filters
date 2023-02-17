@@ -7,6 +7,12 @@
     <Filter Include="Echo\Events">
       <UniqueIdentifier>{08A40BFC-7459-84F1-FD4D-7EC869027BF5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Echo.h" />
@@ -34,9 +40,13 @@
     <ClInclude Include="src\Echo\Log.h">
       <Filter>Echo</Filter>
     </ClInclude>
+    <ClInclude Include="src\Echo\Window.h">
+      <Filter>Echo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\Windows_Window.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\echopch.h" />
-    <ClInclude Include="src\Echo\Window.h" />
-    <ClInclude Include="src\Platform\Windows\Windows_Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp">
@@ -45,7 +55,9 @@
     <ClCompile Include="src\Echo\Log.cpp">
       <Filter>Echo</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\Windows_Window.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\echopch.cpp" />
-    <ClCompile Include="src\Platform\Windows\Windows_Window.cpp" />
   </ItemGroup>
 </Project>

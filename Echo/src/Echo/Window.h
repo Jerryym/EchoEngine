@@ -4,6 +4,7 @@
 #include "Core.h"
 #include "Events/Event.h"
 
+
 namespace Echo {
 
 	/// @brief 窗口属性
@@ -11,15 +12,15 @@ namespace Echo {
 	{
 		unsigned int m_nWidth;		//窗口宽
 		unsigned int m_nHeight;		//窗口高
-		std::string m_sTitle;		//窗口标题
+		std::string m_strTitle;		//窗口标题
 
 		sWindowProps(unsigned int width = 1600, unsigned int height = 900,
 			const std::string& title = "Echo Engine")
-			: m_nWidth(width), m_nHeight(height), m_sTitle(title)
+			: m_nWidth(width), m_nHeight(height), m_strTitle(title)
 		{
 
 		}
-	};
+	}sWindowProps;
 
 
 	/// @brief 基于桌面系统的 Window 接口
@@ -31,7 +32,7 @@ namespace Echo {
 		
 		virtual ~Window() {}
 
-		virtual void UpdateWindow() = 0;
+		virtual void OnUpdate() = 0;
 
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;
