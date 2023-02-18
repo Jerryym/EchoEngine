@@ -153,11 +153,14 @@
     <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
     <ClInclude Include="src\Echo\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Echo\Log.h" />
+    <ClInclude Include="src\Echo\Window.h" />
+    <ClInclude Include="src\Platform\Windows\Windows_Window.h" />
     <ClInclude Include="src\echopch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp" />
     <ClCompile Include="src\Echo\Log.cpp" />
+    <ClCompile Include="src\Platform\Windows\Windows_Window.cpp" />
     <ClCompile Include="src\echopch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
