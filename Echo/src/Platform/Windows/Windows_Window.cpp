@@ -28,6 +28,7 @@ namespace Echo {
 
 	void Windows_Window::SetEventCallBack(const EventCallBackFun& callback)
 	{
+		m_sData.m_Eventcallback = callback;
 	}
 
 	/// @brief 设置交换间隔时间, 即垂直同步

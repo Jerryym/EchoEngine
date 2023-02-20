@@ -25,17 +25,19 @@ namespace Echo {
 			ECHO_CORE_TRACE(event);
 		}
 
-		if (event.IsInCategory(EventCategoryInput))
-		{
-			ECHO_CORE_TRACE(event);
-		}
-
 		while (m_bRunning)
 		{
 			glClearColor(0.5f, 0.3f, 0.2f, 1.f);
 			glClear(GL_COLOR_BUFFER_BIT);
 			m_Window->OnUpdate();
 		}
+
+		if (event.IsInCategory(EventCategoryInput))
+		{
+			ECHO_CLIENT_TRACE(event);
+		}
+
+		while (true);
 	}
 
 }
