@@ -10,7 +10,7 @@ namespace Echo {
 		ECHO_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
-	Window* Window::Create(const const sWindowProps& props)
+	Window* Window::Create(const sWindowProps& props)
 	{
 		return new Windows_Window(props);
 	}
