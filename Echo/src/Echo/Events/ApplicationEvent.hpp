@@ -5,7 +5,7 @@
 namespace Echo {
 
 	/// @brief 窗口关闭事件
-	class WindowCloseEvent : public Event
+	class ECHO_API WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent() {}
@@ -16,7 +16,7 @@ namespace Echo {
 	};
 
 	/// @brief 窗口关闭事件
-	class WindowResizeEvent : public Event
+	class ECHO_API WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(const unsigned int width, const unsigned int height)
@@ -41,7 +41,7 @@ namespace Echo {
 	};
 
 	/// @brief AppTick事件
-	class AppTickEvent : public Event
+	class ECHO_API AppTickEvent : public Event
 	{
 	public:
 		AppTickEvent() {}
@@ -51,7 +51,7 @@ namespace Echo {
 	};
 
 	/// @brief App更新事件
-	class AppUpdateEvent : public Event
+	class ECHO_API AppUpdateEvent : public Event
 	{
 	public:
 		AppUpdateEvent() {}
@@ -61,7 +61,7 @@ namespace Echo {
 	};
 
 	/// @brief App渲染事件
-	class AppRenderEvent : public Event
+	class ECHO_API AppRenderEvent : public Event
 	{
 	public:
 		AppRenderEvent() {}

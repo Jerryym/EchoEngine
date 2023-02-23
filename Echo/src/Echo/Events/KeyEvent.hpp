@@ -5,7 +5,7 @@
 namespace Echo {
 
 	/// @brief 键盘事件
-	class KeyEvent : public Event
+	class ECHO_API KeyEvent : public Event
 	{
 	public:
 		unsigned int getKeyCode() const { return m_nKeyCode; }
@@ -20,7 +20,7 @@ namespace Echo {
 	};
 
 	/// @brief 键盘按下事件
-	class KeyPressedEvent : public KeyEvent
+	class ECHO_API KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(const unsigned int KeyCode, bool isRepeat = false)
@@ -43,7 +43,7 @@ namespace Echo {
 	};
 
 	/// @brief 键盘释放事件
-	class KeyReleasedEvent : public KeyEvent
+	class ECHO_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(const unsigned int KeyCode)

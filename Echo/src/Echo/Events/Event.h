@@ -45,7 +45,7 @@ namespace Echo {
 		//过滤筛选事件
 		virtual int GetCategory() const = 0;
 		//将事件值转换为字符串
-		virtual std::string ToString() const = 0;
+		virtual std::string ToString() const { return GetName(); }
 
 		inline bool IsInCategory(EventCategory category)
 		{
@@ -55,6 +55,7 @@ namespace Echo {
 			return false;
 		}
 
+		friend class EventDispatcher;
 	protected:
 		bool m_bHandled = false; // 事件是否已被处理
 	};
@@ -70,11 +71,11 @@ namespace Echo {
 		}
 
 		template<typename T, typename F>
-		bool dispatcher(const F& func)
+		bool Dispatcher(const F& func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.m_bHandled |= func(static_cast<T&>m_Event);
+				m_Event.m_bHandled |= func(static_cast<T&>(m_Event));
 				return true;
 			}
 			return false;
