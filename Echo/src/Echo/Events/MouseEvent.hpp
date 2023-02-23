@@ -6,7 +6,7 @@
 namespace Echo {
 
 	/// @brief 鼠标移动事件
-	class MouseMovedEvent : public Event
+	class ECHO_API MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(const float x, const float y)
@@ -32,7 +32,7 @@ namespace Echo {
 	};
 
 	/// @brief 鼠标滚动事件
-	class MouseScrolledEvent : public Event
+	class ECHO_API MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(const float x, const float y)
@@ -58,7 +58,7 @@ namespace Echo {
 	};
 
 	/// @brief 鼠标按钮事件
-	class MouseButtonEvent : public Event
+	class ECHO_API MouseButtonEvent : public Event
 	{
 	public:
 		//获取鼠标按钮
@@ -76,7 +76,7 @@ namespace Echo {
 	};
 
 	/// @brief 鼠标按下事件
-	class MouseButtonPressedEvent : public MouseButtonEvent
+	class ECHO_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(const unsigned int Button)
@@ -92,11 +92,11 @@ namespace Echo {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	/// @brief 鼠标按下事件
-	class MouseButtonPressedEvent : public MouseButtonEvent
+	/// @brief 鼠标释放事件
+	class ECHO_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(const unsigned int Button)
+		MouseButtonReleasedEvent(const unsigned int Button)
 			: MouseButtonEvent(Button) {}
 
 		std::string ToString() const override
