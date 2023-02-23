@@ -92,11 +92,11 @@ namespace Echo {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	/// @brief 鼠标按下事件
-	class MouseButtonPressedEvent : public MouseButtonEvent
+	/// @brief 鼠标释放事件
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(const unsigned int Button)
+		MouseButtonReleasedEvent(const unsigned int Button)
 			: MouseButtonEvent(Button) {}
 
 		std::string ToString() const override
