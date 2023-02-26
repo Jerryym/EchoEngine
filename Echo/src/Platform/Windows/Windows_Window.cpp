@@ -59,7 +59,7 @@ namespace Echo {
 		m_sData.m_nHeight = props.m_nHeight;
 		m_sData.m_strTitle = props.m_strTitle;
 
-		ECHO_CORE_INFO("Create window {0} ({1}, {2})", props.m_nWidth, props.m_nHeight, props.m_strTitle);
+		ECHO_CORE_INFO("Create window {0} ({1}, {2})", props.m_strTitle, props.m_nWidth, props.m_nHeight);
 
 		if (!s_bGLFWInitialiazed)
 		{

@@ -4,6 +4,7 @@
 #include "Events/Event.h"
 #include "Echo/Events/ApplicationEvent.hpp"
 #include "Window.h"
+#include "LayerStack.h"
 
 namespace Echo {
 
@@ -20,6 +21,9 @@ namespace Echo {
 		/// @brief 运行
 		void Run();
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
 	private:
 		/// @brief 关闭窗口
 		/// @param closeEvent 窗口关闭事件
@@ -28,6 +32,7 @@ namespace Echo {
 
 		std::unique_ptr<Window> m_Window;	//应用显示窗口
 		bool m_bRunning = true;				//运行状态的控制
+		LayerStack m_LayerStack;			//层栈
 	};
 
 	// To be defined in CLIENT

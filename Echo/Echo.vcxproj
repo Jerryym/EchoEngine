@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -107,6 +108,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -130,6 +132,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -152,6 +155,8 @@
     <ClInclude Include="src\Echo\Events\Event.h" />
     <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
     <ClInclude Include="src\Echo\Events\MouseEvent.hpp" />
+    <ClInclude Include="src\Echo\Layer.h" />
+    <ClInclude Include="src\Echo\LayerStack.h" />
     <ClInclude Include="src\Echo\Log.h" />
     <ClInclude Include="src\Echo\Window.h" />
     <ClInclude Include="src\Platform\Windows\Windows_Window.h" />
@@ -159,6 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp" />
+    <ClCompile Include="src\Echo\Layer.cpp" />
+    <ClCompile Include="src\Echo\LayerStack.cpp" />
     <ClCompile Include="src\Echo\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\Windows_Window.cpp" />
     <ClCompile Include="src\echopch.cpp">

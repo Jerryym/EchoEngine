@@ -56,14 +56,17 @@ project "Echo"
 
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
+        buildoptions "/MDd"  -- 开始多线程支持调试
 		symbols "On"
 
     filter "configurations:Release"
         defines "ECHO_RELEASE"
+        buildoptions "/MD"
 		symbols "On"
 
     filter "configurations:Dist"
         defines "ECHO_DIST"
+        buildoptions "/MDd"
 		symbols "On"
 
 project "Sandbox"
@@ -104,12 +107,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
+        buildoptions "/MDd"  -- 开始多线程支持调试
 		symbols "On"
 
     filter "configurations:Release"
         defines "ECHO_RELEASE"
+        buildoptions "/MD"
 		symbols "On"
 
     filter "configurations:Dist"
         defines "ECHO_DIST"
+        buildoptions "/MDd"
 		symbols "On"

@@ -19,9 +19,6 @@ namespace Echo {
 
 	void Application::OnEvent(Event& event)
 	{
-		// 输出当前所属事件日志
-		ECHO_CLIENT_INFO("{0}", event);
-
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));	//控制窗口关闭
 	}
@@ -39,6 +36,13 @@ namespace Echo {
 		{
 			glClearColor(0.3f, 0.3f, 0.2f, 1.f);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			// 遍历层栈，实现各层更新
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnUpdate();
+			}
+
 			m_Window->OnUpdate();
 		}
 
@@ -46,6 +50,16 @@ namespace Echo {
 		{
 			ECHO_CLIENT_TRACE(event);
 		}
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& closeEvent)
