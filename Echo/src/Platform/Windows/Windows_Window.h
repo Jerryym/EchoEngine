@@ -1,10 +1,6 @@
 #pragma once
 #include "Echo/Window.h"
 
-#include "Echo/Events/ApplicationEvent.hpp"
-#include "Echo/Events/KeyEvent.hpp"
-#include "Echo/Events/MouseEvent.hpp"
-
 #include <GLFW/glfw3.h>
 
 namespace Echo {
