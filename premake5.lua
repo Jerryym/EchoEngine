@@ -6,8 +6,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Echo/vendor/GLFW/include"
+IncludeDir["Glad"] = "Echo/vendor/glad/include"
 
 include "Echo/vendor/GLFW"
+include "Echo/vendor/glad"
 
 project "Echo"
     location "Echo"
@@ -31,12 +33,14 @@ project "Echo"
     {
         "%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -48,7 +52,8 @@ project "Echo"
         defines 
 		{ 
 			"ECHO_PLATFORM_WINDOWS",
-			"ECHO_BUILD_DLL"
+			"ECHO_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
 		}
 
         -- 复制dll到Sandbox.exe文件夹中
@@ -56,14 +61,17 @@ project "Echo"
 
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
+        buildoptions "/MDd"  -- 开始多线程支持调试
 		symbols "On"
 
     filter "configurations:Release"
         defines "ECHO_RELEASE"
+        buildoptions "/MD"
 		symbols "On"
 
     filter "configurations:Dist"
         defines "ECHO_DIST"
+        buildoptions "/MDd"
 		symbols "On"
 
 project "Sandbox"
@@ -104,12 +112,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
+        buildoptions "/MDd"  -- 开始多线程支持调试
 		symbols "On"
 
     filter "configurations:Release"
         defines "ECHO_RELEASE"
+        buildoptions "/MD"
 		symbols "On"
 
     filter "configurations:Dist"
         defines "ECHO_DIST"
+        buildoptions "/MDd"
 		symbols "On"

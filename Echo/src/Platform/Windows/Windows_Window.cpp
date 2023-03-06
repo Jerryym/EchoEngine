@@ -1,6 +1,12 @@
 #include "echopch.h"
 #include "Windows_Window.h"
 
+#include "Echo/Events/ApplicationEvent.hpp"
+#include "Echo/Events/KeyEvent.hpp"
+#include "Echo/Events/MouseEvent.hpp"
+
+#include <glad/glad.h>
+
 namespace Echo {
 
 	static bool s_bGLFWInitialiazed = false;
@@ -59,7 +65,7 @@ namespace Echo {
 		m_sData.m_nHeight = props.m_nHeight;
 		m_sData.m_strTitle = props.m_strTitle;
 
-		ECHO_CORE_INFO("Create window {0} ({1}, {2})", props.m_nWidth, props.m_nHeight, props.m_strTitle);
+		ECHO_CORE_INFO("Create window {0} ({1}, {2})", props.m_strTitle, props.m_nWidth, props.m_nHeight);
 
 		if (!s_bGLFWInitialiazed)
 		{
@@ -73,6 +79,8 @@ namespace Echo {
 
 		m_pWindow = glfwCreateWindow((int)props.m_nWidth, (int)props.m_nHeight, props.m_strTitle.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_pWindow);	//设置当前窗口上下文
+		int status = gladLoadGLLoader(GLADloadproc(glfwGetProcAddress));
+		ECHO_CORE_ASSERT(status, "Failed to initiazlize Glad!");
 		glfwSetWindowUserPointer(m_pWindow, &m_sData);
 		SetVSync(true);	//设置垂直同步
 
