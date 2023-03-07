@@ -4,3 +4,6 @@
 [submodule "Echo/vendor/GLFW"]
 	path = Echo/vendor/GLFW
 	url = https://github.com/Jerryym/glfw
+[submodule "Echo/vendor/imgui"]
+	path = Echo/vendor/imgui
+	url = https://github.com/Jerryym/imgui.git
