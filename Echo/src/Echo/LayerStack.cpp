@@ -17,11 +17,13 @@ namespace Echo {
 	void LayerStack::PushLayer(Layer* layer)
 	{
 		m_LayerItr = m_Layers.emplace(m_LayerItr, layer);
+		layer->OnAttach();
 	}
 
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
+		overlay->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
