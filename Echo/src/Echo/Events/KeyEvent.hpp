@@ -58,4 +58,21 @@ namespace Echo {
 
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
+
+	/// @brief ¼üÅÌÊÍ·ÅÊÂ¼ş
+	class ECHO_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(const unsigned int KeyCode)
+			: KeyEvent(KeyCode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss{};
+			ss << "KeyTypedEvent: " << m_nKeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
 }
