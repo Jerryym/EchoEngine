@@ -5,10 +5,13 @@
 
 namespace Echo {
 
-#define BIND_EVENT(x)	 std::bind(&x, this, std::placeholders::_1)
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
+		ECHO_CORE_ASSERT(s_Instance != nullptr, "Application already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT(Application::OnEvent));
 	}
@@ -21,6 +24,12 @@ namespace Echo {
 	{
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));	//控制窗口关闭
+
+		//处理层上的事件
+		for (Layer* layer : m_LayerStack)
+		{
+			layer->OnEvent(event);
+		}
 	}
 
 	void Application::Run()
