@@ -89,6 +89,7 @@ namespace Echo {
 		* glfwSetWindowSizeCallback - 重置窗口大小
 		* glfwSetWindowCloseCallback - 关闭窗口
 		* glfwSetKeyCallback - 键盘操作
+		* glfwSetCharCallback - 键盘键入操作
 		* glfwSetMouseButtonCallback - 鼠标按键操作
 		* glfwSetScrollCallback - 滚轮滚动操作
 		* glfwSetCursorPosCallback - 当前鼠标位置
@@ -137,6 +138,14 @@ namespace Echo {
 						break;
 					}
 				}
+			});
+
+		glfwSetCharCallback(m_pWindow, [](GLFWwindow* window, unsigned int codepoint)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+
+				KeyTypedEvent event(codepoint);
+				sData.m_Eventcallback(event);
 			});
 
 		glfwSetMouseButtonCallback(m_pWindow, [](GLFWwindow* window, int button, int action, int mods)
