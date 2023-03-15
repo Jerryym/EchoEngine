@@ -7,4 +7,4 @@ wiki/
 # Files
 *.user
 *.sln
-*.ini
+/Sandbox/*.ini
