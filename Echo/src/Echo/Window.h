@@ -52,6 +52,10 @@ namespace Echo {
 		virtual bool IsVSync() const = 0;
 		////////////////////////////////////////////////////////////////////
 
+		/// @brief 获取当前活动窗口
+		/// @return 当前活动窗口指针
+		virtual void* GetNativeWindow() const = 0;
+
 		/// @brief 创建窗口
 		/// @param props 窗口属性
 		/// @return 窗口指针
