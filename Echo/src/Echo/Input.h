@@ -18,8 +18,8 @@ namespace Echo {
 		static bool IsMouseButtonPressed(int mousebutton) { return s_InputInstance->IsMouseButtonPressedImpl(mousebutton); }
 
 		static std::pair<float, float> GetMousePos() { return s_InputInstance->GetMousePosImpl(); }
-		static float GetMouseX() { return s_InputInstance->GetMouseX(); }
-		static float GetMouseY() { return s_InputInstance->GetMouseY(); }
+		static float GetMouseX() { return s_InputInstance->GetMouseXImpl(); }
+		static float GetMouseY() { return s_InputInstance->GetMouseYImpl(); }
 
 	protected:
 		/// @brief 键盘按下实现
