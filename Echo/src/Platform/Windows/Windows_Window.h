@@ -20,6 +20,8 @@ namespace Echo {
 		virtual void SetVSync(bool enabled) override;
 		virtual bool IsVSync() const override;
 
+		virtual void* GetNativeWindow() const { return m_pWindow; }
+
 	private:
 		/// @brief ≥ı ºªØ
 		virtual void Initialize(const sWindowProps& props);

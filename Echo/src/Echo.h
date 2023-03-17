@@ -5,7 +5,6 @@
 #include "Echo/Application.h"
 #include "Echo/Log.h"
 #include "Echo/Layer.h"
-
 #include "Echo/ImGui/ImGuiLayer.h"
 
 // --Entry Point---------------------
