@@ -156,6 +156,7 @@
     <ClInclude Include="src\Echo\Events\KeyEvent.hpp" />
     <ClInclude Include="src\Echo\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Echo\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Echo\Input.h" />
     <ClInclude Include="src\Echo\Layer.h" />
     <ClInclude Include="src\Echo\LayerStack.h" />
     <ClInclude Include="src\Echo\Log.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="src\Platform\Windows\Windows_Window.h" />
     <ClInclude Include="src\echopch.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp" />
@@ -176,6 +178,7 @@
     <ClCompile Include="src\echopch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

@@ -3,6 +3,8 @@
 
 #include <glad/glad.h>
 
+#include "Echo/Input.h"
+
 namespace Echo {
 
 	Application* Application::s_Instance = nullptr;
@@ -51,6 +53,9 @@ namespace Echo {
 			{
 				layer->OnUpdate();
 			}
+
+			auto [x, y] = Input::GetMousePos();
+			ECHO_CORE_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}
