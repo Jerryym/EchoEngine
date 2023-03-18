@@ -30,8 +30,8 @@ class Sandbox : public Echo::Application
 public:
 	Sandbox() 
 	{
-		PushLayer(new ExampleLayer());
-		PushOverlay(new Echo::ImGuiLayer());
+		PushLayer(new ExampleLayer);
+		PushOverlay(new Echo::ImGuiLayer);
 	}
 	~Sandbox() {}
 
