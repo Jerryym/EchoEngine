@@ -55,8 +55,6 @@ namespace Echo {
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-		ECHO_CLIENT_INFO("ImGuiLayer::Update");
 	}
 
 	void ImGuiLayer::OnEvent(Event& event)
