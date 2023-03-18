@@ -46,6 +46,9 @@
     <ClInclude Include="src\Echo\ImGui\ImGuiLayer.h">
       <Filter>Echo\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Echo\Input.h">
+      <Filter>Echo</Filter>
+    </ClInclude>
     <ClInclude Include="src\Echo\Layer.h">
       <Filter>Echo</Filter>
     </ClInclude>
@@ -64,12 +67,15 @@
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\Windows_Window.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\echopch.h" />
-    <ClInclude Include="src\Echo\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Echo\KeyCodes.h" />
+    <ClInclude Include="src\Echo\MouseCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp">
@@ -90,10 +96,12 @@
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\Windows_Window.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\echopch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

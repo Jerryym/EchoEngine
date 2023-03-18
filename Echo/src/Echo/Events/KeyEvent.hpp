@@ -23,7 +23,7 @@ namespace Echo {
 	class ECHO_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(const unsigned int KeyCode, bool isRepeat = false)
+		KeyPressedEvent(unsigned int KeyCode, bool isRepeat = false)
 			: KeyEvent(KeyCode), m_bIsRepeat(isRepeat) {}
 
 		//是否重复按下
@@ -46,7 +46,7 @@ namespace Echo {
 	class ECHO_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(const unsigned int KeyCode)
+		KeyReleasedEvent(unsigned int KeyCode)
 			: KeyEvent(KeyCode) {}
 
 		std::string ToString() const override
@@ -63,7 +63,7 @@ namespace Echo {
 	class ECHO_API KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(const unsigned int KeyCode)
+		KeyTypedEvent(unsigned int KeyCode)
 			: KeyEvent(KeyCode) {}
 
 		std::string ToString() const override

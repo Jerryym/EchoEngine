@@ -10,12 +10,17 @@ public:
 
 	void OnUpdate() override
 	{
-		ECHO_CLIENT_INFO("ExampleLayer::Update");
+		if (Echo::Input::IsKeyPressed(ECHO_KEY_TAB))
+			ECHO_CLIENT_INFO("Tab Key is pressed!");
 	}
 
 	void OnEvent(Echo::Event& event) override
 	{
-		ECHO_CLIENT_TRACE("{0}", event);
+		if (event.GetEventType() == Echo::EventType::KeyPressed)
+		{
+			Echo::KeyPressedEvent& keyEvent = (Echo::KeyPressedEvent&)event;
+			ECHO_CLIENT_TRACE("{0}", (char)keyEvent.getKeyCode());		//输出按下的按键名称
+		}
 	}
 
 };
