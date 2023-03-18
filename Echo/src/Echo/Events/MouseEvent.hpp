@@ -9,7 +9,7 @@ namespace Echo {
 	class ECHO_API MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(const float x, const float y)
+		MouseMovedEvent(float x, float y)
 			: m_rPositionX(x), m_rPositionY(y) {}
 
 		float getX() const { return m_rPositionX; }
@@ -35,7 +35,7 @@ namespace Echo {
 	class ECHO_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(const float x, const float y)
+		MouseScrolledEvent(float x, float y)
 			: m_rOffsetX(x), m_rOffsetY(y) {}
 
 		float getXOffset() const { return m_rOffsetX; }
@@ -69,7 +69,7 @@ namespace Echo {
 	protected:
 		/// @brief Constructor
 		/// @param Button 
-		MouseButtonEvent(const unsigned int Button) 
+		MouseButtonEvent(unsigned int Button) 
 			: m_nButtonCode(Button) {}
 
 		unsigned int m_nButtonCode;// Û±Í∞¥≈•±‡∫≈
@@ -79,7 +79,7 @@ namespace Echo {
 	class ECHO_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(const unsigned int Button)
+		MouseButtonPressedEvent(unsigned int Button)
 			: MouseButtonEvent(Button) {}
 
 		std::string ToString() const override
@@ -96,7 +96,7 @@ namespace Echo {
 	class ECHO_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(const unsigned int Button)
+		MouseButtonReleasedEvent(unsigned int Button)
 			: MouseButtonEvent(Button) {}
 
 		std::string ToString() const override
