@@ -8,6 +8,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Echo/vendor/GLFW/include"
 IncludeDir["Glad"] = "Echo/vendor/glad/include"
 IncludeDir["ImGui"] = "Echo/vendor/imgui"
+IncludeDir["glm"] = "Echo/vendor/glm"
 
 include "Echo/vendor/GLFW"
 include "Echo/vendor/glad"
@@ -18,8 +19,8 @@ project "Echo"
     kind "SharedLib"
     language "C++"
 
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --Êä³öÄ¿Â¼
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --ÖĞ¼äÄ¿Â¼
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --è¾“å‡ºç›®å½•
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --ä¸­é—´ç›®å½•
 
     pchheader "echopch.h"
     pchsource "Echo/src/echopch.cpp"
@@ -28,7 +29,9 @@ project "Echo"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.hpp",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs
@@ -37,7 +40,8 @@ project "Echo"
 		"%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -51,7 +55,7 @@ project "Echo"
     filter "system:windows"
         cppdialect "C++17"
         staticruntime "On"
-		systemversion "latest"  --windows sdk °æ±¾
+		systemversion "latest"  --windows sdk ç‰ˆæœ¬
 
         defines 
 		{ 
@@ -60,12 +64,12 @@ project "Echo"
             "GLFW_INCLUDE_NONE"
 		}
 
-        -- ¸´ÖÆdllµ½Sandbox.exeÎÄ¼ş¼ĞÖĞ
+        --å¤åˆ¶dllåˆ°sandbox.exeæ–‡ä»¶å¤¹ä¸­
         postbuildcommands { "{COPYDIR} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox" }
 
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
-        buildoptions "/MDd"  -- ¿ªÊ¼¶àÏß³ÌÖ§³Öµ÷ÊÔ
+        buildoptions "/MDd"  -- å¤šçº¿ç¨‹æ”¯æŒè°ƒè¯•
 		symbols "On"
 
     filter "configurations:Release"
@@ -83,8 +87,8 @@ project "Sandbox"
     kind "ConsoleApp"
     language "C++"
 
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --Êä³öÄ¿Â¼
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --ÖĞ¼äÄ¿Â¼
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --è¾“å‡ºç›®å½•
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --ä¸­é—´ç›®å½•
 
     files
     {
@@ -96,7 +100,8 @@ project "Sandbox"
     includedirs
     {
         "Echo/vendor/spdlog/include",
-        "Echo/src"
+        "Echo/src",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -107,7 +112,7 @@ project "Sandbox"
     filter "system:windows"
         cppdialect "C++17"
         staticruntime "On"
-		systemversion "latest"  --windows sdk °æ±¾
+		systemversion "latest"  --windows sdk ç‰ˆæœ¬
 
         defines 
 		{ 
@@ -116,7 +121,7 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
-        buildoptions "/MDd"  -- ¿ªÊ¼¶àÏß³ÌÖ§³Öµ÷ÊÔ
+        buildoptions "/MDd"  --å¤šçº¿ç¨‹æ”¯æŒè°ƒè¯•
 		symbols "On"
 
     filter "configurations:Release"
