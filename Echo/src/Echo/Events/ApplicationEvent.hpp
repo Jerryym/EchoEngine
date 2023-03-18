@@ -19,7 +19,7 @@ namespace Echo {
 	class ECHO_API WindowResizeEvent : public Event
 	{
 	public:
-		WindowResizeEvent(const unsigned int width, const unsigned int height)
+		WindowResizeEvent(unsigned int width, unsigned int height)
 			: m_nWidth(width), m_nHeight(height) {}
 
 		unsigned int getWidth() const { return m_nWidth; }
