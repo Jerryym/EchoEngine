@@ -1,9 +1,6 @@
 [submodule "Echo/vendor/GLFW"]
 	path = Echo/vendor/GLFW
 	url = https://github.com/Jerryym/glfw
-[submodule "Echo/vendor/glm"]
-	path = Echo/vendor/glm
-	url = https://github.com/Jerryym/glm.git
 [submodule "Echo/vendor/spdlog"]
 	path = Echo/vendor/spdlog
 	url = https://github.com/gabime/spdlog
