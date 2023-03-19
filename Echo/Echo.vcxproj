@@ -163,8 +163,6 @@
     <ClInclude Include="src\Echo\Log.h" />
     <ClInclude Include="src\Echo\MouseCodes.h" />
     <ClInclude Include="src\Echo\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\Windows_Window.h" />
     <ClInclude Include="src\echopch.h" />
@@ -587,11 +585,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Echo\Application.cpp" />
+    <ClCompile Include="src\Echo\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Echo\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Echo\Layer.cpp" />
     <ClCompile Include="src\Echo\LayerStack.cpp" />
     <ClCompile Include="src\Echo\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\Windows_Window.cpp" />
     <ClCompile Include="src\echopch.cpp">

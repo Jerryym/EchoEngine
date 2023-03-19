@@ -14,22 +14,12 @@ namespace Echo {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& event);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
 
-	private:
-		bool OnMousePressedEvent(MouseButtonPressedEvent& event);
-		bool OnMouseReleasedEvent(MouseButtonReleasedEvent& event);
-		bool OnMouseMovedEvent(MouseMovedEvent& event);
-		bool OnMouseSrolledEvent(MouseScrolledEvent& event);
-		
-		bool OnKeyPressedEvent(KeyPressedEvent& event);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& event);
-		bool OnKeyTypedEvent(KeyTypedEvent& event);
-		
-		bool OnWindowResizedEvent(WindowResizeEvent& event);
+		void Begin();
+		void End();
 
 	private:
 		float m_Time;

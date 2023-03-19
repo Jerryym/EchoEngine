@@ -8,13 +8,13 @@ public:
 	{
 	}
 
-	void OnUpdate() override
+	virtual void OnUpdate() override
 	{
 		if (Echo::Input::IsKeyPressed(ECHO_KEY_TAB))
 			ECHO_CLIENT_INFO("Tab Key is pressed!");
 	}
 
-	void OnEvent(Echo::Event& event) override
+	virtual void OnEvent(Echo::Event& event) override
 	{
 		if (event.GetEventType() == Echo::EventType::KeyPressed)
 		{
@@ -31,7 +31,6 @@ public:
 	Sandbox() 
 	{
 		PushLayer(new ExampleLayer);
-		PushOverlay(new Echo::ImGuiLayer);
 	}
 	~Sandbox() {}
 

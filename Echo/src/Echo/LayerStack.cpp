@@ -4,9 +4,8 @@
 namespace Echo {
 
 	LayerStack::LayerStack()
-	{
-		m_LayerItr = m_Layers.begin();
-	}
+		:m_nInsertIndex(0)
+	{}
 
 	LayerStack::~LayerStack()
 	{
@@ -16,7 +15,7 @@ namespace Echo {
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_LayerItr = m_Layers.emplace(m_LayerItr, layer);
+		m_Layers.emplace(m_Layers.begin() + m_nInsertIndex, layer);
 		layer->OnAttach();
 	}
 
@@ -32,7 +31,7 @@ namespace Echo {
 		if (it != m_Layers.end())
 		{
 			m_Layers.erase(it);
-			m_LayerItr--;
+			m_nInsertIndex--;
 		}
 	}
 

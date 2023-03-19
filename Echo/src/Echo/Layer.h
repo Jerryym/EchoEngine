@@ -17,6 +17,8 @@ namespace Echo {
 		virtual void OnDetach();
 		/// @brief 更新层
 		virtual void OnUpdate();
+		/// @brief ImGui渲染
+		virtual void OnImGuiRender();
 		/// @brief 处理层上正在运行的事件
 		/// @param event 运行的事件
 		virtual void OnEvent(Event& event);
