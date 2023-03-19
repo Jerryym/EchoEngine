@@ -16,6 +16,9 @@ namespace Echo {
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT(Application::OnEvent));
+
+		m_pImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_pImGuiLayer);
 	}
 
 	Application::~Application()
@@ -53,6 +56,13 @@ namespace Echo {
 			{
 				layer->OnUpdate();
 			}
+
+			m_pImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			m_pImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}

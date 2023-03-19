@@ -24,6 +24,10 @@ namespace Echo {
 	{
 	}
 
+	void Layer::OnImGuiRender()
+	{
+	}
+
 	void Layer::OnEvent(Event& event)
 	{
 	}
