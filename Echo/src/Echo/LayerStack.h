@@ -31,8 +31,8 @@ namespace Echo {
 		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 
 	private:
+		unsigned int m_nInsertIndex;
 		std::vector<Layer*> m_Layers;		//≤„’ª
-		std::vector<Layer*>::iterator m_LayerItr;
 	};
 
 }

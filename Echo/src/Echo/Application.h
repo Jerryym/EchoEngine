@@ -6,6 +6,8 @@
 #include "Window.h"
 #include "LayerStack.h"
 
+#include "ImGui/ImGuiLayer.h"
+
 namespace Echo {
 
 	class ECHO_API Application
@@ -44,6 +46,7 @@ namespace Echo {
 		bool OnWindowClose(WindowCloseEvent& closeEvent);
 
 		std::unique_ptr<Window> m_Window;	//应用显示窗口
+		ImGuiLayer* m_pImGuiLayer;			//ImGui UI层
 		bool m_bRunning = true;				//运行状态的控制
 		LayerStack m_LayerStack;			//层栈
 
