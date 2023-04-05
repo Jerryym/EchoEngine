@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global, lowercase-global
 workspace "Echo"
     architecture "x64"
     configurations { "Debug", "Release", "Dist" }
@@ -16,8 +17,10 @@ include "Echo/vendor/imgui"
 
 project "Echo"
     location "Echo"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
+    cppdialect "C++17"
+    staticruntime "On"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --输出目录
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --中间目录
@@ -32,6 +35,11 @@ project "Echo"
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
+    }
+
+    defines
+    {
+        "_CRT_SECURE_NO_WARNINGS"
     }
 
     includedirs
@@ -53,8 +61,6 @@ project "Echo"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "On"
 		systemversion "latest"  --windows sdk 版本
 
         defines 
@@ -64,28 +70,27 @@ project "Echo"
             "GLFW_INCLUDE_NONE"
 		}
 
-        --复制dll到sandbox.exe文件夹中
-        postbuildcommands { "{COPYDIR} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox" }
-
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
-        buildoptions "/MDd"  -- 多线程支持调试
+        runtime "Debug"
 		symbols "On"
 
     filter "configurations:Release"
         defines "ECHO_RELEASE"
-        buildoptions "/MD"
-		symbols "On"
+        runtime "Release"
+		optimize "On"
 
     filter "configurations:Dist"
         defines "ECHO_DIST"
-        buildoptions "/MDd"
-		symbols "On"
+        runtime "Release"
+		optimize "On"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    cppdialect "C++17"
+    staticruntime "On"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --输出目录
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --中间目录
@@ -110,8 +115,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "On"
 		systemversion "latest"  --windows sdk 版本
 
         defines 
@@ -121,15 +124,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "ECHO_DEBUG"
-        buildoptions "/MDd"  --多线程支持调试
+        runtime "Debug"
 		symbols "On"
 
     filter "configurations:Release"
         defines "ECHO_RELEASE"
-        buildoptions "/MD"
-		symbols "On"
+        runtime "Release"
+		optimize "On"
 
     filter "configurations:Dist"
         defines "ECHO_DIST"
-        buildoptions "/MDd"
-		symbols "On"
+        runtime "Release"
+		optimize "On"

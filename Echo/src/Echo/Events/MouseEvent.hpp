@@ -6,7 +6,7 @@
 namespace Echo {
 
 	/// @brief 鼠标移动事件
-	class ECHO_API MouseMovedEvent : public Event
+	class  MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -32,7 +32,7 @@ namespace Echo {
 	};
 
 	/// @brief 鼠标滚动事件
-	class ECHO_API MouseScrolledEvent : public Event
+	class  MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float x, float y)
@@ -58,7 +58,7 @@ namespace Echo {
 	};
 
 	/// @brief 鼠标按钮事件
-	class ECHO_API MouseButtonEvent : public Event
+	class  MouseButtonEvent : public Event
 	{
 	public:
 		//获取鼠标按钮
@@ -76,7 +76,7 @@ namespace Echo {
 	};
 
 	/// @brief 鼠标按下事件
-	class ECHO_API MouseButtonPressedEvent : public MouseButtonEvent
+	class  MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(unsigned int Button)
@@ -93,7 +93,7 @@ namespace Echo {
 	};
 
 	/// @brief 鼠标释放事件
-	class ECHO_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class  MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(unsigned int Button)

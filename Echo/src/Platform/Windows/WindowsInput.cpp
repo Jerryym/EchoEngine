@@ -30,7 +30,7 @@ namespace Echo {
 		double rXPos, rYPos;
 		glfwGetCursorPos(nativeWindow, &rXPos, &rYPos);
 
-		return std::pair<float, float>(rXPos, rYPos);
+		return std::pair<float, float>((float)rXPos, (float)rYPos);
 	}
 
 	float WindowsInput::GetMouseXImpl()
