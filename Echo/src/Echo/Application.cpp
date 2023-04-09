@@ -48,7 +48,7 @@ namespace Echo {
 
 		while (m_bRunning)
 		{
-			glClearColor(0.0f, 0.0f, 0.0f, 1.f);
+			glClearColor(0.1f, 0.1f, 0.1f, 1.f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			// 遍历层栈，实现各层更新

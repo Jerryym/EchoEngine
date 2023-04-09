@@ -13,7 +13,7 @@ namespace Echo {
 		auto nativeWindow = static_cast<GLFWwindow*>(Application::GetApplication().GetWindow().GetNativeWindow());
 		auto state = glfwGetKey(nativeWindow, keycode);
 
-		return state == (GLFW_PRESS | GLFW_REPEAT);
+		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
 
 	bool WindowsInput::IsMouseButtonPressedImpl(int mousebutton)
