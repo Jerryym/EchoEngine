@@ -12,8 +12,12 @@ namespace Echo {
 		virtual void Bind() const override;
 		virtual void unBind() const override;
 
+		virtual void SetLayout(const BufferLayout& layout) override;
+		virtual const BufferLayout& GetLayout() const override;
+
 	private:
 		uint32_t m_RendererID;
+		BufferLayout m_layout;
 	};
 
 
@@ -32,6 +36,7 @@ namespace Echo {
 		uint32_t m_RendererID;
 		uint32_t m_iCount;		//Ë÷Òý»º³å¸öÊý
 	};
+
 }
 
 

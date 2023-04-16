@@ -36,4 +36,22 @@ namespace Echo {
 		return nullptr;
 	}
 
+	BufferLayout::BufferLayout(const std::initializer_list<BufferElement>& elements)
+		:m_Elements(elements)
+	{
+		CalculateOffsetAndStride();
+	}
+
+	void BufferLayout::CalculateOffsetAndStride()
+	{
+		uint32_t offset = 0;
+		m_nStride = 0;
+		for (auto& element:m_Elements)
+		{
+			element.m_nOffset = offset;
+			offset += element.m_nSize;
+			m_nStride += element.m_nSize;
+		}
+	}
+
 }

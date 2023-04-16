@@ -30,6 +30,17 @@ namespace Echo {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
+	void OpenGLVertexBuffer::SetLayout(const BufferLayout& layout)
+	{
+		m_layout = layout;
+	}
+
+	const BufferLayout& OpenGLVertexBuffer::GetLayout() const
+	{
+		// TODO: 在此处插入 return 语句
+		return m_layout;
+	}
+
 	/////////////////////////////////////////////////////
 	// OpenGLIndexBuffer ////////////////////////////////
 	/////////////////////////////////////////////////////
