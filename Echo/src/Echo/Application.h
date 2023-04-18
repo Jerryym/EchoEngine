@@ -10,6 +10,7 @@
 
 #include "Renderer/Shader.h"
 #include "Renderer/Buffer.h"
+#include "Renderer/VertexArray.h"
 
 namespace Echo {
 
@@ -53,10 +54,10 @@ namespace Echo {
 		bool m_bRunning = true;				//运行状态的控制
 		LayerStack m_LayerStack;			//层栈
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;	//着色器
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<VertexArray> m_VertexArray;
+		std::shared_ptr<Shader> m_Shader;	//着色器
+		std::shared_ptr<VertexBuffer> m_VertexBuffer;
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;
 
 		//应用程序单例指针（程序运行时，当且只能一个应用程序存在）
 		static Application* s_Instance;

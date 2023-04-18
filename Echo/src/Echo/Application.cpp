@@ -9,27 +9,6 @@ namespace Echo {
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-		case Echo::ShaderDataType::Float:		return GL_FLOAT;
-		case Echo::ShaderDataType::Float2:		return GL_FLOAT;
-		case Echo::ShaderDataType::Float3:		return GL_FLOAT;
-		case Echo::ShaderDataType::Float4:		return GL_FLOAT;
-		case Echo::ShaderDataType::Mat3:		return GL_FLOAT_MAT3;
-		case Echo::ShaderDataType::Mat4:		return GL_FLOAT_MAT4;
-		case Echo::ShaderDataType::Int:			return GL_INT;
-		case Echo::ShaderDataType::Int2:		return GL_INT;
-		case Echo::ShaderDataType::Int3:		return GL_INT;
-		case Echo::ShaderDataType::Int4:		return GL_INT;
-		case Echo::ShaderDataType::Bool:		return GL_BOOL;
-		}
-
-		ECHO_CORE_ASSERT(false, "Unknown ShaderDataType!");
-		return 0;
-	}
-
 	Application::Application()
 	{
 		ECHO_CORE_ASSERT(s_Instance != nullptr, "Application already exists!");
@@ -41,9 +20,10 @@ namespace Echo {
 		m_pImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_pImGuiLayer);
 
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+		//创建顶点数组
+		m_VertexArray.reset(VertexArray::Create());
 
+		//创建顶点数组
 		float vertices[] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.0f, 0.2f, 1.0f,  
 			0.0f,   0.5f, 0.0f,	0.0f, 0.5f, 0.0f, 1.0f,
@@ -51,26 +31,21 @@ namespace Echo {
 		};
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
+		//创建顶点数组布局
 		BufferLayout layout = {
 			{ShaderDataType::Float3, "a_Position"},
 			{ShaderDataType::Float4, "a_Color"},
 		};
-
 		m_VertexBuffer->SetLayout(layout);
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 
-		uint32_t iIndex = 0;
-		layout = m_VertexBuffer->GetLayout();
-		for (const auto& element : layout)
-		{
-			glEnableVertexAttribArray(iIndex);
-			glVertexAttribPointer(iIndex, element.GetComponentCount(), ShaderDataTypeToOpenGLBaseType(element.m_enType), 
-				element.m_bNormalized ? GL_TRUE : GL_FALSE, layout.GetStride(), (const void*)element.m_nOffset);
-			iIndex++;
-		}
-
+		//创建索引数组
 		unsigned int indices[3] = { 0,1,2 };
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
+		/////////////////////////////////////////////////////////////////////
+		//创建着色器
 		std::string vertexShader = R"(
 			#version 330 core
 			layout(location = 0) in vec3 a_Position;
@@ -100,8 +75,8 @@ namespace Echo {
 				color = v_Color;
 			};
 		)";
-
 		m_Shader.reset(new Shader(vertexShader, fragmentShader));
+		/////////////////////////////////////////////////////////////////////
 	}
 
 	Application::~Application()
@@ -135,8 +110,9 @@ namespace Echo {
 			glClear(GL_COLOR_BUFFER_BIT);
 			
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_VertexArray->Bind();
+			uint32_t iCount = m_VertexArray->GetIndexBuffer()->GetCount();
+			glDrawElements(GL_TRIANGLES, iCount, GL_UNSIGNED_INT, nullptr);
 
 			// 遍历层栈，实现各层更新
 			for (Layer* layer : m_LayerStack)

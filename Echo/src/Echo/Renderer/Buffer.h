@@ -92,30 +92,51 @@ namespace Echo {
 		uint32_t m_nStride = 0;		//步长
 	};
 
+	/// @brief 顶点缓冲类
 	class VertexBuffer
 	{
 	public:
 		virtual ~VertexBuffer() {}
 
+		/// @brief 绑定对应顶点缓冲对象
 		virtual void Bind() const = 0;
+		/// @brief 解绑释放对应顶点缓冲对象
 		virtual void unBind() const = 0;
 
+		/// @brief 设置布局
+		/// @param layout 指定对象布局
 		virtual void SetLayout(const BufferLayout& layout) = 0;
+		
+		/// @brief 获取指定对象布局
+		/// @return 指定对象布局
 		virtual const BufferLayout& GetLayout() const = 0;
 
+		/// @brief 基类静态方法：创建顶点缓冲对象
+		/// @param vertices 顶点属性数组
+		/// @param size 顶点属性数组大小
+		/// @return 返回对应RendererAPI创建的顶点缓冲对象，若无对应RendererAPI则返回空！
 		static VertexBuffer* Create(float* vertices, uint32_t size);
 	};
 
+	/// @brief 索引缓冲类
 	class IndexBuffer
 	{
 	public:
 		virtual ~IndexBuffer() {}
 
+		/// @brief 绑定对应索引缓冲对象
 		virtual void Bind() const = 0;
+		/// @brief 解绑释放对应索引缓冲对象
 		virtual void unBind() const = 0;
 
+		/// @brief 获取索引数组大小
+		/// @return 索引数组大小
 		virtual uint32_t GetCount() const = 0;
 
+		/// @brief 基类静态方法：创建索引缓冲对象
+		/// @param indices 索引数组
+		/// @param count 索引数组大小
+		/// @return 返回对应RendererAPI创建的索引缓冲对象，若无对应RendererAPI则返回空！
 		static IndexBuffer* Create(uint32_t* indices, uint32_t count);
 	};
 
