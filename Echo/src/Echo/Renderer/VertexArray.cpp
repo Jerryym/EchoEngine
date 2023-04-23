@@ -10,10 +10,10 @@ namespace Echo {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 			ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
 			return nullptr;
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 			return new OpenGLVertexArray;
 		}
 

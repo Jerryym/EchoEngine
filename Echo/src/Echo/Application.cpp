@@ -4,6 +4,7 @@
 #include <glad/glad.h>
 
 #include "Echo/Input.h"
+#include "Renderer/Renderer.h"
 
 namespace Echo {
 
@@ -106,13 +107,12 @@ namespace Echo {
 
 		while (m_bRunning)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1.f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommond::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.f));
+			RenderCommond::Clear();
 			
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			uint32_t iCount = m_VertexArray->GetIndexBuffer()->GetCount();
-			glDrawElements(GL_TRIANGLES, iCount, GL_UNSIGNED_INT, nullptr);
+			RenderCommond::DrawIndexed(m_VertexArray);
 
 			// 遍历层栈，实现各层更新
 			for (Layer* layer : m_LayerStack)
