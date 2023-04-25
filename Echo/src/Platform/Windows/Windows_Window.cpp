@@ -34,7 +34,7 @@ namespace Echo {
 	void Windows_Window::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_pWindow);
+		m_pContext->swapBuffers();
 	}
 
 	void Windows_Window::SetEventCallBack(const EventCallBackFun& callback)
@@ -78,9 +78,9 @@ namespace Echo {
 		}
 
 		m_pWindow = glfwCreateWindow((int)props.m_nWidth, (int)props.m_nHeight, props.m_strTitle.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_pWindow);	//设置当前窗口上下文
-		int status = gladLoadGLLoader(GLADloadproc(glfwGetProcAddress));
-		ECHO_CORE_ASSERT(status, "Failed to initiazlize Glad!");
+		m_pContext = new OpenGLContext(m_pWindow);
+		m_pContext->Init();
+
 		glfwSetWindowUserPointer(m_pWindow, &m_sData);
 		SetVSync(true);	//设置垂直同步
 
