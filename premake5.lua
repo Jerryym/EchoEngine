@@ -63,8 +63,8 @@ project "Echo"
     filter "system:windows"
 		systemversion "latest"  --windows sdk 版本
 
-        defines 
-		{ 
+        defines
+		{
 			"ECHO_PLATFORM_WINDOWS",
 			"ECHO_BUILD_DLL",
             "GLFW_INCLUDE_NONE"
@@ -117,8 +117,8 @@ project "Sandbox"
     filter "system:windows"
 		systemversion "latest"  --windows sdk 版本
 
-        defines 
-		{ 
+        defines
+		{
 			"ECHO_PLATFORM_WINDOWS",
 		}
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Echo/Window.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -31,14 +32,15 @@ namespace Echo {
 
 	private:
 		GLFWwindow* m_pWindow;
+		GraphicsContext* m_pContext;	//渲染上下文
 		
 		/// @brief 窗口数据
 		typedef struct sWindowData
 		{
-			unsigned int m_nWidth;
-			unsigned int m_nHeight;
+			unsigned int m_nWidth = 0;
+			unsigned int m_nHeight = 0;
 			std::string m_strTitle;
-			bool m_bVSync;	//是否开启垂直同步
+			bool m_bVSync = true;	//是否开启垂直同步
 			EventCallBackFun m_Eventcallback;	//事件回调函数
 		}sWindowData;
 
