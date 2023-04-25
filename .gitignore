@@ -8,3 +8,5 @@ wiki/
 *.user
 *.sln
 /Sandbox/*.ini
+/Echo/*.vcxproj
+/Echo/*.filters
