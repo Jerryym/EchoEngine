@@ -12,13 +12,13 @@ namespace Echo {
 		switch (type)
 		{
 			case Echo::ShaderDataType::Float:		return 4;
-			case Echo::ShaderDataType::Float2:		return 4;
+			case Echo::ShaderDataType::Float2:		return 4 * 2;
 			case Echo::ShaderDataType::Float3:		return 4 * 3;
 			case Echo::ShaderDataType::Float4:		return 4 * 4;
 			case Echo::ShaderDataType::Mat3:		return 4 * 3 * 3;
 			case Echo::ShaderDataType::Mat4:		return 4 * 4 * 4;
 			case Echo::ShaderDataType::Int:			return 4;
-			case Echo::ShaderDataType::Int2:		return 4;
+			case Echo::ShaderDataType::Int2:		return 4 * 2;
 			case Echo::ShaderDataType::Int3:		return 4 * 3;
 			case Echo::ShaderDataType::Int4:		return 4 * 4;
 			case Echo::ShaderDataType::Bool:		return 1;
