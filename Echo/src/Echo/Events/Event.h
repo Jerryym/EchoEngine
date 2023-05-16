@@ -33,7 +33,7 @@ namespace Echo {
 
 #define EVENT_CLASS_CATEGORY(category)	virtual int GetCategory() const override { return category; }
 	
-	class  Event
+	class Event
 	{
 	public:
 		virtual ~Event() = default;

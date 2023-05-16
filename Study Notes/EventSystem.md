@@ -55,3 +55,39 @@ enum EventCategory
     EventCategoryMouseButton = BIT(4)
 };
 ```
+
+设计一个Event抽象类作为基类，所有具体事件都派生Event。在Event中，包含一个判断事件是否已被处理的标识符成员变量和以下基本方法：
+
+``` C++
+//获取事件类型
+virtual EventType GetEventType() const = 0;
+//获取事件类型名称
+virtual const char* GetName() const = 0;
+//过滤筛选事件
+virtual int GetCategory() const = 0;
+//将事件值转换为字符串
+virtual std::string ToString() const { return GetName(); }
+
+inline bool IsInCategory(EventCategory category)
+{
+  if (GetCategory() == category)    return true;
+  return false;
+}
+
+bool m_bHandled = false; // 事件是否已被处理
+```
+
+设计一个EventDispatcher事件调度类，用于管理引擎中各类事件，其中类中的模板函数Dispatcher用于判断当前事件是否为被调度事件：
+
+``` C++
+template<typename T, typename F>
+bool Dispatcher(const F& func)
+{
+  if (m_Event.GetEventType() == T::GetStaticType())
+  {
+    m_Event.m_bHandled |= func(static_cast<T&>(m_Event));
+    return true;
+  }
+  return false;
+}
+```
