@@ -72,28 +72,28 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\Nest\src;..\NestUI\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NEST_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;..\Engine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NEST_STATIC_LINK;ECHOENGINE_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\bin\Debug-windows-x86_64\Nest;..\bin\Debug-windows-x86_64\NestUI;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Nest.lib;NestUI.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\bin\Debug-windows-x86_64\Nest;..\bin\Debug-windows-x86_64\NestUI;..\bin\Debug-windows-x86_64\Engine;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Nest.lib;NestUI.lib;Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Nest\src;..\NestUI\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;..\Engine\src;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <PreprocessorDefinitions>NEST_STATIC_LINK;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NEST_STATIC_LINK;ECHOENGINE_STATIC_LINK;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\bin\Release-windows-x86_64\Nest;..\bin\Release-windows-x86_64\NestUI</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Nest.lib;NestUI.lib;%(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\bin\Release-windows-x86_64\Nest;..\bin\Release-windows-x86_64\NestUI;..\bin\Release-windows-x86_64\Engine</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Nest.lib;NestUI.lib;Engine.lib;%(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -116,12 +116,23 @@
       <Optimization>MaxSpeed</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SandBoxApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Engine\Engine.vcxproj">
+      <Project>{1cbe4f0c-69eb-4954-b462-0aad9a279458}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NestUI\NestUI.vcxproj">
+      <Project>{85d21928-bc1b-4a48-9943-69ebb2df4506}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Nest\Nest.vcxproj">
+      <Project>{b1341929-92fd-4760-9618-fb60a27ef087}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
