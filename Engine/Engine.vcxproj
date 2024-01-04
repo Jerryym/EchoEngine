@@ -117,10 +117,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\enginepch.h" />
+    <ClInclude Include="src\Core\EntryPoint.h" />
     <ClInclude Include="src\Utilities\EngineLog.h" />
-    <ClInclude Include="src\EngineCore.h" />
+    <ClInclude Include="src\Core\EngineCore.h" />
     <ClInclude Include="vendor\glfw\include\GLFW\glfw3.h" />
+    <QtMoc Include="src\GUI\Windows_MainWindow.h" />
     <QtMoc Include="src\GUI\GLWidget.h" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +134,7 @@
     </ClCompile>
     <ClCompile Include="src\Utilities\EngineLog.cpp" />
     <ClCompile Include="src\GUI\GLWidget.cpp" />
+    <ClCompile Include="src\GUI\Windows_MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NestUI\NestUI.vcxproj">

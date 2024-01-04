@@ -1,9 +1,7 @@
 #pragma once
-
+#include "Core/EngineCore.h"
 #include <QOpenGLWidget>
 #include <GLFW/glfw3.h>
-
-#include "EngineCore.h"
 
 namespace EchoEngine {
 

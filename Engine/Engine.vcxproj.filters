@@ -23,7 +23,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\EngineCore.h">
+    <ClInclude Include="src\Core\EngineCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glfw\include\GLFW\glfw3.h">
@@ -33,6 +33,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\enginepch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\EntryPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -46,9 +52,15 @@
     <ClCompile Include="src\enginepch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\Windows_MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\GUI\GLWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\GUI\Windows_MainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

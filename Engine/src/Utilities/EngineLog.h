@@ -1,8 +1,8 @@
 #pragma once
 
-#include "EngineCore.h"
+#include "Core/EngineCore.h"
 #include "spdlog/spdlog.h"
-#include "spdlog/sinks/qt_sinks.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/fmt/ostr.h"
 
 namespace EchoEngine {
