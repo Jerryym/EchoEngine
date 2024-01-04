@@ -14,7 +14,13 @@ namespace Nest {
 		// 初始化框架的Log
 		Nest::Log::InitLogger();
 		NEST_CORE_WARN("Initialiazed Log!");
-		NEST_CLIENT_INFO("Hello Nest FrameWork!");
+		NEST_CORE_INFO("Hello Nest FrameWork!");
+	}
+
+	void Application::Run()
+	{
+		//启动主窗口
+		m_Window.get()->show();
 	}
 
 	void Application::SetMainWindow(QMainWindow* mainWindow)

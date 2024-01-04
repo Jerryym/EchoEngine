@@ -14,6 +14,9 @@ namespace Nest {
 	public:
 		Application(int& argc, char** argv);
 		virtual ~Application() {}
+
+		/// @brief 运行应用程序
+		void Run();
 	
 	public:
 		/// @brief 获取当前应用程序
@@ -36,5 +39,7 @@ namespace Nest {
 		static Application* s_Instance;
 	};
 
+	// To be defined in CLIENT
+	Application* CreateApplication(int argc, char** argv);
 }
 

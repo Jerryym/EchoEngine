@@ -23,7 +23,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\NestCore.h">
+    <ClInclude Include="src\Core\NestCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Nest.h">

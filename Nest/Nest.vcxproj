@@ -129,7 +129,7 @@
   <ItemGroup>
     <QtMoc Include="src\Core\Application.h" />
     <ClInclude Include="src\Nest.h" />
-    <ClInclude Include="src\NestCore.h" />
+    <ClInclude Include="src\Core\NestCore.h" />
     <ClInclude Include="src\nestpch.h" />
     <ClInclude Include="src\Utilities\Log.h" />
   </ItemGroup>
