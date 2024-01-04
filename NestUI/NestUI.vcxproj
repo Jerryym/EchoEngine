@@ -132,7 +132,6 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nestuipch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\UI\DockWidget.cpp" />
-    <ClCompile Include="src\UI\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\UI\MainWindow.h" />

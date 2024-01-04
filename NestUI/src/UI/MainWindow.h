@@ -24,28 +24,18 @@ namespace NestUI {
 	{
 		Q_OBJECT
 	public:
-		/// @brief 创建主窗口
-		static MainWindow* Create(const sWindowProps& props = sWindowProps());
+		virtual ~MainWindow() {}
 
 	public:
 		/// @brief 获取主窗口宽度
 		/// @return 
-		unsigned int GetWidth() const { return m_Props.m_nWidth; }
+		virtual unsigned int GetWidth() const = 0;
 		/// @brief 获取主窗口高度
 		/// @return 
-		unsigned int GetHeigth() const { return m_Props.m_nHeight; }
-
-	protected:
-		MainWindow(const sWindowProps& props, QWidget* parent = nullptr);
-		virtual ~MainWindow() {}
-
-	private:
-		/// @brief 初始化主窗口 
-		void Initialize();
-
-	private:
-		sWindowProps m_Props;
-
+		virtual unsigned int GetHeigth() const = 0;
+		/// @brief 获取主窗口标题名
+		/// @return 
+		virtual QString GetTitle() const = 0;
 	};
 
 }
