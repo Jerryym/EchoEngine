@@ -4,7 +4,7 @@
 #include <Nest.h>
 #include <NestUI.h>
 
-namespace EchoEngine {
+namespace Echo {
 
 	static bool s_bGLFWInitialiazed = false;
 

@@ -1,7 +1,7 @@
 #include "enginepch.h"
 #include "EngineLog.h"
 
-namespace EchoEngine {
+namespace Echo {
 
 	std::shared_ptr<spdlog::logger> EngineLog::s_EngineLogger;
 	std::shared_ptr<spdlog::logger> EngineLog::s_ClientLogger;

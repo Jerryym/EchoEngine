@@ -55,12 +55,18 @@
     <ClCompile Include="src\GUI\Windows_MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Core\EchoApplication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\GUI\GLWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="src\GUI\Windows_MainWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\Core\EchoApplication.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

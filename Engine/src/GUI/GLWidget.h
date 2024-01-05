@@ -3,7 +3,7 @@
 #include <QOpenGLWidget>
 #include <GLFW/glfw3.h>
 
-namespace EchoEngine {
+namespace Echo {
 
 	class GLWidget : public QOpenGLWidget
 	{

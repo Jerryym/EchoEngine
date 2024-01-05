@@ -1,7 +1,7 @@
 #pragma once
 #include <NestUI.h>
 
-namespace EchoEngine {
+namespace Echo {
 
 	class Windows_MainWindow : public NestUI::MainWindow
 	{

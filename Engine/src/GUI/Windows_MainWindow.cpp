@@ -3,7 +3,7 @@
 
 #include <Nest.h>
 
-namespace EchoEngine {
+namespace Echo {
 
 	Windows_MainWindow* Windows_MainWindow::Create(const NestUI::sWindowProps& props)
 	{
