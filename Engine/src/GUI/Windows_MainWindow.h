@@ -1,7 +1,8 @@
 #pragma once
+#include <Nest.h>
 #include <NestUI.h>
 
-namespace EchoEngine {
+namespace Echo {
 
 	class Windows_MainWindow : public NestUI::MainWindow
 	{
@@ -9,10 +10,6 @@ namespace EchoEngine {
 	public:
 		/// @brief 创建主窗口
 		static Windows_MainWindow* Create(const NestUI::sWindowProps& props = NestUI::sWindowProps());
-
-	protected:
-		virtual ~Windows_MainWindow();
-		Windows_MainWindow(const NestUI::sWindowProps& prop);
 
 	public:
 		virtual unsigned int GetWidth() const override { return m_sData.m_nWidth; }
@@ -25,6 +22,21 @@ namespace EchoEngine {
 		/// @brief 是否开启了垂直同步
 		/// @return 
 		bool IsVSync() const { return m_sData.m_bVSync; }
+
+		/// @brief 初始化DockWidgets
+		void InitializeDockWidgets();
+
+		/// @brief 初始化GLFW
+		void InitializeGLWidget();
+
+		/// @brief 获取dockWidget
+		/// @param STitle dockWidget对应的窗口标题
+		/// @return 
+		NestUI::DockWidget* GetDockWidget(const QString& STitle);
+
+	protected:
+		virtual ~Windows_MainWindow();
+		Windows_MainWindow(const NestUI::sWindowProps& prop);
 
 	private:
 		/// @brief 初始化
@@ -44,6 +56,7 @@ namespace EchoEngine {
 
 		sWindowData m_sData;
 
+		NestUI::DockWidgetManager* m_dockManager;
 	};
 
 }

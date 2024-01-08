@@ -3,16 +3,17 @@
 #include "Core/EngineCore.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/sinks/qt_sinks.h"
 #include "spdlog/fmt/ostr.h"
 
-namespace EchoEngine {
+namespace Echo {
 
 	/// @brief 引擎层日志
-	class ECHOENGINE_API EngineLog
+	class ECHO_API EngineLog
 	{
 	public:
 		/// @brief 初始化Log
-		static void InitLogger();
+		static void InitLogger(QTextEdit* LogWidget);
 
 		/// @brief 静态函数：获取引擎端日志
 		/// @return 
@@ -28,18 +29,18 @@ namespace EchoEngine {
 	};
 
 	// Engine log macros
-	#define ECHOENGINE_CORE_TRACE(...)			::EchoEngine::EngineLog::GetEngineLogger()->trace(__VA_ARGS__)
-	#define ECHOENGINE_CORE_INFO(...)			::EchoEngine::EngineLog::GetEngineLogger()->info(__VA_ARGS__)
-	#define ECHOENGINE_CORE_WARN(...)			::EchoEngine::EngineLog::GetEngineLogger()->warn(__VA_ARGS__)
-	#define ECHOENGINE_CORE_ERROR(...)			::EchoEngine::EngineLog::GetEngineLogger()->error(__VA_ARGS__)
-	#define ECHOENGINE_CORE_CRITICAL(...)		::EchoEngine::EngineLog::GetEngineLogger()->critical(__VA_ARGS__)
+	#define ECHO_CORE_TRACE(...)			::Echo::EngineLog::GetEngineLogger()->trace(__VA_ARGS__)
+	#define ECHO_CORE_INFO(...)			::Echo::EngineLog::GetEngineLogger()->info(__VA_ARGS__)
+	#define ECHO_CORE_WARN(...)			::Echo::EngineLog::GetEngineLogger()->warn(__VA_ARGS__)
+	#define ECHO_CORE_ERROR(...)			::Echo::EngineLog::GetEngineLogger()->error(__VA_ARGS__)
+	#define ECHO_CORE_CRITICAL(...)		::Echo::EngineLog::GetEngineLogger()->critical(__VA_ARGS__)
 
 	// Client log macros
-	#define ECHOENGINE_CLIENT_TRACE(...)		::EchoEngine::EngineLog::GetClientLogger()->trace(__VA_ARGS__)
-	#define ECHOENGINE_CLIENT_INFO(...)			::EchoEngine::EngineLog::GetClientLogger()->info(__VA_ARGS__)
-	#define ECHOENGINE_CLIENT_WARN(...)			::EchoEngine::EngineLog::GetClientLogger()->warn(__VA_ARGS__)
-	#define ECHOENGINE_CLIENT_ERROR(...)		::EchoEngine::EngineLog::GetClientLogger()->error(__VA_ARGS__)
-	#define ECHOENGINE_CLIENT_CRITICAL(...)		::EchoEngine::EngineLog::GetClientLogger()->critical(__VA_ARGS__)
+	#define ECHO_CLIENT_TRACE(...)		::Echo::EngineLog::GetClientLogger()->trace(__VA_ARGS__)
+	#define ECHO_CLIENT_INFO(...)			::Echo::EngineLog::GetClientLogger()->info(__VA_ARGS__)
+	#define ECHO_CLIENT_WARN(...)			::Echo::EngineLog::GetClientLogger()->warn(__VA_ARGS__)
+	#define ECHO_CLIENT_ERROR(...)		::Echo::EngineLog::GetClientLogger()->error(__VA_ARGS__)
+	#define ECHO_CLIENT_CRITICAL(...)		::Echo::EngineLog::GetClientLogger()->critical(__VA_ARGS__)
 }
 
 

@@ -4,24 +4,24 @@
 #include <Nest.h>
 #include <NestUI.h>
 
-namespace EchoEngine {
+namespace Echo {
 
 	static bool s_bGLFWInitialiazed = false;
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
-		ECHOENGINE_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
+		ECHO_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
-	GLWidget::GLWidget(QWidget* parent)
+	GLWidget::GLWidget(const std::string& strTitle, int nWidth, int nHeight, QWidget* parent)
 		: QOpenGLWidget(parent)
 	{
-		InitializeGLFW();
+		InitializeGLWidget(strTitle, nWidth, nHeight);
 	}
 
 	GLWidget::~GLWidget()
 	{
-		glfwDestroyWindow(m_pGLFWwindow);
+		ShutDown();
 	}
 
 	void GLWidget::SetVSync(bool enabled)
@@ -31,6 +31,11 @@ namespace EchoEngine {
 		else
 			glfwSwapInterval(0);
 		m_bVSync = enabled;
+	}
+
+	void GLWidget::ShutDown()
+	{
+		glfwDestroyWindow(m_pGLFWwindow);
 	}
 
 	void GLWidget::initializeGL()
@@ -45,14 +50,8 @@ namespace EchoEngine {
 	{
 	}
 
-	void GLWidget::InitializeGLFW()
+	void GLWidget::InitializeGLWidget(const std::string& strTitle, int nWidth, int nHeight)
 	{
-		auto mainWindow = dynamic_cast<NestUI::MainWindow*>(Nest::Application::GetApplication().GetMainWindow());
-		NEST_CORE_ASSERT(mainWindow == nullptr, "MainWindow is Null!");
-		int nWidth = mainWindow->GetWidth();
-		int nHeight = mainWindow->GetHeigth();
-		std::string sTitle = mainWindow->windowTitle().toStdString();
-
 		if (!s_bGLFWInitialiazed)
 		{
 			// glfwTerminate on system shutdown
@@ -62,8 +61,12 @@ namespace EchoEngine {
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_bGLFWInitialiazed = true;
 		}
-		m_pGLFWwindow = glfwCreateWindow((int)nWidth, (int)nHeight, sTitle.c_str(), nullptr, nullptr);
+
+		m_pGLFWwindow = glfwCreateWindow(nWidth, nHeight, strTitle.c_str(), nullptr, nullptr);
 		SetVSync(true);	//设置垂直同步
+
+		//隐藏 GLFW 窗口
+		glfwHideWindow(m_pGLFWwindow);
 	}
 
 }

@@ -1,15 +1,16 @@
 #pragma once
 #include "Core/EngineCore.h"
 #include <QOpenGLWidget>
+
 #include <GLFW/glfw3.h>
 
-namespace EchoEngine {
+namespace Echo {
 
 	class GLWidget : public QOpenGLWidget
 	{
 		Q_OBJECT
 	public:
-		GLWidget(QWidget* parent = nullptr);
+		GLWidget(const std::string& strTitle, int nWidth, int nHeight, QWidget* parent = nullptr);
 		virtual ~GLWidget();
 
 	public:
@@ -20,6 +21,9 @@ namespace EchoEngine {
 		/// @return 
 		bool IsVSync() const { return m_bVSync; }
 
+		/// @brief GLFW窗口关闭
+		void ShutDown();
+
 	protected:
 		virtual void initializeGL() override;
 		virtual void resizeGL(int w, int h) override;
@@ -27,7 +31,7 @@ namespace EchoEngine {
 
 	private:
 		/// @brief 初始化GLFW
-		void InitializeGLFW();
+		void InitializeGLWidget(const std::string& strTitle, int nWidth, int nHeight);
 
 	private:
 		GLFWwindow* m_pGLFWwindow;
