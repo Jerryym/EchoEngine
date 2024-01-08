@@ -1,11 +1,11 @@
 #include <Nest.h>
 #include <Engine.h>
 
-class SandBox : public Nest::Application
+class SandBox : public Echo::EchoApplication
 {
 public:
 	SandBox(int& argc, char** argv)
-		: Application(argc, argv)
+		: Echo::EchoApplication(argc, argv)
 	{
 
 	}
@@ -15,7 +15,7 @@ private:
 
 };
 
-Nest::Application* Nest::CreateApplication(int argc, char** argv)
+Echo::EchoApplication* Echo::CreateApplication(int argc, char** argv)
 {
 	return new SandBox(argc, argv);
 }
