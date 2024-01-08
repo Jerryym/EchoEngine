@@ -1,7 +1,7 @@
 #include "enginepch.h"
 #include "Windows_MainWindow.h"
-
-#include <Nest.h>
+#include "ConsoleDockWidget.h"
+#include "GLWidget.h"
 
 namespace Echo {
 
@@ -13,10 +13,32 @@ namespace Echo {
 	Windows_MainWindow::Windows_MainWindow(const NestUI::sWindowProps& prop)
 	{
 		Initialize(prop);
+		m_dockManager = NestUI::DockWidgetManager::GetDockManager(this);
+	}
+
+	void Windows_MainWindow::InitializeDockWidgets()
+	{
+		//ConSoleWidget
+		ConsoleDockWidget* pConsole = new ConsoleDockWidget(this);
+		ECHO_CORE_ASSERT(pConsole == nullptr, "Create ConsoleDockWidget Fail!");
+		m_dockManager->AddDockWidget("ConSole", pConsole, Qt::BottomDockWidgetArea);
+		ECHO_CORE_INFO("DockWidgetNum = {0}", m_dockManager->GetDockWidgetNum());
+	}
+
+	void Windows_MainWindow::InitializeGLWidget()
+	{
+		GLWidget* pGLFWWidget = new GLWidget(m_sData.m_STitle.toStdString(), m_sData.m_nWidth, m_sData.m_nHeight, this);
+		setCentralWidget(pGLFWWidget);
+	}
+
+	NestUI::DockWidget* Windows_MainWindow::GetDockWidget(const QString& STitle)
+	{
+		return dynamic_cast<NestUI::DockWidget*>(m_dockManager->GetDockWidget(STitle));
 	}
 
 	Windows_MainWindow::~Windows_MainWindow()
 	{
+		ShutDown();
 	}
 
 	void Windows_MainWindow::SetVSync(bool enabled)
@@ -39,6 +61,7 @@ namespace Echo {
 
 	void Windows_MainWindow::ShutDown()
 	{
+		destroy();
 	}
 
 }

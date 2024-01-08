@@ -33,7 +33,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.5.3_msvc2019_64</QtInstall>
-    <QtModules>core;gui;openglwidgets;widgets</QtModules>
+    <QtModules>core;gui;openglwidgets;widgets;</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -79,6 +79,9 @@
     <PostBuildEvent>
       <Command>Copy "$(SolutionDir)bin\Debug-windows-x86_64\Engine\Engine.lib" "$(SolutionDir)bin\Debug-windows-x86_64\SandBox\"</Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PostBuildEvent>
@@ -91,6 +94,9 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>enginepch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -117,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\GUI\ConsoleDockWidget.h" />
     <QtMoc Include="src\Core\EchoApplication.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\enginepch.h" />
@@ -137,6 +144,7 @@
     <ClCompile Include="src\Utilities\EngineLog.cpp" />
     <ClCompile Include="src\GUI\GLWidget.cpp" />
     <ClCompile Include="src\GUI\Windows_MainWindow.cpp" />
+    <ClCompile Include="src\GUI\ConsoleDockWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NestUI\NestUI.vcxproj">
@@ -144,6 +152,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Nest\Nest.vcxproj">
       <Project>{b1341929-92fd-4760-9618-fb60a27ef087}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\glfw\GLFW.vcxproj">
+      <Project>{154b857c-0182-860d-aa6e-6c109684020f}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

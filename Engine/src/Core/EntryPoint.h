@@ -11,15 +11,18 @@ int main(int argc, char** argv)
 	{
 		//创建Application
 		auto app = Echo::CreateApplication(argc, argv);
-
-		//初始化引擎Log
-		Echo::EngineLog::InitLogger();
-		ECHOENGINE_CORE_WARN("Initialiazed Log!");
-		ECHOENGINE_CLIENT_INFO("Hello Echo Engine!");
-
+		auto mainWindow = dynamic_cast<Echo::Windows_MainWindow*>(app->GetMainWindow());
+		if (mainWindow == nullptr)
+		{
+			// 处理异常...
+			throw std::runtime_error("Failed to create MainWindow");
+		}
+		//初始化dockWidgets
+		mainWindow->InitializeDockWidgets();
+		//初始化GLWidget
+		mainWindow->InitializeGLWidget();
 		//运行应用程序
 		app->Run();
-
 		return app->exec();
 	}
 	catch (const std::exception& e)
