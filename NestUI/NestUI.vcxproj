@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\DockWidgetManager.cpp" />
     <ClCompile Include="src\nestuipch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nestuipch.h</PrecompiledHeaderFile>
@@ -137,6 +138,7 @@
     <QtMoc Include="src\UI\MainWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DockWidgetManager.h" />
     <ClInclude Include="src\nestuipch.h" />
     <ClInclude Include="src\NestUI.h" />
     <ClInclude Include="src\NestUICore.h" />
