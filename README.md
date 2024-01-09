@@ -2,12 +2,18 @@
 
 ---
 
-Echo Engine is a learning project to be familiar with OpenGL, understand the principle of rendering pipeline and render engine architecture.
+Echo Engine is a learning project to be familiar with OpenGL, understand the principle of rendering pipeline and rendering engine architecture.
 
 ## Environment
 
 * **IDE**: VS2019
 * **Qt Version**: Qt6.5.3
+
+## Getting Started
+
+1. Run `GenerateProject.bat` file first. This wil generate a Visual Studio solution file for user's usage.
+2. Open `EchoEngine.sln` file in Visual Studio and add `Nest`、`NestUI`、`Engine`、`SandBox` projects to solution file.
+3. Set `SandBox` project as start project.
 
 ## Dependencies
 

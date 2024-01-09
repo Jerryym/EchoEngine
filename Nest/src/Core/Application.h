@@ -16,7 +16,7 @@ namespace Nest {
 		virtual ~Application() {}
 
 		/// @brief 运行应用程序
-		void Run();
+		virtual void Run();
 	
 	public:
 		/// @brief 获取当前应用程序
@@ -38,8 +38,5 @@ namespace Nest {
 		/// @brief 应用程序单例: 程序运行时，当且只能一个应用程序存在
 		static Application* s_Instance;
 	};
-
-	// To be defined in CLIENT
-	Application* CreateApplication(int argc, char** argv);
 }
 
