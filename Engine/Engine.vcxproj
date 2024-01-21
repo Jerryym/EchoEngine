@@ -70,7 +70,7 @@
       <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;src;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;ECHOENGINE_STATIC_LINK;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>enginepch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>echopch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\bin\Debug-windows-x86_64\Echo;..\bin\Debug-windows-x86_64\EchoUI;</AdditionalLibraryDirectories>
@@ -92,7 +92,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;src;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>enginepch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>echopch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Lib>
       <AdditionalDependencies>opengl32.lib;</AdditionalDependencies>
@@ -123,10 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\Events\Event.h" />
     <ClInclude Include="src\GUI\ConsoleDockWidget.h" />
     <QtMoc Include="src\Core\EchoApplication.h" />
     <ClInclude Include="src\Engine.h" />
-    <ClInclude Include="src\enginepch.h" />
+    <ClInclude Include="src\echopch.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
     <ClInclude Include="src\Utilities\EngineLog.h" />
     <ClInclude Include="src\Core\EngineCore.h" />
@@ -136,7 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\EchoApplication.cpp" />
-    <ClCompile Include="src\enginepch.cpp">
+    <ClCompile Include="src\echopch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">enginepch.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

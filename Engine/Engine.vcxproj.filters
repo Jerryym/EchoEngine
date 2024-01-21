@@ -32,7 +32,7 @@
     <ClInclude Include="src\Utilities\EngineLog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\enginepch.h">
+    <ClInclude Include="src\echopch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\EntryPoint.h">
@@ -44,6 +44,9 @@
     <ClInclude Include="src\GUI\ConsoleDockWidget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Events\Event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GUI\GLWidget.cpp">
@@ -52,7 +55,7 @@
     <ClCompile Include="src\Utilities\EngineLog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\enginepch.cpp">
+    <ClCompile Include="src\echopch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\Windows_MainWindow.cpp">
