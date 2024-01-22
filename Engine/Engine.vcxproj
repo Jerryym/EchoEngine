@@ -125,6 +125,8 @@
   <ItemGroup>
     <QtMoc Include="src\GUI\ConsoleDockWidget.h" />
     <QtMoc Include="src\Core\EchoApplication.h" />
+    <ClInclude Include="src\Core\LayerStack.h" />
+    <ClInclude Include="src\Core\Layer.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\echopch.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
@@ -135,6 +137,8 @@
     <QtMoc Include="src\GUI\GLWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Core\Layer.cpp" />
     <ClCompile Include="src\Core\EchoApplication.cpp" />
     <ClCompile Include="src\echopch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
