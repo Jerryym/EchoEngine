@@ -123,8 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Events\Event.h" />
-    <ClInclude Include="src\GUI\ConsoleDockWidget.h" />
+    <QtMoc Include="src\GUI\ConsoleDockWidget.h" />
     <QtMoc Include="src\Core\EchoApplication.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\echopch.h" />
@@ -139,7 +138,7 @@
     <ClCompile Include="src\Core\EchoApplication.cpp" />
     <ClCompile Include="src\echopch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">enginepch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echopch.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Utilities\EngineLog.cpp" />

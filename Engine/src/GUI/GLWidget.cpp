@@ -17,6 +17,7 @@ namespace Echo {
 		: QOpenGLWidget(parent)
 	{
 		InitializeGLWidget(strTitle, nWidth, nHeight);
+		setFocusPolicy(Qt::StrongFocus);
 	}
 
 	GLWidget::~GLWidget()
@@ -40,6 +41,8 @@ namespace Echo {
 
 	void GLWidget::initializeGL()
 	{
+		//隐藏 GLFW 窗口
+		glfwHideWindow(m_pGLFWwindow);
 	}
 
 	void GLWidget::resizeGL(int w, int h)
@@ -49,6 +52,38 @@ namespace Echo {
 	void GLWidget::paintGL()
 	{
 	}
+
+#pragma region Input Events
+	void GLWidget::keyPressEvent(QKeyEvent* event)
+	{
+		ECHO_CLIENT_INFO("keyPressEvent: {0}", event->text().toStdString());
+	}
+
+	void GLWidget::keyReleaseEvent(QKeyEvent* event)
+	{
+		ECHO_CLIENT_INFO("keyReleaseEvent: {0}", event->text().toStdString());
+	}
+
+	void GLWidget::mousePressEvent(QMouseEvent* event)
+	{
+		ECHO_CLIENT_INFO("mousePressEvent: {0}", event->button());
+	}
+
+	void GLWidget::mouseReleaseEvent(QMouseEvent* event)
+	{
+		ECHO_CLIENT_INFO("mouseReleaseEvent: {0}", event->button());
+	}
+
+	void GLWidget::mouseMoveEvent(QMouseEvent* event)
+	{
+		ECHO_CLIENT_INFO("mouseMoveEvent: ({0}, {1})", event->pos().x(), event->pos().y());
+	}
+
+	void GLWidget::wheelEvent(QWheelEvent* event)
+	{
+		ECHO_CLIENT_INFO("wheelEvent: {0}", event->button());
+	}
+#pragma endregion
 
 	void GLWidget::InitializeGLWidget(const std::string& strTitle, int nWidth, int nHeight)
 	{
@@ -64,9 +99,6 @@ namespace Echo {
 
 		m_pGLFWwindow = glfwCreateWindow(nWidth, nHeight, strTitle.c_str(), nullptr, nullptr);
 		SetVSync(true);	//设置垂直同步
-
-		//隐藏 GLFW 窗口
-		glfwHideWindow(m_pGLFWwindow);
 	}
 
 }
