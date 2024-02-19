@@ -41,8 +41,7 @@ namespace Echo {
 
 	void GLWidget::initializeGL()
 	{
-		//隐藏 GLFW 窗口
-		glfwHideWindow(m_pGLFWwindow);
+
 	}
 
 	void GLWidget::resizeGL(int w, int h)
@@ -97,6 +96,7 @@ namespace Echo {
 			s_bGLFWInitialiazed = true;
 		}
 
+		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);  //设置 offscreen context 的标志位, 且GLFW的窗口会自动隐藏
 		m_pGLFWwindow = glfwCreateWindow(nWidth, nHeight, strTitle.c_str(), nullptr, nullptr);
 		SetVSync(true);	//设置垂直同步
 	}
