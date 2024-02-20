@@ -29,6 +29,26 @@ namespace Echo {
 		virtual void resizeGL(int w, int h) override;
 		virtual void paintGL() override;
 
+	protected:
+		/// @brief 
+		/// @param event 
+		virtual void keyPressEvent(QKeyEvent* event) override;
+		/// @brief 
+		/// @param event 
+		virtual void keyReleaseEvent(QKeyEvent* event) override;
+		/// @brief 
+		/// @param event 
+		virtual void mousePressEvent(QMouseEvent* event) override;
+		/// @brief 
+		/// @param event 
+		virtual void mouseReleaseEvent(QMouseEvent* event) override;
+		/// @brief 
+		/// @param event 
+		virtual void mouseMoveEvent(QMouseEvent* event) override;
+		/// @brief 
+		/// @param event 
+		virtual void wheelEvent(QWheelEvent* event) override;
+
 	private:
 		/// @brief 初始化GLFW
 		void InitializeGLWidget(const std::string& strTitle, int nWidth, int nHeight);

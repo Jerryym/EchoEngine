@@ -38,9 +38,6 @@
     <ClInclude Include="src\Nest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\NestCore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">

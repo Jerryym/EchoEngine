@@ -59,12 +59,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <OutDir>$(SolutionDir)bin\Debug-windows-x86_64\SandBox\</OutDir>
+    <OutDir>$(SolutionDir)bin\Debug-windows-x86_64\</OutDir>
     <IntDir>$(SolutionDir)bin-int\Debug-windows-x86_64\SandBox\</IntDir>
     <TargetName>SandBox</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutDir>$(SolutionDir)bin\Release-windows-x86_64\SandBox\</OutDir>
+    <OutDir>$(SolutionDir)bin\Release-windows-x86_64\</OutDir>
     <IntDir>$(SolutionDir)bin-int\Release-windows-x86_64\SandBox\</IntDir>
     <TargetName>SandBox</TargetName>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Qt_INCLUDEPATH_);</IncludePath>
