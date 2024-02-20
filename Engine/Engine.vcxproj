@@ -77,7 +77,7 @@
       <AdditionalDependencies>Echo.lib;EchoUI.lib;opengl32.lib;%(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>Copy "$(SolutionDir)bin\Debug-windows-x86_64\Engine\Engine.lib" "$(SolutionDir)bin\Debug-windows-x86_64\SandBox\"</Command>
+      <Command>Copy "$(SolutionDir)bin\Debug-windows-x86_64\Engine\Engine.lib" "$(SolutionDir)bin\Debug-windows-x86_64\"</Command>
     </PostBuildEvent>
     <Lib>
       <AdditionalDependencies>opengl32.lib;</AdditionalDependencies>
@@ -85,7 +85,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PostBuildEvent>
-      <Command>Copy "$(SolutionDir)bin\Release-windows-x86_64\Engine\Engine.lib" "$(SolutionDir)bin\Release-windows-x86_64\SandBox\"</Command>
+      <Command>Copy "$(SolutionDir)bin\Release-windows-x86_64\Engine\Engine.lib" "$(SolutionDir)bin\Release-windows-x86_64\"</Command>
     </PostBuildEvent>
     <ClCompile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;ECHOENGINE_STATIC_LINK;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>

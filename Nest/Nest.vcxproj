@@ -78,7 +78,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <PostBuildEvent>
-      <Command>Copy "$(SolutionDir)bin\Debug-windows-x86_64\Nest\Nest.lib" "$(SolutionDir)bin\Debug-windows-x86_64\SandBox\"</Command>
+      <Command>Copy "$(SolutionDir)bin\Debug-windows-x86_64\Nest\Nest.lib" "$(SolutionDir)bin\Debug-windows-x86_64\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -99,7 +99,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
-      <Command>Copy "$(SolutionDir)bin\Release-windows-x86_64\Nest\Nest.lib" "$(SolutionDir)bin\Release-windows-x86_64\SandBox\"</Command>
+      <Command>Copy "$(SolutionDir)bin\Release-windows-x86_64\Nest\Nest.lib" "$(SolutionDir)bin\Release-windows-x86_64\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
