@@ -1,4 +1,4 @@
-#include "enginepch.h"
+#include "echopch.h"
 #include "ConsoleDockWidget.h"
 #include <QGridLayout>
 
@@ -12,8 +12,13 @@ namespace Echo {
 		
 		//初始化LogWidget
 		m_LogWidget = new QTextEdit(this);
-		m_LogWidget->setStyleSheet("background-color: grey;");
+		m_LogWidget->setStyleSheet("QTextEdit{        \
+                        color: #ffffff;        \
+                        border: 0px;        \
+                        background-color:rgb(54,54,54);        \
+                }");
 		m_LogWidget->setReadOnly(true);
+		connect(m_LogWidget, SIGNAL(textChanged()), SLOT(addLogger()));
 
 		//设置栅格布局
 		QWidget* dockWidgetContents = new QWidget();
@@ -34,6 +39,11 @@ namespace Echo {
 
 	void ConsoleDockWidget::refreshWidget()
 	{
+	}
+
+	void ConsoleDockWidget::addLogger()
+	{
+		m_LogWidget->moveCursor(QTextCursor::End);
 	}
 
 }

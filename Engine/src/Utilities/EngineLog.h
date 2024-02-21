@@ -30,16 +30,16 @@ namespace Echo {
 
 	// Engine log macros
 	#define ECHO_CORE_TRACE(...)			::Echo::EngineLog::GetEngineLogger()->trace(__VA_ARGS__)
-	#define ECHO_CORE_INFO(...)			::Echo::EngineLog::GetEngineLogger()->info(__VA_ARGS__)
-	#define ECHO_CORE_WARN(...)			::Echo::EngineLog::GetEngineLogger()->warn(__VA_ARGS__)
+	#define ECHO_CORE_INFO(...)				::Echo::EngineLog::GetEngineLogger()->info(__VA_ARGS__)
+	#define ECHO_CORE_WARN(...)				::Echo::EngineLog::GetEngineLogger()->warn(__VA_ARGS__)
 	#define ECHO_CORE_ERROR(...)			::Echo::EngineLog::GetEngineLogger()->error(__VA_ARGS__)
-	#define ECHO_CORE_CRITICAL(...)		::Echo::EngineLog::GetEngineLogger()->critical(__VA_ARGS__)
+	#define ECHO_CORE_CRITICAL(...)			::Echo::EngineLog::GetEngineLogger()->critical(__VA_ARGS__)
 
 	// Client log macros
-	#define ECHO_CLIENT_TRACE(...)		::Echo::EngineLog::GetClientLogger()->trace(__VA_ARGS__)
+	#define ECHO_CLIENT_TRACE(...)			::Echo::EngineLog::GetClientLogger()->trace(__VA_ARGS__)
 	#define ECHO_CLIENT_INFO(...)			::Echo::EngineLog::GetClientLogger()->info(__VA_ARGS__)
 	#define ECHO_CLIENT_WARN(...)			::Echo::EngineLog::GetClientLogger()->warn(__VA_ARGS__)
-	#define ECHO_CLIENT_ERROR(...)		::Echo::EngineLog::GetClientLogger()->error(__VA_ARGS__)
+	#define ECHO_CLIENT_ERROR(...)			::Echo::EngineLog::GetClientLogger()->error(__VA_ARGS__)
 	#define ECHO_CLIENT_CRITICAL(...)		::Echo::EngineLog::GetClientLogger()->critical(__VA_ARGS__)
 }
 
