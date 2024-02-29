@@ -44,7 +44,7 @@ namespace Echo {
 		/// @brief 窗口关闭
 		virtual void ShutDown();
 
-	public:
+	private:
 		/// @brief 窗口数据
 		typedef struct sWindowData
 		{
