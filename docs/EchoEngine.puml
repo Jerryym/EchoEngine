@@ -120,9 +120,9 @@ namespace Engine{
             bool m_bVSync
         }
 
-        NestUI.UI.MainWindow <|-- Windows_MainWindow : public
-        NestUI.UI.sWindowProps <.. Windows_MainWindow
-        NestUI.UI.DockWidgetManager <-- Windows_MainWindow
+        MainWindow <|-- Windows_MainWindow : public
+        sWindowProps <.. Windows_MainWindow
+        DockWidgetManager <-- Windows_MainWindow
         sWindowData <-- Windows_MainWindow
         class Windows_MainWindow{
             - sWindowData m_sData
