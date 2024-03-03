@@ -1,7 +1,7 @@
 [submodule "Nest/vendor/spdlog"]
 	path = Nest/vendor/spdlog
 	url = git@github.com:Jerryym/spdlog.git
-[submodule "Engine/vendor/glfw"]
-	path = Engine/vendor/glfw
+[submodule "Echo/vendor/glfw"]
+	path = Echo/vendor/glfw
 	url = git@github.com:Jerryym/glfw.git
 
