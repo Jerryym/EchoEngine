@@ -6,3 +6,4 @@ workspace "EchoEngine"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 include "Echo/vendor/GLFW"
+include "Echo/vendor/Glad"

@@ -1,6 +1,21 @@
 #include <Nest.h>
 #include <Echo.h>
 
+class ExampleLayer : public Echo::Layer
+{
+public:
+	ExampleLayer()
+		: Layer("Example")
+	{
+	}
+
+	virtual void OnUpdate() override
+	{
+		
+	}
+
+};
+
 class SandBox : public Echo::EchoApplication
 {
 public:

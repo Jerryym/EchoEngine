@@ -1,8 +1,7 @@
 #include "echopch.h"
+#include <glad/glad.h>
 #include "GLWidget.h"
-
 #include <Nest.h>
-#include <NestUI.h>
 
 namespace Echo {
 
@@ -98,6 +97,9 @@ namespace Echo {
 
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);  //设置 offscreen context 的标志位, 且GLFW的窗口会自动隐藏
 		m_pGLFWwindow = glfwCreateWindow(nWidth, nHeight, strTitle.c_str(), nullptr, nullptr);
+		glfwMakeContextCurrent(m_pGLFWwindow);
+		int status = gladLoadGLLoader(GLADloadproc(glfwGetProcAddress));
+		ECHO_CORE_ASSERT(status, "Failed to initiazlize Glad!");
 		SetVSync(true);	//设置垂直同步
 	}
 
