@@ -1,15 +1,12 @@
 #include "echopch.h"
-#include "EngineLog.h"
-#include "Core/EchoApplication.h"
-#include "GUI/Windows_MainWindow.h"
-#include "GUI/ConsoleDockWidget.h"
+#include "EchoLog.h"
 
 namespace Echo {
 
-	std::shared_ptr<spdlog::logger> EngineLog::s_EngineLogger;
-	std::shared_ptr<spdlog::logger> EngineLog::s_ClientLogger;
+	std::shared_ptr<spdlog::logger> EchoLog::s_EngineLogger;
+	std::shared_ptr<spdlog::logger> EchoLog::s_ClientLogger;
 
-	void EngineLog::InitLogger(QTextEdit* LogWidget)
+	void EchoLog::InitLogger(QTextEdit* LogWidget)
 	{
 		// 更改日志模式
 		spdlog::set_pattern("%^[%T] %n: %v%$");
