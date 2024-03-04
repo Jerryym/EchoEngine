@@ -12,7 +12,7 @@ Echo Engine is a learning project to be familiar with OpenGL, understand the pri
 ## Getting Started
 
 1. Run `GenerateProject.bat` file first. This wil generate a Visual Studio solution file for user's usage.
-2. Open `EchoEngine.sln` file in Visual Studio and add `Nest`、`NestUI`、`Engine`、`SandBox` projects to solution file.
+2. Open `EchoEngine.sln` file in Visual Studio and add `Nest`、`NestUI`、`Echo`、`SandBox` projects to solution file.
 3. Set `SandBox` project as start project.
 
 ## Dependencies

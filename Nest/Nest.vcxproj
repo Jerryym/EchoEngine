@@ -131,10 +131,10 @@
     <ClInclude Include="src\Nest.h" />
     <ClInclude Include="src\Core\NestCore.h" />
     <ClInclude Include="src\nestpch.h" />
-    <ClInclude Include="src\Utilities\Log.h" />
+    <ClInclude Include="src\Utils\Log.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Utilities\Log.cpp" />
+    <ClCompile Include="src\Utils\Log.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\nestpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

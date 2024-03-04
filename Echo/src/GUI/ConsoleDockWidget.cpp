@@ -27,7 +27,7 @@ namespace Echo {
 		setWidget(dockWidgetContents);
 
 		//初始化引擎Log
-		Echo::EngineLog::InitLogger(m_LogWidget);
+		Echo::EchoLog::InitLogger(m_LogWidget);
 		ECHO_CORE_WARN("Initialiazed Log!");
 		ECHO_CLIENT_INFO("Hello Echo Engine!");
 	}

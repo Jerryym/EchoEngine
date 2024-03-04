@@ -29,7 +29,7 @@
     <ClInclude Include="src\Nest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utilities\Log.h">
+    <ClInclude Include="src\Utils\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\nestpch.h">
@@ -43,7 +43,7 @@
     <ClCompile Include="src\Core\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utilities\Log.cpp">
+    <ClCompile Include="src\Utils\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\nestpch.cpp">

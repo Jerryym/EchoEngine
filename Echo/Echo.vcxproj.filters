@@ -29,7 +29,7 @@
     <ClInclude Include="vendor\glfw\include\GLFW\glfw3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utilities\EngineLog.h">
+    <ClInclude Include="src\Utils\EchoLog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\echopch.h">
@@ -38,7 +38,7 @@
     <ClInclude Include="src\Core\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine.h">
+    <ClInclude Include="src\Echo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Layer.h">
@@ -52,7 +52,7 @@
     <ClCompile Include="src\GUI\GLWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utilities\EngineLog.cpp">
+    <ClCompile Include="src\Utils\EchoLog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\echopch.cpp">

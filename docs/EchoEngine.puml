@@ -1,0 +1,194 @@
+@startuml EchoEngine
+
+class QApplication
+class QMainWindow
+class QDockWidget
+class QOpenGLWidget
+class spdlog
+struct GLFWwindow
+
+namespace Nest{
+    namespace Core{
+        .QApplication <|-- Application : public
+        .QMainWindow <-- Application
+        class Application <<Singleton>>{
+            - std::unique_ptr<QMainWindow> m_Window
+            - bool m_bRunning
+            - {static} Application* s_Instance
+
+            + Application(int& argc, char** argv)
+            + virtual ~Application()
+            + virtual void Run()
+            + {static} Application& GetApplication()
+            + {static} void SetMainWindow(QMainWindow* mainWindow)
+            + QMainWindow* GetMainWindow()
+        }
+    }
+
+    namespace Utilities{
+        .spdlog <-- Log
+        class Log <<Singleton>>{
+            - {static} std::shared_ptr<spdlog::logger> s_CoreLogger
+
+            + {static} void InitLogger()
+            + {static} std::shared_ptr<spdlog::logger>& GetCoreLogger()
+        }
+    }
+}
+
+namespace NestUI{
+    namespace UI{
+        struct sWindowProps{
+            + unsigned int m_nWidth	
+            + unsigned int m_nHeight	
+            + QString m_STitle	
+        }
+    
+        .QMainWindow <|-- MainWindow : public
+        abstract class MainWindow{
+            + ~MainWindow()
+            + unsigned int GetWidth() const
+            + unsigned int GetHeigth() const
+            + QString GetTitle() const
+        }
+
+        .QDockWidget <|-- DockWidget : public
+        abstract class DockWidget{
+            + DockWidget(QWidget* parent = nullptr)
+            + ~DockWidget()
+            + void clearWidget()
+            + void refreshWidget()
+        }
+    }
+    .QMainWindow <-- DockWidgetManager
+    .QDockWidget "*" *-- "1" DockWidgetManager
+    class DockWidgetManager <<Singleton>>{
+        - DockWidgetManager* s_Instance
+        - QMainWindow* m_mainWindow
+        - QMap<QString, QDockWidget*> m_DockWidgetMap
+
+        + {static} DockWidgetManager* GetDockManager(QMainWindow* mainWindow)
+        + void AddDockWidget(const QString& STitle, QDockWidget* dockWidget, Qt::DockWidgetArea area)
+        + QDockWidget* GetDockWidget(const QString& STitle)
+        + void RemoveDockWidget(const QString& STitle)
+        + int GetDockWidgetNum() const
+        # DockWidgetManager(QMainWindow* mainWindow)
+        # ~DockWidgetManager()
+    }
+}
+
+namespace Engine{
+    namespace Core{
+        Application <|-- EchoApplication : public
+        class EchoApplication{
+            + EchoApplication(int& argc, char** argv)
+            + ~EchoApplication()
+        }
+
+        class Layer{
+            # QString m_SLayerName
+
+            + Layer(const QString& name = "Layer");
+            + virtual ~Layer()
+            + virtual void OnAttach()
+            + virtual void OnDetach()
+            + virtual void OnUpdate()
+            + QString getName() const
+        }
+
+        Layer  "*" *-- "1" LayerStack
+        class LayerStack{
+            - unsigned int m_nInsertIndex
+            - std::vector<Layer*> m_Layers
+
+            + LayerStack()
+            + ~LayerStack()
+            + void PushLayer(Layer* layer)
+            + void PushOverlay(Layer* overlay)
+            + void PopLayer(Layer* layer)
+            + void PopOverlay(Layer* overlay)
+            + std::vector<Layer*>::iterator begin()
+            + std::vector<Layer*>::iterator end()
+        }
+    }
+    
+    namespace GUI{
+        struct sWindowData{
+            unsigned int m_nWidth
+            unsigned int m_nHeight
+            QString m_STitle
+            bool m_bVSync
+        }
+
+        MainWindow <|-- Windows_MainWindow : public
+        sWindowProps <.. Windows_MainWindow
+        DockWidgetManager <-- Windows_MainWindow
+        sWindowData <-- Windows_MainWindow
+        class Windows_MainWindow{
+            - sWindowData m_sData
+            - NestUI::DockWidgetManager* m_dockManager
+
+            + {static} Windows_MainWindow* Create(const NestUI::sWindowProps& props = NestUI::sWindowProps())
+            + virtual unsigned int GetWidth() const override
+            + virtual unsigned int GetHeigth() const override
+            + virtual QString GetTitle() const override
+            + void SetVSync(bool enabled)
+            + bool IsVSync() const
+            + void InitializeDockWidgets()
+            + void InitializeGLWidget()
+            + NestUI::DockWidget* GetDockWidget(const QString& STitle)
+            # Windows_MainWindow(const NestUI::sWindowProps& prop)
+            # virtual ~Windows_MainWindow()
+            - virtual void Initialize(const NestUI::sWindowProps& props)
+            - virtual void ShutDown()
+        }
+
+        .QOpenGLWidget <|-- GLWidget : public
+        .GLFWwindow <-- GLWidget
+        class GLWidget{
+            - GLFWwindow* m_pGLFWwindow
+            - bool m_bVSync
+
+            + GLWidget(const std::string& strTitle, int nWidth, int nHeight, QWidget* parent = nullptr)
+            + virtual ~GLWidget()
+            + void SetVSync(bool enabled)
+            + bool IsVSync() const
+            + void ShutDown()
+            # virtual void initializeGL() override
+            # virtual void resizeGL(int w, int h) override
+            # virtual void paintGL() override
+            # virtual void keyPressEvent(QKeyEvent* event) override;
+            # virtual void keyReleaseEvent(QKeyEvent* event) override;
+            # virtual void mousePressEvent(QMouseEvent* event) override;
+            # virtual void mouseReleaseEvent(QMouseEvent* event) override;
+            # virtual void mouseMoveEvent(QMouseEvent* event) override;
+            # virtual void wheelEvent(QWheelEvent* event) override;
+            - void InitializeGLWidget(const std::string& strTitle, int nWidth, int nHeight)
+        }
+
+        DockWidget <|-- ConsoleDockWidget : public
+        class ConsoleDockWidget{
+            - QTextEdit* m_LogWidget
+
+            + ConsoleDockWidget(QWidget* parent = nullptr)
+            + virtual ~ConsoleDockWidget()
+            + virtual void clearWidget() override
+            + virtual void refreshWidget() override
+            + QTextEdit* getLogWidget()
+        }
+    }
+
+    namespace Utilities{
+        .spdlog <-- EngineLog
+        class EngineLog <<Singleton>>{
+            - std::shared_ptr<spdlog::logger> s_EngineLogger
+            - std::shared_ptr<spdlog::logger> s_ClientLogger
+
+            + {static} void InitLogger(QTextEdit* LogWidget)
+            + {static} std::shared_ptr<spdlog::logger>& GetEngineLogger()
+            + {static} std::shared_ptr<spdlog::logger>& GetClientLogger()
+        }
+    }
+}
+
+@enduml

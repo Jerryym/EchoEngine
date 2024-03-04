@@ -12,8 +12,6 @@ namespace Echo {
 		EchoApplication(int& argc, char** argv);
 		virtual ~EchoApplication() {}
 
-	private:
-
 	};
 
 	// To be defined in CLIENT
