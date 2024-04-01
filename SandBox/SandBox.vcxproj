@@ -72,8 +72,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;..\Echo\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NEST_STATIC_LINK;ECHO_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;..\Echo\src;..\Echo\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NEST_STATIC_LINK;NEST_LOG;ECHO_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\bin\Debug-windows-x86_64\Nest;..\bin\Debug-windows-x86_64\NestUI;..\bin\Debug-windows-x86_64\Echo;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -82,14 +82,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;..\Echo\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;..\Echo\src;..\Echo\vendor\glm</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <PreprocessorDefinitions>NEST_STATIC_LINK;ECHO_STATIC_LINK;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NEST_STATIC_LINK;NEST_LOG;ECHO_STATIC_LINK;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\bin\Release-windows-x86_64\Nest;..\bin\Release-windows-x86_64\NestUI;..\bin\Release-windows-x86_64\Echo</AdditionalLibraryDirectories>

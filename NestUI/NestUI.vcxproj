@@ -71,7 +71,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>..\Nest\vendor\spdlog\include;..\Nest\src;src;%(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NEST_STATIC_LINK;NESTUI_BUILD_DLL;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NEST_STATIC_LINK;NESTUI_BUILD_DLL;NEST_LOG;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nestuipch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -88,7 +88,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>..\Nest\vendor\spdlog\include;..\Nest\src;src</AdditionalIncludeDirectories>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WINDLL;NEST_STATIC_LINK;NESTUI_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;NEST_STATIC_LINK;NESTUI_BUILD_DLL;NEST_LOG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nestuipch.h</PrecompiledHeaderFile>
     </ClCompile>

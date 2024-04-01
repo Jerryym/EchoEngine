@@ -1,10 +1,10 @@
 #pragma once
-#include "EngineCore.h"
+#include "NestCore.h"
 
-namespace Echo {
+namespace Nest {
 
 	/// @brief 渲染引擎中的层（Layer）的基类。
-	class ECHO_API Layer
+	class NEST_API Layer
 	{
 	public:
 		Layer(const QString& name = "Layer");

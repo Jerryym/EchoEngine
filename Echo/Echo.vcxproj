@@ -68,8 +68,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;src;vendor\GLFW\include;vendor\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;ECHO_STATIC_LINK;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;src;vendor\GLFW\include;vendor\glad\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;NEST_LOG;ECHO_STATIC_LINK;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>echopch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -89,9 +89,9 @@
       <Command>Copy "$(SolutionDir)bin\Release-windows-x86_64\Echo\Echo.lib" "$(SolutionDir)bin\Release-windows-x86_64\"</Command>
     </PostBuildEvent>
     <ClCompile>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;ECHO_STATIC_LINK;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;NEST_LOG;ECHO_STATIC_LINK;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;src;vendor\GLFW\include;vendor\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Nest\src;..\Nest\vendor\spdlog\include;..\NestUI\src;src;vendor\GLFW\include;vendor\glad\include;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>echopch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -125,28 +125,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtMoc Include="src\GUI\ConsoleDockWidget.h" />
-    <QtMoc Include="src\Core\EchoApplication.h" />
-    <ClInclude Include="src\Core\LayerStack.h" />
-    <ClInclude Include="src\Core\Layer.h" />
     <ClInclude Include="src\Echo.h" />
     <ClInclude Include="src\echopch.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
-    <ClInclude Include="src\Utils\EchoLog.h" />
     <ClInclude Include="src\Core\EngineCore.h" />
     <ClInclude Include="vendor\glfw\include\GLFW\glfw3.h" />
     <QtMoc Include="src\GUI\Windows_MainWindow.h" />
     <QtMoc Include="src\GUI\GLWidget.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\LayerStack.cpp" />
-    <ClCompile Include="src\Core\Layer.cpp" />
-    <ClCompile Include="src\Core\EchoApplication.cpp" />
     <ClCompile Include="src\echopch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echopch.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Utils\EchoLog.cpp" />
     <ClCompile Include="src\GUI\GLWidget.cpp" />
     <ClCompile Include="src\GUI\Windows_MainWindow.cpp" />
     <ClCompile Include="src\GUI\ConsoleDockWidget.cpp" />
