@@ -34,8 +34,8 @@ public:
 class SandBox : public Nest::Application
 {
 public:
-	SandBox(int& argc, char** argv, bool InitLogger)
-		: Nest::Application(argc, argv, false)
+	SandBox(int& argc, char** argv)
+		: Nest::Application(argc, argv)
 	{
 		Application::PushLayer(new ExampleLayer);
 	}
@@ -45,7 +45,7 @@ private:
 
 };
 
-Nest::Application* Nest::CreateApplication(int argc, char** argv, bool InitLogger)
+Nest::Application* Nest::CreateApplication(int argc, char** argv)
 {
-	return new SandBox(argc, argv, false);
+	return new SandBox(argc, argv);
 }

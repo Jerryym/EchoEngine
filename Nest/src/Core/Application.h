@@ -12,7 +12,6 @@ namespace Nest {
 		Q_OBJECT
 	public:
 		Application(int& argc, char** argv);
-		Application(int& argc, char** argv, bool InitLogger);
 		virtual ~Application() {}
 	
 	public:
@@ -40,15 +39,15 @@ namespace Nest {
 	private:
 		/// @brief 应用程序单例: 程序运行时，当且只能一个应用程序存在
 		static Application* s_Instance;
-		/// @brief 应用程序主窗口
-		std::unique_ptr<QMainWindow> m_Window;
 		/// @brief 运行状态的控制
 		bool m_bRunning = false;
+		/// @brief 应用程序主窗口
+		std::unique_ptr<QMainWindow> m_Window;
 		/// @brief 层栈
 		LayerStack m_LayerStack;
 	};
 
 	// To be defined in CLIENT
-	Application* CreateApplication(int argc, char** argv, bool InitLogger);
+	Application* CreateApplication(int argc, char** argv);
 }
 

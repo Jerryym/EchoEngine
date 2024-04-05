@@ -17,21 +17,6 @@ namespace Nest {
 		NEST_CORE_INFO("Hello Nest FrameWork!");
 	}
 
-	Application::Application(int& argc, char** argv, bool InitLogger)
-		: QApplication(argc, argv)
-	{
-		NEST_CORE_ASSERT(s_Instance != nullptr, "Application already exists!");
-		s_Instance = this;
-
-		if (InitLogger == true)
-		{
-			// 初始化框架的Log
-			Nest::Log::InitLogger();
-			NEST_CORE_WARN("Initialiazed Log!");
-			NEST_CORE_INFO("Hello Nest FrameWork!");
-		}
-	}
-
 	void Application::Run()
 	{
 		m_bRunning = true;

@@ -3,14 +3,14 @@
 #include <NestUI.h>
 #include <QMessagebox>
 
-extern Nest::Application* Nest::CreateApplication(int argc, char** argv, bool InitLogger);
+extern Nest::Application* Nest::CreateApplication(int argc, char** argv);
 
 int main(int argc, char** argv)
 {
 	try
 	{
 		//创建Application
-		auto app = Nest::CreateApplication(argc, argv, false);
+		auto app = Nest::CreateApplication(argc, argv);
 		//创建主窗口
 		NestUI::sWindowProps props(1600, 900, "Echo Engine");
 		app->SetMainWindow(Echo::Windows_MainWindow::Create(props));
