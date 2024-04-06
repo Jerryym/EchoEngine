@@ -1,7 +1,7 @@
-#include "echopch.h"
+#include "nestpch.h"
 #include "LayerStack.h"
 
-namespace Echo {
+namespace Nest {
 
 	LayerStack::LayerStack()
 		: m_nInsertIndex(0)

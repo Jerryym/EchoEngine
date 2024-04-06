@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Core/EchoApplication.h"
-#include "GUI/Windows_MainWindow.h"
+#include "Core/Application.h"
 #include "Core/Layer.h"
-#include "Utils/EchoLog.h"
+#include "Utils/Log.h"
+#include "GUI/Windows_MainWindow.h"
 
 // --Entry Point---------------------
 #include "Core/EntryPoint.h"

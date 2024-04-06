@@ -15,4 +15,4 @@
 
 #include <QString>
 
-#include <Utils/EchoLog.h>
+#include <Utils/Log.h>

@@ -23,6 +23,7 @@ Echo Engine uses the following open-source libraries:
 * [spdlog](https://github.com/gabime/spdlog) - C++ logging library.
 * [GLFW](https://github.com/glfw/glfw) - A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input.
 * [GLAD](https://github.com/Dav1dde/glad) - Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
+* [GLM](https://github.com/g-truc/glm) - OpenGL Mathematics (GLM)
 
 ## Reference
 

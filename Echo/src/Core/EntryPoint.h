@@ -3,24 +3,17 @@
 #include <NestUI.h>
 #include <QMessagebox>
 
-extern Echo::EchoApplication* Echo::CreateApplication(int argc, char** argv);
+extern Nest::Application* Nest::CreateApplication(int argc, char** argv);
 
 int main(int argc, char** argv)
 {
 	try
 	{
 		//创建Application
-		auto app = Echo::CreateApplication(argc, argv);
-		auto mainWindow = dynamic_cast<Echo::Windows_MainWindow*>(app->GetMainWindow());
-		if (mainWindow == nullptr)
-		{
-			// 处理异常...
-			throw std::runtime_error("Failed to create MainWindow");
-		}
-		//初始化dockWidgets
-		mainWindow->InitializeDockWidgets();
-		//初始化GLWidget
-		mainWindow->InitializeGLWidget();
+		auto app = Nest::CreateApplication(argc, argv);
+		//创建主窗口
+		NestUI::sWindowProps props(1600, 900, "Echo Engine");
+		app->SetMainWindow(Echo::Windows_MainWindow::Create(props));
 		//运行应用程序
 		app->Run();
 		return app->exec();

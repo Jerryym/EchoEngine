@@ -29,9 +29,6 @@
     <ClInclude Include="vendor\glfw\include\GLFW\glfw3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\EchoLog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\echopch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -41,18 +38,9 @@
     <ClInclude Include="src\Echo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Core\LayerStack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\GUI\GLWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Utils\EchoLog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\echopch.cpp">
@@ -61,16 +49,7 @@
     <ClCompile Include="src\GUI\Windows_MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\EchoApplication.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GUI\ConsoleDockWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Core\Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Core\LayerStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -79,9 +58,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="src\GUI\Windows_MainWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="src\Core\EchoApplication.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="src\GUI\ConsoleDockWidget.h">

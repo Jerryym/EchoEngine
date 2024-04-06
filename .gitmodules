@@ -6,3 +6,6 @@
 [submodule "Echo/vendor/GLFW"]
 	path = Echo/vendor/GLFW
 	url = git@github.com:Jerryym/glfw.git
+[submodule "Echo/vendor/glm"]
+	path = Echo/vendor/glm
+	url = git@github.com:Jerryym/glm.git
