@@ -13,4 +13,6 @@
 
 #include <Windows.h>
 
+#include <QString>
+
 #include <Utils/Log.h>

@@ -19,13 +19,23 @@ namespace Nest {
 
 	void Application::Run()
 	{
-		//启动主窗口
-		m_Window.get()->show();
+		m_bRunning = true;
+		m_Window->show();
 	}
 
-	void Application::SetMainWindow(QMainWindow* mainWindow)
+	void Application::SetMainWindow(QMainWindow* pMainWindow)
 	{
-		s_Instance->m_Window.reset(mainWindow);
+		m_Window = std::unique_ptr<QMainWindow>(pMainWindow);
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
 	}
 
 }

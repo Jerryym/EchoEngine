@@ -72,7 +72,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>..\Nest\vendor\spdlog\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;NEST_LOG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nestpch.h</PrecompiledHeaderFile>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -90,7 +90,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_WINDLL;_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDLL;_CRT_SECURE_NO_WARNINGS;NEST_STATIC_LINK;NEST_LOG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -128,12 +128,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtMoc Include="src\Core\Application.h" />
+    <ClInclude Include="src\Core\Layer.h" />
+    <ClInclude Include="src\Core\LayerStack.h" />
     <ClInclude Include="src\Nest.h" />
     <ClInclude Include="src\Core\NestCore.h" />
     <ClInclude Include="src\nestpch.h" />
     <ClInclude Include="src\Utils\Log.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Layer.cpp" />
+    <ClCompile Include="src\Core\LayerStack.cpp" />
     <ClCompile Include="src\Utils\Log.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\nestpch.cpp">

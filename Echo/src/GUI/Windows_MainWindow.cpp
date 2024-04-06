@@ -14,6 +14,8 @@ namespace Echo {
 	{
 		Initialize(prop);
 		m_dockManager = NestUI::DockWidgetManager::GetDockManager(this);
+		InitializeDockWidgets();
+		InitializeGLWidget();
 	}
 
 	void Windows_MainWindow::InitializeDockWidgets()
@@ -22,7 +24,7 @@ namespace Echo {
 		ConsoleDockWidget* pConsole = new ConsoleDockWidget(this);
 		ECHO_CORE_ASSERT(pConsole == nullptr, "Create ConsoleDockWidget Fail!");
 		m_dockManager->AddDockWidget("ConSole", pConsole, Qt::BottomDockWidgetArea);
-		ECHO_CORE_INFO("DockWidgetNum = {0}", m_dockManager->GetDockWidgetNum());
+		NEST_CORE_INFO("DockWidgetNum = {0}", m_dockManager->GetDockWidgetNum());
 	}
 
 	void Windows_MainWindow::InitializeGLWidget()
@@ -51,7 +53,6 @@ namespace Echo {
 		m_sData.m_nWidth = props.m_nWidth;
 		m_sData.m_nHeight = props.m_nHeight;
 		m_sData.m_STitle = props.m_STitle;
-		NEST_CORE_INFO("Create MainWindow {0} ({1}, {2})", props.m_STitle.toStdString(), props.m_nWidth, props.m_nHeight);
 
 		//初始化窗口大小
 		resize(QSize(props.m_nWidth, props.m_nHeight));

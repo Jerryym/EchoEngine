@@ -1,12 +1,12 @@
 #pragma once
-#include "EngineCore.h"
+#include "NestCore.h"
 #include "Layer.h"
 #include <vector>
 
-namespace Echo {
+namespace Nest {
 
 	/// @brief 层栈，用于存放管理引擎中的层
-	class ECHO_API LayerStack
+	class NEST_API LayerStack
 	{
 	public:
 		LayerStack();

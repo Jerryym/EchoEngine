@@ -27,9 +27,9 @@ namespace Echo {
 		setWidget(dockWidgetContents);
 
 		//初始化引擎Log
-		Echo::EchoLog::InitLogger(m_LogWidget);
-		ECHO_CORE_WARN("Initialiazed Log!");
-		ECHO_CLIENT_INFO("Hello Echo Engine!");
+		Nest::Log::InitLogger(m_LogWidget, "Echo", "App");
+		NEST_CORE_WARN("Initialiazed Log!");
+		NEST_CLIENT_INFO("Hello Echo Engine!");
 	}
 
 	void ConsoleDockWidget::clearWidget()
