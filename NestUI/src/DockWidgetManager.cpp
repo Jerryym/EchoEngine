@@ -8,7 +8,7 @@ namespace NestUI {
 
 	DockWidgetManager::DockWidgetManager(QMainWindow* mainWindow)
 	{
-		NEST_CORE_ASSERT(s_Instance != nullptr, "Application already exists!");
+		NEST_CORE_ASSERT(s_Instance != nullptr, "DockWidgetManager already exists!");
 		m_mainWindow = mainWindow;
 	}
 
@@ -24,10 +24,16 @@ namespace NestUI {
 		return s_Instance;
 	}
 
-	void DockWidgetManager::AddDockWidget(const QString& STitle, QDockWidget* dockWidget, Qt::DockWidgetArea area)
+	bool DockWidgetManager::AddDockWidget(const QString& STitle, QDockWidget* dockWidget, Qt::DockWidgetArea area)
 	{
+		if (m_DockWidgetMap.contains(STitle) == true)
+		{
+			NEST_CORE_ERROR(STitle.toStdString() + " already exists!");
+			return false;
+		}
 		m_DockWidgetMap.insert(STitle, dockWidget);
 		m_mainWindow->addDockWidget(area, dockWidget);
+		return true;
 	}
 
 	QDockWidget* DockWidgetManager::GetDockWidget(const QString& STitle)
