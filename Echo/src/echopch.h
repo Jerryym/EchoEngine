@@ -16,3 +16,5 @@
 #include <QString>
 
 #include <Utils/Log.h>
+
+#include <Echo/EngineCore.h>
