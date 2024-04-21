@@ -15,10 +15,11 @@ namespace NestUI {
 		/// @brief 添加DockWidget
 		/// @param STitle DockWidget对应的窗口标题
 		/// @param dockWidget 
-		void AddDockWidget(const QString& STitle, QDockWidget* dockWidget, Qt::DockWidgetArea area);
+		/// @return 若对应窗口标题的dockwidget存在，返回false
+		bool AddDockWidget(const QString& STitle, QDockWidget* dockWidget, Qt::DockWidgetArea area);
 
 		/// @brief 获取DockWidget
-		/// @param STitle STitle DockWidget对应的窗口标题
+		/// @param STitle DockWidget对应的窗口标题
 		/// @return 
 		QDockWidget* GetDockWidget(const QString& STitle);
 

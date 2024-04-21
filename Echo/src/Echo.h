@@ -6,5 +6,5 @@
 #include "GUI/Windows_MainWindow.h"
 
 // --Entry Point---------------------
-#include "Core/EntryPoint.h"
+#include "Echo/EntryPoint.h"
 // ----------------------------------

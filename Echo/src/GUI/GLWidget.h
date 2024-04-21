@@ -1,8 +1,13 @@
 #pragma once
-#include "Core/EngineCore.h"
+#include "Echo/EngineCore.h"
 #include <QOpenGLWidget>
-
 #include <GLFW/glfw3.h>
+#include <QTimer>
+#include <QElapsedTimer>
+
+#include "Platform/OpenGL/OpenGLContext.h"
+#include "Echo/Renderer/Shader.h"
+#include "Echo/Renderer/VertexArray.h"
 
 namespace Echo {
 
@@ -52,10 +57,26 @@ namespace Echo {
 	private:
 		/// @brief 初始化GLFW
 		void InitializeGLWidget(const std::string& strTitle, int nWidth, int nHeight);
+		/// @brief 编写渲染逻辑
+		void render();
 
 	private:
 		GLFWwindow* m_pGLFWwindow;
-		bool m_bVSync = true;			//是否开启垂直同步
+		/// @brief OpenGL上下文
+		OpenGLContext* m_pContext;
+		/// @brief 是否开启垂直同步
+		bool m_bVSync = true;
+		/// @brief 定时器, 用于实现按帧刷新
+		QTimer* m_pTimer;
+		QElapsedTimer m_frameTimer;
+
+		/// @brief 着色器
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_BlueShader;
+		/// @brief 顶点数组对象
+		std::shared_ptr<VertexArray> m_TriangleVA;
+		std::shared_ptr<VertexArray> m_SquareVA;
+
 	};
 
 }
