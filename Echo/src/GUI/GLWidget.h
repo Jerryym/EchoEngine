@@ -3,10 +3,12 @@
 #include <QOpenGLWidget>
 #include <GLFW/glfw3.h>
 #include <QTimer>
+#include <QElapsedTimer>
 
 #include "Platform/OpenGL/OpenGLContext.h"
 #include "Echo/Renderer/Shader.h"
 #include "Echo/Renderer/Buffer.h"
+#include "Echo/Renderer/VertexArray.h"
 
 namespace Echo {
 
@@ -67,14 +69,15 @@ namespace Echo {
 		bool m_bVSync = true;
 		/// @brief 定时器, 用于实现按帧刷新
 		QTimer* m_pTimer;
+		QElapsedTimer m_frameTimer;
 
-		unsigned int m_VertexArray;
 		/// @brief 着色器
-		std::unique_ptr<Shader> m_Shader;
-		/// @brief 顶点缓冲对象
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		/// @brief 索引缓冲对象
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_BlueShader;
+		/// @brief 顶点数组对象
+		std::shared_ptr<VertexArray> m_TriangleVA;
+		std::shared_ptr<VertexArray> m_SquareVA;
+
 	};
 
 }

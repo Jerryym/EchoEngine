@@ -124,6 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Echo\Renderer\VertexArray.h" />
     <QtMoc Include="src\GUI\ConsoleDockWidget.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Echo\Renderer\Buffer.h" />
@@ -140,6 +142,7 @@
     <QtMoc Include="src\GUI\GLWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Echo\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Echo\Renderer\Renderer.cpp" />
@@ -153,6 +156,7 @@
     <ClCompile Include="src\GUI\GLWidget.cpp" />
     <ClCompile Include="src\GUI\Windows_MainWindow.cpp" />
     <ClCompile Include="src\GUI\ConsoleDockWidget.cpp" />
+    <ClCompile Include="src\Echo\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NestUI\NestUI.vcxproj">

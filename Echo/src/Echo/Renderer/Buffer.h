@@ -2,7 +2,7 @@
 
 namespace Echo {
 
-	/// @brief 元素数据类型
+	/// @brief 着色器数据类型
 	enum class ShaderDataType
 	{
 		None = 0, Float, Float2, Float3, Float4, Mat3, Mat4, Int, Int2, Int3, Int4, Bool
@@ -83,6 +83,8 @@ namespace Echo {
 		~BufferLayout() {}
 
 	public:
+		/// @brief 获取缓冲元素数组
+		/// @return 
 		const std::vector<BufferElement>& GetElements() const { return m_Elements; }
 
 		std::vector<BufferElement>::iterator begin() { return m_Elements.begin(); }
@@ -91,14 +93,18 @@ namespace Echo {
 		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); }
 		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
 
+		/// @brief 获取步幅
+		/// @return 
 		uint32_t GetStride() const { return m_nStride; }
 
 	private:
+		/// @brief 计算偏移量和步幅
 		void CalculateOffsetAndStride();
 
 	private:
+		/// @brief 缓冲元素数组
 		std::vector<BufferElement> m_Elements;
-		/// @brief 
+		/// @brief 步幅
 		uint32_t m_nStride = 0;
 	};
 
@@ -113,6 +119,13 @@ namespace Echo {
 		virtual void Bind() const = 0;
 		/// @brief 解绑释放对应顶点缓冲对象
 		virtual void UnBind() const = 0;
+
+		/// @brief 设置布局
+		/// @param layout 指定对象布局
+		virtual void SetLayout(const BufferLayout& layout) = 0;
+		/// @brief 获取指定对象布局
+		/// @return 指定对象布局
+		virtual const BufferLayout& GetLayout() const = 0;
 
 		/// @brief 创建顶点缓冲对象(VBO)
 		/// @param vertices 顶点数组

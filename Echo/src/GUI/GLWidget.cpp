@@ -1,7 +1,6 @@
 #include "echopch.h"
 #include <glad/glad.h>
 #include "GLWidget.h"
-#include <QDateTime>
 
 namespace Echo {
 
@@ -15,18 +14,20 @@ namespace Echo {
 	GLWidget::GLWidget(const std::string& strTitle, int nWidth, int nHeight, QWidget* parent)
 		: QOpenGLWidget(parent)
 	{
-		//创建定时器，每隔16毫秒（大约60帧每秒）触发更新
-		m_pTimer = new QTimer(this);
-		connect(m_pTimer, &QTimer::timeout, this, QOverload<>::of(&GLWidget::update));
-		m_pTimer->start(16);
-
 		InitializeGLWidget(strTitle, nWidth, nHeight);
 		setFocusPolicy(Qt::StrongFocus);
 		setMouseTracking(true);
+
+		//创建定时器，每隔16毫秒（大约60帧每秒）触发更新
+		m_pTimer = new QTimer;
+		m_pTimer->setInterval(16.67);
+		connect(m_pTimer, &QTimer::timeout, this, QOverload<>::of(&GLWidget::update));
+		m_pTimer->start();
 	}
 
 	GLWidget::~GLWidget()
 	{
+		delete m_pTimer;
 		ShutDown();
 	}
 
@@ -50,54 +51,112 @@ namespace Echo {
 		glClearColor(0.1f, 0.1f, 0.1f, 1.f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
-
-		//创建顶点缓冲对象
-		float vertices[] = {
-			-0.25f, -0.25f, 0.0f,
-			0.0f,   0.25f, 0.0f,
-			0.25f,  -0.25f, 0.0f
+		//创建顶点数组对象
+		m_TriangleVA.reset(VertexArray::Create());
+		float triangleVertices[] = {
+			-0.25f, -0.25f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+			 0.25f, -0.25f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+			 0.0f,   0.25f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-
-		//设置顶点属性指针
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		
+		//创建顶点缓冲对象
+		std::shared_ptr<VertexBuffer> TriangleVB;
+		TriangleVB.reset(VertexBuffer::Create(triangleVertices, sizeof(triangleVertices)));
+		BufferLayout triangleLayout = {
+					{ ShaderDataType::Float3, "a_Position" },
+					{ ShaderDataType::Float4, "a_Color" }
+		};
+		TriangleVB->SetLayout(triangleLayout);
+		m_TriangleVA->AddVertexBuffer(TriangleVB);
 
 		//创建索引缓冲对象
-		unsigned int indices[3] = { 0,1,2 };
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		std::shared_ptr<IndexBuffer> TriangleIB;
+		uint32_t triangleIndices[3] = { 0,1,2 };
+		TriangleIB.reset(IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(uint32_t)));
+		m_TriangleVA->SetIndexBuffer(TriangleIB);
 
 		//创建着色器
 		std::string vertexShader = R"(
 			#version 330 core
-
+			
 			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 offset;
-			
+			layout(location = 1) in vec4 a_Color;
+
 			out vec3 v_Position;
-			
+			out vec4 v_Color;
+
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0) + offset;
+				v_Color = a_Color;
+				gl_Position = vec4(a_Position, 1.0);	
 			}
 		)";
 
 		std::string fragmentShader = R"(
 			#version 330 core
-
+			
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
-			
+			in vec4 v_Color;
+
 			void main()
 			{
 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
-			};
+				color = v_Color;
+			}
 		)";
 		m_Shader.reset(new Shader(vertexShader, fragmentShader));
+
+		//background矩形
+		m_SquareVA.reset(VertexArray::Create());
+		float squareVertices[3 * 4] = {
+			-0.5f, -0.75f, 0.0f,
+			 0.5f, -0.75f, 0.0f,
+			 0.5f,  0.75f, 0.0f,
+			-0.5f,  0.75f, 0.0f
+		};
+
+		std::shared_ptr<VertexBuffer> squareVB;
+		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		squareVB->SetLayout({
+			{ ShaderDataType::Float3, "a_Position" }
+			});
+		m_SquareVA->AddVertexBuffer(squareVB);
+
+		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+		std::shared_ptr<IndexBuffer> squareIB;
+		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		m_SquareVA->SetIndexBuffer(squareIB);
+
+		std::string blueShaderVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+
+			out vec3 v_Position;
+
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);	
+			}
+		)";
+
+		std::string blueShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+
+			void main()
+			{
+				color = vec4(0.2, 0.3, 0.8, 1.0);
+			}
+		)";
+		m_BlueShader.reset(new Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
 	void GLWidget::resizeGL(int w, int h)
@@ -108,8 +167,6 @@ namespace Echo {
 	void GLWidget::paintGL()
 	{
 		render();
-		m_Shader->Bind();
-		m_pContext->SwapBuffers();
 	}
 
 #pragma region Input Events
@@ -169,18 +226,21 @@ namespace Echo {
 
 	void GLWidget::render()
 	{
-		float attrib[] = { 
-			sin(QDateTime::currentSecsSinceEpoch()) * 0.5f,
-			cos(QDateTime::currentSecsSinceEpoch()) * 0.6f,
-			0.0f,
-			0.0f
-		};
+		glClearColor(0.1f, 0.1f, 0.1f, 1.f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
-		//更新offset值
-		glVertexAttrib4fv(1, attrib);
+		//绘制矩形
+		m_BlueShader->Bind();
+		m_SquareVA->Bind();
+		glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 		//绘制三角形
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		m_Shader->Bind();
+		m_TriangleVA->Bind();
+		glDrawElements(GL_TRIANGLES, m_TriangleVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+		//交换缓冲
+		m_pContext->SwapBuffers();
 	}
 
 }

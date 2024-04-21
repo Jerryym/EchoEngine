@@ -16,8 +16,16 @@ namespace Echo {
 		/// @brief 解绑释放对应顶点缓冲对象
 		virtual void UnBind() const override;
 
+		/// @brief 设置布局
+		/// @param layout 
+		virtual void SetLayout(const BufferLayout& layout) override;
+		/// @brief 获取指定对象布局
+		/// @return 
+		virtual const BufferLayout& GetLayout() const override;
+
 	private:
 		uint32_t m_RendererID;
+		BufferLayout m_layout;
 	};
 
 	class OpenGLIndexBuffer : public IndexBuffer
