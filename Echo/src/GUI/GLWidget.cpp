@@ -1,6 +1,7 @@
 #include "echopch.h"
-#include <glad/glad.h>
 #include "GLWidget.h"
+
+#include "Echo/Renderer/Renderer.h"
 
 namespace Echo {
 
@@ -226,18 +227,16 @@ namespace Echo {
 
 	void GLWidget::render()
 	{
-		glClearColor(0.1f, 0.1f, 0.1f, 1.f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		RenderCommond::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.f));
+		RenderCommond::Clear(GL_COLOR_BUFFER_BIT);
 
 		//绘制矩形
 		m_BlueShader->Bind();
-		m_SquareVA->Bind();
-		glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+		RenderCommond::DrawIndexed(m_SquareVA);
 
 		//绘制三角形
 		m_Shader->Bind();
-		m_TriangleVA->Bind();
-		glDrawElements(GL_TRIANGLES, m_TriangleVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+		RenderCommond::DrawIndexed(m_TriangleVA);
 
 		//交换缓冲
 		m_pContext->SwapBuffers();

@@ -7,7 +7,6 @@
 
 #include "Platform/OpenGL/OpenGLContext.h"
 #include "Echo/Renderer/Shader.h"
-#include "Echo/Renderer/Buffer.h"
 #include "Echo/Renderer/VertexArray.h"
 
 namespace Echo {

@@ -124,6 +124,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Echo\Renderer\RenderCommond.h" />
+    <ClInclude Include="src\Echo\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Echo\Renderer\VertexArray.h" />
     <QtMoc Include="src\GUI\ConsoleDockWidget.h" />
@@ -142,6 +145,9 @@
     <QtMoc Include="src\GUI\GLWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Echo\Renderer\RenderCommond.cpp" />
+    <ClCompile Include="src\Echo\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Echo\Renderer\Buffer.cpp" />
