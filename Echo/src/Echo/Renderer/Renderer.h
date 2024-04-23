@@ -9,14 +9,14 @@ namespace Echo {
 	public:
 		static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 
-		/// @brief ¿ªÊ¼ÆÁÄ»äÖÈ¾
+		/// @brief å¼€å§‹å±å¹•æ¸²æŸ“
 		static void BeginScene();
 		
-		/// @brief ½áÊøÆÁÄ»äÖÈ¾
+		/// @brief ç»“æŸå±å¹•æ¸²æŸ“
 		static void EndScene();
 
-		/// @brief Ìá½»äÖÈ¾ÓÃµÄ¶¥µãÊı×é
-		/// @param vertexArray äÖÈ¾ÓÃµÄ¶¥µãÊı×é 
+		/// @brief æäº¤æ¸²æŸ“ç”¨çš„é¡¶ç‚¹æ•°ç»„
+		/// @param vertexArray æ¸²æŸ“ç”¨çš„é¡¶ç‚¹æ•°ç»„ 
 		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
 	};
 
