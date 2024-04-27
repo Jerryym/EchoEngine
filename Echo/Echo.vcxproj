@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Echo\Renderer\Camera.h" />
     <ClInclude Include="src\Echo\Renderer\RenderCommond.h" />
     <ClInclude Include="src\Echo\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -145,6 +146,7 @@
     <QtMoc Include="src\GUI\GLWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Echo\Renderer\Camera.cpp" />
     <ClCompile Include="src\Echo\Renderer\RenderCommond.cpp" />
     <ClCompile Include="src\Echo\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />

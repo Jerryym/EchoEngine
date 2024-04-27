@@ -19,7 +19,6 @@ namespace Echo {
 
 	void RenderCommond::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
 	{
-		vertexArray->Bind();
 		s_RendererAPI->DrawIndexed(vertexArray);
 	}
 

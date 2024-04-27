@@ -78,6 +78,7 @@ namespace Echo {
 	{
 		glBindVertexArray(m_RendererID);
 		indexbuffer->Bind();
+
 		m_IndexBuffer = indexbuffer;
 	}
 
