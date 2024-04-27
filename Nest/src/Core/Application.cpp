@@ -21,6 +21,11 @@ namespace Nest {
 	{
 		m_bRunning = true;
 		m_Window->show();
+		InitLayer();
+		for (auto layer : m_LayerStack)
+		{
+			layer->SetValid(true);
+		}
 	}
 
 	void Application::SetMainWindow(QMainWindow* pMainWindow)

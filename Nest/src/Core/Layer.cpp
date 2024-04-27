@@ -20,4 +20,21 @@ namespace Nest {
 	{
 	}
 
+	void Layer::SetValid(bool bValid)
+	{
+		m_bValid = bValid;
+	}
+
+	void Layer::OnKeyPressedEvent(int key)
+	{
+	}
+
+	void Layer::OnMouseButtonPressedEvent(int button)
+	{
+	}
+
+	void Layer::OnMouseMoveEvent(double xpos, double ypos)
+	{
+	}
+
 }
