@@ -1,6 +1,7 @@
 #pragma once
-
 #include "RenderCommond.h"
+#include "Camera.h"
+#include "Shader.h"
 
 namespace Echo {
 
@@ -9,15 +10,25 @@ namespace Echo {
 	public:
 		static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 
-		/// @brief ¿ªÊ¼ÆÁÄ»äÖÈ¾
-		static void BeginScene();
+		/// @brief å¼€å§‹å±å¹•æ¸²æŸ“
+		static void BeginScene(const Camera& camera);
 		
-		/// @brief ½áÊøÆÁÄ»äÖÈ¾
+		/// @brief ç»“æŸå±å¹•æ¸²æŸ“
 		static void EndScene();
 
-		/// @brief Ìá½»äÖÈ¾ÓÃµÄ¶¥µãÊı×é
-		/// @param vertexArray äÖÈ¾ÓÃµÄ¶¥µãÊı×é 
-		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
+		/// @brief æäº¤æ¸²æŸ“ç”¨çš„é¡¶ç‚¹æ•°ç»„
+		/// @param shader ç€è‰²å™¨
+		/// @param name ç€è‰²å™¨ä¸­uniformç±»å‹å˜é‡å
+		/// @param vertexArray é¡¶ç‚¹æ•°ç»„
+		static void Submit(const std::shared_ptr<Shader>& shader, const std::string& name, const std::shared_ptr<VertexArray>& vertexArray);
+
+	private:
+		struct SceneData
+		{
+			glm::mat4 ViewProjectionMatrix;
+		};
+
+		static SceneData* m_SceneData;
 	};
 
 }

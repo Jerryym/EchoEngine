@@ -2,6 +2,7 @@
 #include "Shader.h"
 
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace Echo {
 
@@ -107,6 +108,8 @@ namespace Echo {
 		// Always detach shaders after a successful link.
 		glDetachShader(m_RendererID, vertexShader);
 		glDetachShader(m_RendererID, fragmentShader);
+
+		glUseProgram(0);
 	}
 
 	Shader::~Shader()
@@ -122,6 +125,43 @@ namespace Echo {
 	void Shader::unBind() const
 	{
 		glUseProgram(0);
+	}
+
+	void Shader::setUniform1i(const std::string& name, int value)
+	{
+		int iLocation = getUniformLocation(name);
+		glUniform1i(iLocation, value);
+	}
+
+	void Shader::setUniform1f(const std::string& name, float value)
+	{
+		int iLocation = getUniformLocation(name);
+		glUniform1f(iLocation, value);
+	}
+
+	void Shader::setUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
+	{
+		int iLocation = getUniformLocation(name);
+		glUniform4f(iLocation, v0, v1, v2, v3);
+	}
+
+	void Shader::setUniformMat4f(const std::string& name, const glm::mat4& matrix)
+	{
+		int iLocation = getUniformLocation(name);
+		glUniformMatrix4fv(iLocation, 1, GL_FALSE, glm::value_ptr(matrix));
+	}
+
+	int Shader::getUniformLocation(const std::string& name)
+	{
+		if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
+			return m_UniformLocationCache[name];
+
+		int location = glGetUniformLocation(m_RendererID, name.c_str());
+		if (location == -1)
+			NEST_CLIENT_ERROR("[Warning]: uniform {0} doesn't exist!", name);
+
+		m_UniformLocationCache[name] = location;
+		return location;
 	}
 
 }

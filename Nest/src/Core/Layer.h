@@ -20,9 +20,28 @@ namespace Nest {
 		/// @brief 获取层名
 		/// @return 返回层名
 		QString getName() const { return m_SLayerName; }
+		/// @brief 设置层是否有效
+		/// @param bValid 
+		void SetValid(bool bValid);
+		bool IsValid() const { return m_bValid; }
+
+	public:
+		/// @brief 处理按键按下事件
+		/// @param key 
+		virtual void OnKeyPressedEvent(int key);
+		/// @brief 处理鼠标按下事件
+		/// @param button 
+		virtual void OnMouseButtonPressedEvent(int button);
+		/// @brief 处理鼠标移动事件
+		/// @param xpos 
+		/// @param ypos 
+		virtual void OnMouseMoveEvent(double xpos, double ypos);
 
 	protected:
-		QString m_SLayerName;		//层名
+		/// @brief 层名
+		QString m_SLayerName;
+		/// @brief 当前层是否有效
+		bool m_bValid = false;
 	};
 
 }
