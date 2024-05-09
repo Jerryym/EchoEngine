@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 		//创建Application
 		auto app = Nest::CreateApplication(argc, argv);
 		//创建主窗口
-		NestUI::sWindowProps props(1280, 720, "Echo Engine");
+		NestUI::sWindowProps props(1600, 900, "Echo Engine");
 		app->SetMainWindow(Echo::Windows_MainWindow::Create(props));
 		//运行应用程序
 		app->Run();

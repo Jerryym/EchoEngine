@@ -14,10 +14,11 @@ namespace Echo {
 	{
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::string& name, const std::shared_ptr<VertexArray>& vertexArray)
+	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::string& name, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
 		shader->setUniformMat4f(name, m_SceneData->ViewProjectionMatrix);
+		shader->setUniformMat4f("u_Transform", transform);
 
 		vertexArray->Bind();
 		RenderCommond::DrawIndexed(vertexArray);

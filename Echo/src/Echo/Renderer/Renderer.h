@@ -20,7 +20,7 @@ namespace Echo {
 		/// @param shader 着色器
 		/// @param name 着色器中uniform类型变量名
 		/// @param vertexArray 顶点数组
-		static void Submit(const std::shared_ptr<Shader>& shader, const std::string& name, const std::shared_ptr<VertexArray>& vertexArray);
+		static void Submit(const std::shared_ptr<Shader>& shader, const std::string& name, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f));
 
 	private:
 		struct SceneData
