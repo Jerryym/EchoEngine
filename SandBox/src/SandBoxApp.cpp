@@ -68,10 +68,10 @@ public:
 		//background矩形
 		m_SquareVA.reset(Echo::VertexArray::Create());
 		float squareVertices[3 * 4] = {
-			-0.75f, -0.75f, 0.0f,
-			 0.75f, -0.75f, 0.0f,
-			 0.75f,  0.75f, 0.0f,
-			-0.75f,  0.75f, 0.0f
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		
@@ -127,11 +127,19 @@ public:
 		Echo::Renderer::BeginScene(m_camera);
 		
 		//绘制矩形
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePosition);
-		m_SquareVA->AddVertexBuffer(m_SquareVB);
-		m_SquareVA->SetIndexBuffer(m_SquareIB);
-		Echo::Renderer::Submit(m_BlueShader, "u_ViewProjection", m_SquareVA, transform);
-		
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		for (int y = -10; y <= 10; y++)
+		{
+			for (int x = -10; x <= 10; x++)
+			{
+				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				m_SquareVA->AddVertexBuffer(m_SquareVB);
+				m_SquareVA->SetIndexBuffer(m_SquareIB);
+				Echo::Renderer::Submit(m_BlueShader, "u_ViewProjection", m_SquareVA, glm::translate(glm::mat4(1.0f), m_SquarePosition) * transform);
+			}
+		}
+
 		//绘制三角形
 		m_TriangleVA->AddVertexBuffer(m_TriangleVB);
 		m_TriangleVA->SetIndexBuffer(m_TriangleIB);
