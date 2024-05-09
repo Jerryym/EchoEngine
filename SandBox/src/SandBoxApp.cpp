@@ -63,7 +63,7 @@ public:
 				color = v_Color;
 			}
 		)";
-		m_Shader.reset(new Echo::Shader(vertexShader, fragmentShader));
+		m_Shader.reset(Echo::Shader::Create(vertexShader, fragmentShader));
 
 		//background矩形
 		m_SquareVA.reset(Echo::VertexArray::Create());
@@ -108,12 +108,14 @@ public:
 
 			in vec3 v_Position;
 
+			uniform vec3 u_Color;
+
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = vec4(u_Color, 1.0);
 			}
 		)";
-		m_BlueShader.reset(new Echo::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_SquareShader.reset(Echo::Shader::Create(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
 	virtual void OnUpdate() override
@@ -136,14 +138,14 @@ public:
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 				m_SquareVA->AddVertexBuffer(m_SquareVB);
 				m_SquareVA->SetIndexBuffer(m_SquareIB);
-				Echo::Renderer::Submit(m_BlueShader, "u_ViewProjection", m_SquareVA, glm::translate(glm::mat4(1.0f), m_SquarePosition) * transform);
+				Echo::Renderer::Submit(m_SquareShader, m_SquareVA, glm::translate(glm::mat4(1.0f), m_SquarePosition) * transform);
 			}
 		}
 
 		//绘制三角形
 		m_TriangleVA->AddVertexBuffer(m_TriangleVB);
 		m_TriangleVA->SetIndexBuffer(m_TriangleIB);
-		Echo::Renderer::Submit(m_Shader, "u_ViewProjection", m_TriangleVA);
+		Echo::Renderer::Submit(m_Shader, m_TriangleVA);
 		
 		Echo::Renderer::EndScene();
 	}
@@ -185,7 +187,7 @@ public:
 private:
 	/// @brief 着色器
 	std::shared_ptr<Echo::Shader> m_Shader;
-	std::shared_ptr<Echo::Shader> m_BlueShader;
+	std::shared_ptr<Echo::Shader> m_SquareShader;
 	/// @brief 顶点数组对象
 	std::shared_ptr<Echo::VertexArray> m_TriangleVA;
 	std::shared_ptr<Echo::VertexArray> m_SquareVA;
