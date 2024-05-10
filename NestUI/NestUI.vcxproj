@@ -133,6 +133,21 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nestuipch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\UI\DockWidget.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CBaseProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CBoolProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CButtonBasedEditor.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CColorProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CDateProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CDateTimeProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CDoubleProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CFontProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CIntegerProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CListProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CPropertyEditor.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CPropertyHeader.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CStringProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\CTimeProperty.cpp" />
+    <ClCompile Include="src\UI\PropertyEditor\QColorComboBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\UI\MainWindow.h" />
@@ -142,6 +157,21 @@
     <ClInclude Include="src\nestuipch.h" />
     <ClInclude Include="src\NestUI.h" />
     <ClInclude Include="src\NestUICore.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CBaseProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CBoolProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CColorProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CDateProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CDateTimeProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CDoubleProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CFontProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CIntegerProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CListProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CPropertyHeader.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CStringProperty.h" />
+    <ClInclude Include="src\UI\PropertyEditor\CTimeProperty.h" />
+    <QtMoc Include="src\UI\PropertyEditor\QColorComboBox.h" />
+    <QtMoc Include="src\UI\PropertyEditor\CPropertyEditor.h" />
+    <QtMoc Include="src\UI\PropertyEditor\CButtonBasedEditor.h" />
     <QtMoc Include="src\UI\DockWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
