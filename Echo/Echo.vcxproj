@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <QtMoc Include="src\GUI\PropertyDockWidget.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Echo\Renderer\Camera.h" />
     <ClInclude Include="src\Echo\Renderer\RenderCommond.h" />
@@ -147,6 +148,7 @@
     <QtMoc Include="src\GUI\GLWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\PropertyDockWidget.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Echo\Renderer\Camera.cpp" />
     <ClCompile Include="src\Echo\Renderer\RenderCommond.cpp" />

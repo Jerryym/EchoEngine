@@ -127,6 +127,9 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\PropertyDockWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\GUI\GLWidget.h">
@@ -136,6 +139,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="src\GUI\ConsoleDockWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\GUI\PropertyDockWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

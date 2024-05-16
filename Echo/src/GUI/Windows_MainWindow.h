@@ -25,7 +25,6 @@ namespace Echo {
 
 		/// @brief 初始化DockWidgets
 		void InitializeDockWidgets();
-
 		/// @brief 初始化GLFW
 		void InitializeGLWidget();
 
