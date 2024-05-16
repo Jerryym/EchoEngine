@@ -1,13 +1,12 @@
 #pragma once
+#include "CBaseProperty.h"
 #include <QList>
 #include <QIcon>
 #include <QComboBox>
 
-#include "CBaseProperty.h"
-
 namespace NestUI {
 
-	struct CListDataItem
+	struct NESTUI_API CListDataItem
 	{
 		CListDataItem(const QString& text, const QIcon& icon = QIcon(), const QVariant& data = QVariant())
 			: m_text(text),
@@ -21,10 +20,10 @@ namespace NestUI {
 		QVariant m_userData;
 	};
 
-	typedef QList<CListDataItem> CListData;
+	typedef NESTUI_API QList<CListDataItem> CListData;
 
 
-	class CListProperty : public CBaseProperty
+	class NESTUI_API CListProperty : public CBaseProperty
 	{
 	public:
 		CListProperty(const QByteArray& id, const QString& name, const CListData& list, int index, int defaultIndex = 0);

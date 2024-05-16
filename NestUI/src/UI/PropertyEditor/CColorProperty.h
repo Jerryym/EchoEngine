@@ -1,12 +1,11 @@
 #pragma once
 #include "CBaseProperty.h"
 #include "CButtonBasedEditor.h"
-
 #include "QColorComboBox.h"
 
 namespace NestUI {
 
-	class CColorProperty : public CBaseProperty
+	class NESTUI_API CColorProperty : public CBaseProperty
 	{
 	public:
 		CColorProperty(const QByteArray& id, const QString& name, const QColor& color);

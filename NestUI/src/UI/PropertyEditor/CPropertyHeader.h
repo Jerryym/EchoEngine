@@ -3,7 +3,7 @@
 
 namespace NestUI {
 
-	class CPropertyHeader : public CBaseProperty
+	class NESTUI_API CPropertyHeader : public CBaseProperty
 	{
 	public:
 		CPropertyHeader(const QByteArray& id, const QString& name);

@@ -1,9 +1,10 @@
 #pragma once
+#include "NestUICore.h"
 #include <QToolButton>
 
 namespace NestUI {
 
-	class CButtonBasedEditor : public QWidget
+	class NESTUI_API CButtonBasedEditor : public QWidget
 	{
 		Q_OBJECT
 	public:
@@ -27,7 +28,7 @@ namespace NestUI {
 
 
 	template<class EditorClass>
-	class TButtonBasedEditor : public CButtonBasedEditor
+	class NESTUI_API TButtonBasedEditor : public CButtonBasedEditor
 	{
 	public:
 		TButtonBasedEditor(EditorClass* hostedEditor, QWidget* parent = 0)

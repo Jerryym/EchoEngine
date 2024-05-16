@@ -1,11 +1,10 @@
 #pragma once
-#include <float.h>
-
 #include "CBaseProperty.h"
+#include <float.h>
 
 namespace NestUI {
 
-	class CDoubleProperty : public CBaseProperty
+	class NESTUI_API CDoubleProperty : public CBaseProperty
 	{
 	public:
 		CDoubleProperty(const QByteArray& id, const QString& name, double value, double defaultValue = 0, double min = DBL_MIN, double max = DBL_MAX);

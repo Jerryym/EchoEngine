@@ -4,7 +4,7 @@
 
 namespace NestUI {
 
-	class CDateProperty : public CBaseProperty
+	class NESTUI_API CDateProperty : public CBaseProperty
 	{
 	public:
 		CDateProperty(const QByteArray& id, const QString& name, const QDate& value, const QDate& defaultValue = QDate::currentDate());

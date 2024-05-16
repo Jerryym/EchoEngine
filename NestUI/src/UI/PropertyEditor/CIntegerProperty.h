@@ -3,7 +3,7 @@
 
 namespace NestUI {
 
-	class CIntegerProperty : public CBaseProperty
+	class NESTUI_API CIntegerProperty : public CBaseProperty
 	{
 	public:
 		CIntegerProperty(const QByteArray& id, const QString& name, int value, int defaultValue = 0, int min = INT_MIN, int max = INT_MAX);

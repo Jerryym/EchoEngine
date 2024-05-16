@@ -1,9 +1,10 @@
 #pragma once
+#include "NestUICore.h"
 #include <QtWidgets/QTreeWidgetItem>
 
 namespace NestUI {
 
-	class CBaseProperty : public QTreeWidgetItem
+	class NESTUI_API CBaseProperty : public QTreeWidgetItem
 	{
 	public:
 		CBaseProperty(const QByteArray& id, const QString& name);

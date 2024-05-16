@@ -1,9 +1,10 @@
 #pragma once
+#include "NestUICore.h"
 #include <QComboBox>
 
 namespace NestUI {
 
-	class QColorComboBox : public QComboBox
+	class NESTUI_API QColorComboBox : public QComboBox
 	{
 		Q_OBJECT
 	public:

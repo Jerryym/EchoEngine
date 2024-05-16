@@ -1,11 +1,10 @@
 #pragma once
 #include "CBaseProperty.h"
-
 #include <QTime>
 
 namespace NestUI {
 
-	class CTimeProperty : public CBaseProperty
+	class NESTUI_API CTimeProperty : public CBaseProperty
 	{
 	public:
 		CTimeProperty(const QByteArray& id, const QString& name, const QTime& value, const QTime& defaultValue = QTime::currentTime());

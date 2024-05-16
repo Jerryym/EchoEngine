@@ -3,7 +3,7 @@
 
 namespace NestUI {
 
-	class CStringProperty : public CBaseProperty
+	class NESTUI_API CStringProperty : public CBaseProperty
 	{
 	public:
 		CStringProperty(const QByteArray& id, const QString& name, const QString& value, const QString& defaultValue = "");

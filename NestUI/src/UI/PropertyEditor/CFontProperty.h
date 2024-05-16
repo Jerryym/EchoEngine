@@ -1,12 +1,11 @@
 #pragma once
 #include "CBaseProperty.h"
 #include "CButtonBasedEditor.h"
-
 #include <QFontComboBox>
 
 namespace NestUI {
 
-	class CFontProperty : public CBaseProperty
+	class NESTUI_API CFontProperty : public CBaseProperty
 	{
 	public:
 		CFontProperty(const QByteArray& id, const QString& name, const QFont& font,

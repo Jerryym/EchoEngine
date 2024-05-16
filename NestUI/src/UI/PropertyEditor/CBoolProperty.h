@@ -1,11 +1,10 @@
 #pragma once
 #include "CBaseProperty.h"
-
 #include <QKeyEvent>
 
 namespace NestUI {
 
-	class CBoolProperty : public CBaseProperty
+	class NESTUI_API CBoolProperty : public CBaseProperty
 	{
 	public:
 		CBoolProperty(const QByteArray& id, const QString& name, bool value, bool defaultValue = false);

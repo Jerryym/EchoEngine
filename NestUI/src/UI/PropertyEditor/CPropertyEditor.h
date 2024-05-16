@@ -1,4 +1,5 @@
 #pragma once
+#include "NestUICore.h"
 #include <QTreeWidget>
 #include <QMap>
 
@@ -8,7 +9,7 @@ namespace NestUI {
 	class CBoolProperty;
 	class CIntegerProperty;
 
-	class CPropertyEditor : public QTreeWidget
+	class NESTUI_API CPropertyEditor : public QTreeWidget
 	{
 		Q_OBJECT
 	public:
