@@ -46,7 +46,10 @@ namespace Echo {
 
 	void GLWidget::initializeGL()
 	{
-		glViewport(0, 0, width(), height());
+		//初始化OpenGL
+		m_pContext->Init();
+		//设置垂直同步
+		SetVSync(m_bVSync);
 	}
 
 	void GLWidget::resizeGL(int w, int h)
@@ -115,16 +118,11 @@ namespace Echo {
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_bGLFWInitialiazed = true;
 		}
-
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);  //设置 offscreen context 的标志位, 且GLFW的窗口会自动隐藏
 		m_pGLFWwindow = glfwCreateWindow(nWidth, nHeight, strTitle.c_str(), nullptr, nullptr);
 
-		//初始化当前上下文
+		//初始化OpenGL上下文
 		m_pContext = new OpenGLContext(m_pGLFWwindow);
-		m_pContext->Init();
-		
-		//设置垂直同步
-		SetVSync(true);	
 	}
 
 }
