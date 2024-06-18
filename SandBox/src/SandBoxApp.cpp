@@ -17,20 +17,16 @@ public:
 		};
 
 		//创建顶点缓冲对象
-		std::shared_ptr<Echo::VertexBuffer> TriangleVB;
-		TriangleVB.reset(Echo::VertexBuffer::Create(triangleVertices, sizeof(triangleVertices)));
+		m_TriangleVB.reset(Echo::VertexBuffer::Create(triangleVertices, sizeof(triangleVertices)));
 		Echo::BufferLayout triangleLayout = {
 			{ Echo::ShaderDataType::Float3, "a_Position" },
 			{ Echo::ShaderDataType::Float4, "a_Color" }
 		};
-		TriangleVB->SetLayout(triangleLayout);
-		m_TriangleVA->AddVertexBuffer(TriangleVB);
+		m_TriangleVB->SetLayout(triangleLayout);
 
 		//创建索引缓冲对象
 		uint32_t triangleIndices[3] = { 0,1,2 };
-		std::shared_ptr<Echo::IndexBuffer> TriangleIB;
-		TriangleIB.reset(Echo::IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(uint32_t)));
-		m_TriangleVA->SetIndexBuffer(TriangleIB);
+		m_TriangleIB.reset(Echo::IndexBuffer::Create(triangleIndices, sizeof(triangleIndices) / sizeof(uint32_t)));
 
 		//创建着色器
 		std::string vertexShader = R"(
@@ -78,17 +74,15 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Echo::VertexBuffer> SquareVB;
-		SquareVB.reset(Echo::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-		SquareVB->SetLayout({
+		
+		m_SquareVB.reset(Echo::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		m_SquareVB->SetLayout({
 			{ Echo::ShaderDataType::Float3, "a_Position" }
 		});
-		m_SquareVA->AddVertexBuffer(SquareVB);
 		
+
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Echo::IndexBuffer> SquareIB;
-		SquareIB.reset(Echo::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		m_SquareVA->SetIndexBuffer(SquareIB);
+		m_SquareIB.reset(Echo::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 
 		std::string blueShaderVertexSrc = R"(
 			#version 330 core
@@ -142,11 +136,15 @@ public:
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				m_SquareVA->AddVertexBuffer(m_SquareVB);
+				m_SquareVA->SetIndexBuffer(m_SquareIB);
 				Echo::Renderer::Submit(m_SquareShader, m_SquareVA, glm::translate(glm::mat4(1.0f), m_SquarePosition) * transform);
 			}
 		}
 
 		//绘制三角形
+		m_TriangleVA->AddVertexBuffer(m_TriangleVB);
+		m_TriangleVA->SetIndexBuffer(m_TriangleIB);
 		Echo::Renderer::Submit(m_Shader, m_TriangleVA);
 		
 		Echo::Renderer::EndScene();
@@ -193,6 +191,12 @@ private:
 	/// @brief 顶点数组对象
 	std::shared_ptr<Echo::VertexArray> m_TriangleVA;
 	std::shared_ptr<Echo::VertexArray> m_SquareVA;
+	/// @brief 顶点缓冲对象
+	std::shared_ptr<Echo::VertexBuffer> m_SquareVB;
+	std::shared_ptr<Echo::VertexBuffer> m_TriangleVB;
+	/// @brief 顶点索引缓冲对象
+	std::shared_ptr<Echo::IndexBuffer> m_TriangleIB;
+	std::shared_ptr<Echo::IndexBuffer> m_SquareIB;
 	
 	/// @brief 相机
 	Echo::Camera m_camera;
