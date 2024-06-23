@@ -1,8 +1,7 @@
-#include "echopch.h"
+#include "nestpch.h"
 #include "ConsoleDockWidget.h"
-#include <QGridLayout>
 
-namespace Echo {
+namespace Nest {
 
 	ConsoleDockWidget::ConsoleDockWidget(QWidget* parent)
 		: DockWidget(parent)

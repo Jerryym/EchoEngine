@@ -1,7 +1,6 @@
 #pragma once
-
 #include <QDockWidget>
-#include "NestUICore.h"
+#include <Core.h>
 
 namespace NestUI {
 

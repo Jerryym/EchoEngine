@@ -33,8 +33,8 @@ namespace Echo {
 			// We don't need the shader anymore.
 			glDeleteShader(vertexShader);
 
-			NEST_CORE_ERROR("{0}", infoLog.data());
-			NEST_CORE_ASSERT("Vertex Shader compilation failure!");
+			ECHO_CORE_ASSERT("{0}", infoLog.data());
+			ECHO_CORE_ASSERT("Vertex Shader compilation failure!");
 			return;
 		}
 
@@ -64,8 +64,8 @@ namespace Echo {
 			// Either of them. Don't leak shaders.
 			glDeleteShader(vertexShader);
 
-			NEST_CORE_ERROR("{0}", infoLog.data());
-			NEST_CORE_ASSERT("Fragment Shader compilation failure!");
+			ECHO_CORE_ASSERT("{0}", infoLog.data());
+			ECHO_CORE_ASSERT("Fragment Shader compilation failure!");
 			return;
 		}
 
@@ -176,7 +176,7 @@ namespace Echo {
 
 		int location = glGetUniformLocation(m_RendererID, name.c_str());
 		if (location == -1)
-			NEST_CLIENT_ERROR("[Warning]: uniform {0} doesn't exist!", name);
+			ECHO_CORE_ASSERT("[Warning]: uniform {0} doesn't exist!", name);
 
 		m_UniformLocationCache[name] = location;
 		return location;

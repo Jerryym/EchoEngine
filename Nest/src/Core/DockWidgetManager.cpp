@@ -1,8 +1,7 @@
-#include "nestuipch.h"
+#include "nestpch.h"
 #include "DockWidgetManager.h"
-#include <Nest.h>
 
-namespace NestUI {
+namespace Nest {
 
 	DockWidgetManager* DockWidgetManager::s_Instance = nullptr;
 

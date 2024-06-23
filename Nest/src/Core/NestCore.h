@@ -1,6 +1,7 @@
 #pragma once
+
 #if NEST_DYNAMIC_LINK
-	#ifdef ECHO_BUILD_DLL
+	#ifdef NEST_BUILD_DLL
 		#define NEST_API __declspec(dllexport)
 	#else
 		#define NEST_API __declspec(dllimport)

@@ -13,8 +13,4 @@
 
 #include <Windows.h>
 
-#include <QString>
-
-#include <Utils/Log.h>
-
-#include <Echo/EngineCore.h>
+#include <Echo/Core.h>

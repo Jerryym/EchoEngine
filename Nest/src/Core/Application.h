@@ -2,6 +2,7 @@
 #include "NestCore.h"
 #include <QApplication>
 #include <QMainWindow>
+
 #include "LayerStack.h"
 
 namespace Nest {

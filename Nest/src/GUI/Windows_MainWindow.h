@@ -1,15 +1,16 @@
 #pragma once
-#include <Nest.h>
 #include <NestUI.h>
 
-namespace Echo {
+#include "Core/DockWidgetManager.h"
+
+namespace Nest {
 
 	class Windows_MainWindow : public NestUI::MainWindow
 	{
 		Q_OBJECT
 	public:
-		/// @brief 创建主窗口
-		static Windows_MainWindow* Create(const NestUI::sWindowProps& props = NestUI::sWindowProps());
+		Windows_MainWindow(const NestUI::sWindowProps& prop);
+		virtual ~Windows_MainWindow();
 
 	public:
 		virtual unsigned int GetWidth() const override { return m_sData.m_nWidth; }
@@ -33,10 +34,6 @@ namespace Echo {
 		/// @return 
 		NestUI::DockWidget* GetDockWidget(const QString& STitle);
 
-	protected:
-		virtual ~Windows_MainWindow();
-		Windows_MainWindow(const NestUI::sWindowProps& prop);
-
 	private:
 		/// @brief 初始化
 		virtual void Initialize(const NestUI::sWindowProps& props);
@@ -55,7 +52,7 @@ namespace Echo {
 
 		sWindowData m_sData;
 
-		NestUI::DockWidgetManager* m_dockManager;
+		DockWidgetManager* m_dockManager;
 	};
 
 }

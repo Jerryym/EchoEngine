@@ -1,5 +1,4 @@
 #pragma once
-#include "Echo/EngineCore.h"
 #include <QOpenGLWidget>
 #include <GLFW/glfw3.h>
 #include <QTimer>
@@ -7,7 +6,7 @@
 #include "Platform/OpenGL/OpenGLContext.h"
 #include "Core/LayerStack.h"
 
-namespace Echo {
+namespace Nest {
 
 	class GLWidget : public QOpenGLWidget
 	{
@@ -56,7 +55,7 @@ namespace Echo {
 	private:
 		GLFWwindow* m_pGLFWwindow;
 		/// @brief OpenGL上下文
-		GraphicContext* m_pContext;
+		Echo::GraphicContext* m_pContext;
 		/// @brief 是否开启垂直同步
 		bool m_bVSync = true;
 		/// @brief 定时器, 用于实现按帧刷新

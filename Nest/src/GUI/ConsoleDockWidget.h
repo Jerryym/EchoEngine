@@ -1,8 +1,10 @@
 #pragma once
-#include <QTextEdit>
 #include <NestUI.h>
 
-namespace Echo {
+#include <QTextEdit>
+#include <QGridLayout>
+
+namespace Nest {
 
 	/// @brief 控制台Dock: 一般用于Log输出
 	class ConsoleDockWidget : public NestUI::DockWidget

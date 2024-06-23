@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -11,21 +11,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{85D21928-BC1B-4A48-9943-69EBB2DF4506}</ProjectGuid>
+    <ProjectGuid>{450E48AA-02A2-4351-855A-33D72499DFE0}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -59,53 +62,47 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutDir>$(SolutionDir)bin\Debug-windows-x86_64\NestUI\</OutDir>
     <IntDir>$(SolutionDir)bin-int\Debug-windows-x86_64\NestUI\</IntDir>
-    <TargetName>NestUI</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutDir>$(SolutionDir)bin\Release-windows-x86_64\NestUI\</OutDir>
     <IntDir>$(SolutionDir)bin-int\Release-windows-x86_64\NestUI\</IntDir>
-    <TargetName>NestUI</TargetName>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Qt_INCLUDEPATH_);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Nest\vendor\spdlog\include;..\Nest\src;src;%(AdditionalIncludeDirectories);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NEST_STATIC_LINK;NESTUI_BUILD_DLL;NEST_LOG;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nestuipch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>NESTUI_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>Copy "$(SolutionDir)bin\Debug-windows-x86_64\NestUI\NestUI.dll" "$(SolutionDir)bin\Debug-windows-x86_64\"</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>Nest.lib;%(AdditionalDependencies);$(Qt_LIBS_)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\Debug-windows-x86_64\Nest\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>opengl32.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>..\Nest\vendor\spdlog\include;..\Nest\src;src</AdditionalIncludeDirectories>
-      <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_WINDLL;NEST_STATIC_LINK;NESTUI_BUILD_DLL;NEST_LOG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;%(AdditionalIncludeDirectories);$(ProjectDir);$(Qt_INCLUDEPATH_)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nestuipch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>NESTUI_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)bin\Release-windows-x86_64\Nest\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Nest.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
     <PostBuildEvent>
       <Command>Copy "$(SolutionDir)bin\Release-windows-x86_64\NestUI\NestUI.dll" "$(SolutionDir)bin\Release-windows-x86_64\"</Command>
     </PostBuildEvent>
+    <Link>
+      <IgnoreSpecificDefaultLibraries>opengl32.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <Optimization>Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -114,65 +111,37 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ClCompile>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DebugInformationFormat>None</DebugInformationFormat>
-      <Optimization>MaxSpeed</Optimization>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\DockWidgetManager.cpp" />
     <ClCompile Include="src\nestuipch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nestuipch.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nestuipch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\UI\DockWidget.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CBaseProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CBoolProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CButtonBasedEditor.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CColorProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CDateProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CDateTimeProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CDoubleProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CFontProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CIntegerProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CListProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CPropertyEditor.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CPropertyHeader.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CStringProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\CTimeProperty.cpp" />
-    <ClCompile Include="src\UI\PropertyEditor\QColorComboBox.cpp" />
+    <ClCompile Include="src\Widgets\DockWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="src\UI\MainWindow.h" />
+    <QtMoc Include="src\Widgets\DockWidget.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\DockWidgetManager.h" />
-    <ClInclude Include="src\nestuipch.h" />
+    <QtMoc Include="src\Widgets\MainWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\NestUI.h" />
-    <ClInclude Include="src\NestUICore.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CBaseProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CBoolProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CColorProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CDateProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CDateTimeProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CDoubleProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CFontProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CIntegerProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CListProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CPropertyHeader.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CStringProperty.h" />
-    <ClInclude Include="src\UI\PropertyEditor\CTimeProperty.h" />
-    <QtMoc Include="src\UI\PropertyEditor\QColorComboBox.h" />
-    <QtMoc Include="src\UI\PropertyEditor\CPropertyEditor.h" />
-    <QtMoc Include="src\UI\PropertyEditor\CButtonBasedEditor.h" />
-    <QtMoc Include="src\UI\DockWidget.h" />
+    <ClInclude Include="src\nestuipch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
