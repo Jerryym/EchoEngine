@@ -1,8 +1,9 @@
-#include "echopch.h"
+#include "nestpch.h"
 #include "GLWidget.h"
+
 #include "Core/Application.h"
 
-namespace Echo {
+namespace Nest {
 
 	static bool s_bGLFWInitialiazed = false;
 
@@ -41,7 +42,12 @@ namespace Echo {
 
 	void GLWidget::ShutDown()
 	{
-		glfwDestroyWindow(m_pGLFWwindow);
+		if (m_pGLFWwindow)
+		{
+			glfwDestroyWindow(m_pGLFWwindow);
+			m_pGLFWwindow = nullptr;
+		}
+		glfwTerminate();
 	}
 
 	void GLWidget::initializeGL()
@@ -57,7 +63,7 @@ namespace Echo {
 	void GLWidget::paintGL()
 	{
 		//遍历层栈，实现各层更新
-		m_layerStack = Nest::Application::GetLayerStack();
+		m_layerStack = Application::GetLayerStack();
 		for (auto layer : m_layerStack)
 		{
 			if (layer->IsValid() == true)
@@ -110,21 +116,20 @@ namespace Echo {
 		{
 			// glfwTerminate on system shutdown
 			int success = glfwInit();
-			ECHO_CORE_ASSERT(success, "Could not intialiaze GLFW!");
+			NEST_CORE_ASSERT(success, "Could not intialiaze GLFW!");
 
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_bGLFWInitialiazed = true;
 		}
-
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);  //设置 offscreen context 的标志位, 且GLFW的窗口会自动隐藏
 		m_pGLFWwindow = glfwCreateWindow(nWidth, nHeight, strTitle.c_str(), nullptr, nullptr);
 
-		//初始化当前上下文
-		m_pContext = new OpenGLContext(m_pGLFWwindow);
+		//初始化OpenGL上下文
+		m_pContext = new Echo::OpenGLContext(m_pGLFWwindow);
 		m_pContext->Init();
 		
 		//设置垂直同步
-		SetVSync(true);	
+		SetVSync(m_bVSync);
 	}
 
 }

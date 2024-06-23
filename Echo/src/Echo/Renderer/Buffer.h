@@ -1,5 +1,5 @@
 #pragma once
-#include <Echo/EngineCore.h>
+#include <Echo/Core.h>
 
 namespace Echo {
 

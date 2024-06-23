@@ -7,23 +7,17 @@ namespace Echo {
 	class Shader
 	{
 	public:
-		Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
-		~Shader();
+		virtual ~Shader() = default;
 
 	public:
-		void Bind() const;
-		void unBind() const;
+		virtual void Bind() const = 0;
+		virtual void unBind() const = 0;
 
-		//设置uniform
-		void setUniform1i(const std::string& name, int value);
-		void setUniform1f(const std::string& name, float value);
-		void setUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-		void setUniformMat4f(const std::string& name, const glm::mat4& matrix);
-		int getUniformLocation(const std::string& name);
-
-	private:
-		uint32_t m_RendererID;
-		std::unordered_map<std::string, int> m_UniformLocationCache;
+		/// @brief 创建着色器
+		/// @param vertexSrc 顶点着色器 
+		/// @param fragmentSrc 片元着色器
+		/// @return 返回对应RendererAPI创建的着色器，若无对应RendererAPI则返回空！
+		static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
 	};
 
 }

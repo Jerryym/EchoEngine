@@ -1,6 +1,6 @@
 #pragma once
 
-// MainWindow
-#include "UI/MainWindow.h"
-#include "UI/DockWidget.h"
-#include "DockWidgetManager.h"
+// Widget
+#include "Widgets/MainWindow.h"
+#include "Widgets/DockWidget.h"
+

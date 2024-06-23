@@ -1,11 +1,11 @@
 #pragma once
-#include "NestUICore.h"
-#include "UI/MainWindow.h"
+#include "NestCore.h"
+#include "Widgets/MainWindow.h"
 
-namespace NestUI {
+namespace Nest {
 
 	/// @brief DockWidget窗口管理类
-	class NESTUI_API DockWidgetManager
+	class NEST_API DockWidgetManager
 	{
 	public:
 		/// @brief 获取当前DockManager

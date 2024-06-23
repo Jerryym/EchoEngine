@@ -6,22 +6,6 @@
 #include "spdlog/sinks/qt_sinks.h"
 #include "spdlog/fmt/ostr.h"
 
-#ifdef NEST_LOG
-	// Core log macros
-	#define NEST_CORE_TRACE(...)		::Nest::Log::GetCoreLogger()->trace(__VA_ARGS__)
-	#define NEST_CORE_INFO(...)			::Nest::Log::GetCoreLogger()->info(__VA_ARGS__)
-	#define NEST_CORE_WARN(...)			::Nest::Log::GetCoreLogger()->warn(__VA_ARGS__)
-	#define NEST_CORE_ERROR(...)		::Nest::Log::GetCoreLogger()->error(__VA_ARGS__)
-	#define NEST_CORE_CRITICAL(...)		::Nest::Log::GetCoreLogger()->critical(__VA_ARGS__)
-
-	// Client log macros
-	#define NEST_CLIENT_TRACE(...)		::Nest::Log::GetClientLogger()->trace(__VA_ARGS__)
-	#define NEST_CLIENT_INFO(...)		::Nest::Log::GetClientLogger()->info(__VA_ARGS__)
-	#define NEST_CLIENT_WARN(...)		::Nest::Log::GetClientLogger()->warn(__VA_ARGS__)
-	#define NEST_CLIENT_ERROR(...)		::Nest::Log::GetClientLogger()->error(__VA_ARGS__)
-	#define NEST_CLIENT_CRITICAL(...)	::Nest::Log::GetClientLogger()->critical(__VA_ARGS__)
-#endif // NEST_LOG
-
 namespace Nest {
 
 	class NEST_API Log
@@ -51,3 +35,16 @@ namespace Nest {
 
 }
 
+// Core log macros
+#define NEST_CORE_TRACE(...)		::Nest::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define NEST_CORE_INFO(...)			::Nest::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define NEST_CORE_WARN(...)			::Nest::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define NEST_CORE_ERROR(...)		::Nest::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define NEST_CORE_CRITICAL(...)		::Nest::Log::GetCoreLogger()->critical(__VA_ARGS__)
+
+// Client log macros
+#define NEST_CLIENT_TRACE(...)		::Nest::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define NEST_CLIENT_INFO(...)		::Nest::Log::GetClientLogger()->info(__VA_ARGS__)
+#define NEST_CLIENT_WARN(...)		::Nest::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define NEST_CLIENT_ERROR(...)		::Nest::Log::GetClientLogger()->error(__VA_ARGS__)
+#define NEST_CLIENT_CRITICAL(...)	::Nest::Log::GetClientLogger()->critical(__VA_ARGS__)

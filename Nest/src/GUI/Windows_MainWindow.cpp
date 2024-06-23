@@ -1,19 +1,14 @@
-#include "echopch.h"
+#include "nestpch.h"
 #include "Windows_MainWindow.h"
 #include "ConsoleDockWidget.h"
 #include "GLWidget.h"
 
-namespace Echo {
-
-	Windows_MainWindow* Windows_MainWindow::Create(const NestUI::sWindowProps& props)
-	{
-		return new Windows_MainWindow(props);
-	}
+namespace Nest {
 
 	Windows_MainWindow::Windows_MainWindow(const NestUI::sWindowProps& prop)
 	{
 		Initialize(prop);
-		m_dockManager = NestUI::DockWidgetManager::GetDockManager(this);
+		m_dockManager = Nest::DockWidgetManager::GetDockManager(this);
 		InitializeDockWidgets();
 		InitializeGLWidget();
 	}
@@ -22,8 +17,9 @@ namespace Echo {
 	{
 		//ConSoleWidget
 		ConsoleDockWidget* pConsole = new ConsoleDockWidget(this);
-		ECHO_CORE_ASSERT(pConsole == nullptr, "Create ConsoleDockWidget Fail!");
+		NEST_CORE_ASSERT(pConsole == nullptr, "Create ConsoleDockWidget Fail!");
 		m_dockManager->AddDockWidget("ConSole", pConsole, Qt::BottomDockWidgetArea);
+
 		NEST_CORE_INFO("DockWidgetNum = {0}", m_dockManager->GetDockWidgetNum());
 	}
 

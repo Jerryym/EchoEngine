@@ -1,6 +1,6 @@
 #pragma once
 #include <QMainWindow>
-#include "NestUICore.h"
+#include <Core.h>
 
 namespace NestUI {
 
