@@ -11,6 +11,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include <Windows.h>
-
-#include <Echo/Core.h>
+#ifndef ECHO_PLATFORM_WINDOWS
+	#include <Windows.h>
+#endif // !ECHO_PLATFORM_WINDOWS

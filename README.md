@@ -6,24 +6,23 @@ Echo Engine is a learning project to be familiar with OpenGL, understand the pri
 
 ## Environment
 
-* **IDE**: VS2019
-* **Qt Version**: Qt6.5.3
+* **IDE**: Visual Studio 2022
 
 ## Getting Started
 
 1. Run `GenerateProject.bat` file first. This wil generate a Visual Studio solution file for user's usage.
-2. Open `EchoEngine.sln` file in Visual Studio and add `Nest`、`NestUI`、`Echo`、`SandBox` projects to solution file.
+2. Open `EchoEngine.sln` file in Visual Studio
 3. Set `SandBox` project as start project.
 
 ## Dependencies
 
 Echo Engine uses the following open-source libraries:
 
-* [Qt6](https://www.qt.io/)
-* [spdlog](https://github.com/gabime/spdlog) - C++ logging library.
-* [GLFW](https://github.com/glfw/glfw) - A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input.
-* [GLAD](https://github.com/Dav1dde/glad) - Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
-* [GLM](https://github.com/g-truc/glm) - OpenGL Mathematics (GLM)
+- [spdlog](https://github.com/gabime/spdlog) - C++ logging library.
+- [GLFW](https://github.com/glfw/glfw) - A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input.
+- [GLAD](https://github.com/Dav1dde/glad) - Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
+- [GLM](https://github.com/g-truc/glm) - OpenGL Mathematics (GLM)
+- [ImGUI](https://github.com/ocornut/imgui)-Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies
 
 ## Reference
 
