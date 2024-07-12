@@ -4,6 +4,12 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{A5D31CCF-91A0-77DA-BAB9-6582A6E5AC68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utils">
+      <UniqueIdentifier>{4D9AFFB3-B904-B42A-0243-65D06EEC917F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -27,6 +33,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Application.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\EntryPoint.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Echo.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\Log.h">
+      <Filter>src\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="src\echopch.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -1278,14 +1299,16 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Application.h" />
-    <ClInclude Include="src\Echo.h" />
-    <ClInclude Include="src\Core\EntryPoint.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Application.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\Log.cpp">
+      <Filter>src\Utils</Filter>
+    </ClCompile>
     <ClCompile Include="src\echopch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Application.cpp" />
   </ItemGroup>
 </Project>
