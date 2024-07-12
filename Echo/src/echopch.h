@@ -14,3 +14,5 @@
 #ifndef ECHO_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif // !ECHO_PLATFORM_WINDOWS
+
+#include <Utils/Log.h>
