@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 	ECHO_CORE_WARN("Initialiazed Log!");
 	ECHO_CLIENT_INFO("Hello Echo Engine!");
 
-	//创建应用系统
+	//创建应用程序
 	auto app = Echo::CreateApplication();
 	app->Run();
 	delete app;

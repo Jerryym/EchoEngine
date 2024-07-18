@@ -143,10 +143,12 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\MainWindow_Windows.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
     <ClInclude Include="src\Echo.h" />
+    <ClInclude Include="src\GUI\MainWindow.h" />
     <ClInclude Include="src\Utils\Log.h" />
     <ClInclude Include="src\echopch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -567,6 +569,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\MainWindow_Windows.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Utils\Log.cpp" />
     <ClCompile Include="src\echopch.cpp">
