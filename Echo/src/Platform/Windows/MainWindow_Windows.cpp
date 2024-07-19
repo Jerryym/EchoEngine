@@ -1,6 +1,10 @@
 #include "echopch.h"
 #include "MainWindow_Windows.h"
 
+#include "Core/Events/ApplicationEvent.hpp"
+#include "Core/Events/KeyEvent.hpp"
+#include "Core/Events/MouseEvent.hpp"
+
 namespace Echo {
 
 	static bool s_bGLFWInitialiazed = false;
@@ -53,6 +57,11 @@ namespace Echo {
 		return m_sData.m_bVSync;
 	}
 
+	void MainWindow_Windows::SetEventCallBack(const EventCallBackFun& callback)
+	{
+		m_sData.m_Eventcallback = callback;
+	}
+
 	void MainWindow_Windows::Initialize(const sWindowProp& props)
 	{
 		m_sData.m_nWidth = props.m_iWidth;
@@ -74,6 +83,99 @@ namespace Echo {
 		glfwMakeContextCurrent(m_pGLFWWindow);	//设置当前窗口上下文
 		glfwSetWindowUserPointer(m_pGLFWWindow, &m_sData);
 		SetVSync(true);	//设置垂直同步
+
+		//////////////////////////////////////////////////////////////
+		// 设置GLFW事件回调 ///////////////////////////////////////////
+		//////////////////////////////////////////////////////////////
+		//glfwSetWindowSizeCallback - 重置窗口大小
+		glfwSetWindowSizeCallback(m_pGLFWWindow, [](GLFWwindow* window, int width, int height)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+				sData.m_nWidth = width;
+				sData.m_nHeight = height;
+				WindowResizeEvent resizeEvent(width, height);
+				sData.m_Eventcallback(resizeEvent);
+			});
+
+		//glfwSetWindowCloseCallback - 关闭窗口
+		glfwSetWindowCloseCallback(m_pGLFWWindow, [](GLFWwindow* window)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+				WindowCloseEvent closeEvent;
+				sData.m_Eventcallback(closeEvent);
+			});
+
+		//glfwSetKeyCallback - 键盘操作
+		glfwSetKeyCallback(m_pGLFWWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+				switch (action)//action `GLFW_PRESS`, `GLFW_RELEASE` or `GLFW_REPEAT`
+				{
+					case GLFW_PRESS:
+					{
+						KeyPressedEvent keyEvent(key);
+						sData.m_Eventcallback(keyEvent);
+						break;
+					}
+					case GLFW_RELEASE:
+					{
+						KeyReleasedEvent keyEvent(key);
+						sData.m_Eventcallback(keyEvent);
+						break;
+					}
+					case GLFW_REPEAT:
+					{
+						KeyPressedEvent keyEvent(key, true);
+						sData.m_Eventcallback(keyEvent);
+						break;
+					}
+				}
+			});
+
+		//glfwSetCharCallback - 键盘键入操作
+		glfwSetCharCallback(m_pGLFWWindow, [](GLFWwindow* window, unsigned int codepoint)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(codepoint);
+				sData.m_Eventcallback(event);
+			});
+
+		//glfwSetMouseButtonCallback - 鼠标按键操作
+		glfwSetMouseButtonCallback(m_pGLFWWindow, [](GLFWwindow* window, int button, int action, int mods)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+				switch (action)//action One of `GLFW_PRESS` or `GLFW_RELEASE`
+				{
+					case GLFW_PRESS:
+					{
+						MouseButtonPressedEvent mouseEvent(button);
+						sData.m_Eventcallback(mouseEvent);
+						break;
+					}
+					case GLFW_RELEASE:
+					{
+						MouseButtonReleasedEvent mouseEvent(button);
+						sData.m_Eventcallback(mouseEvent);
+						break;
+					}
+				}
+			});
+
+		//glfwSetScrollCallback - 滚轮滚动操作
+		glfwSetScrollCallback(m_pGLFWWindow, [](GLFWwindow* window, double xoffset, double yoffset)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+				MouseScrolledEvent mouseEvent((float)xoffset, (float)yoffset);
+				sData.m_Eventcallback(mouseEvent);
+			});
+
+		//glfwSetCursorPosCallback - 当前鼠标位置
+		glfwSetCursorPosCallback(m_pGLFWWindow, [](GLFWwindow* window, double xpos, double ypos)
+			{
+				sWindowData& sData = *(sWindowData*)glfwGetWindowUserPointer(window);
+				MouseMovedEvent mouseEvent((float)xpos, (float)ypos);
+				sData.m_Eventcallback(mouseEvent);
+			});
 	}
 
 	void MainWindow_Windows::ShutDown()

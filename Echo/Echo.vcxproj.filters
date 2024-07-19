@@ -7,6 +7,15 @@
     <Filter Include="src\Core">
       <UniqueIdentifier>{A5D31CCF-91A0-77DA-BAB9-6582A6E5AC68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\GUI">
+      <UniqueIdentifier>{C1782FA9-2D58-AE44-3670-391BA2CE14A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Utils">
       <UniqueIdentifier>{4D9AFFB3-B904-B42A-0243-65D06EEC917F}</UniqueIdentifier>
     </Filter>
@@ -44,6 +53,12 @@
     </ClInclude>
     <ClInclude Include="src\Echo.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\MainWindow.h">
+      <Filter>src\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\MainWindow_Windows.h">
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\Log.h">
       <Filter>src\Utils</Filter>
@@ -1299,12 +1314,17 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUI\MainWindow.h" />
-    <ClInclude Include="src\Platform\Windows\MainWindow_Windows.h" />
+    <ClInclude Include="src\Core\Events\Event.h" />
+    <ClInclude Include="src\Core\Events\MouseEvent.hpp" />
+    <ClInclude Include="src\Core\Events\KeyEvent.hpp" />
+    <ClInclude Include="src\Core\Events\ApplicationEvent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
       <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\MainWindow_Windows.cpp">
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Utils\Log.cpp">
       <Filter>src\Utils</Filter>
@@ -1312,6 +1332,5 @@
     <ClCompile Include="src\echopch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\MainWindow_Windows.cpp" />
   </ItemGroup>
 </Project>

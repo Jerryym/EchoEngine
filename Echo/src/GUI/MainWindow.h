@@ -1,6 +1,6 @@
 #pragma once
-
 #include "echopch.h"
+#include "Core/Events/Event.h"
 
 namespace Echo {
 
@@ -21,6 +21,9 @@ namespace Echo {
 	class MainWindow 
 	{
 	public:
+		/// @brief 事件回调函数
+		using EventCallBackFun = std::function<void(Event&)>;
+
 		virtual ~MainWindow() {}
 
 		/// @brief 创建主窗口
@@ -49,6 +52,10 @@ namespace Echo {
 		/// @brief 获取当前活动窗口
 		/// @return 当前活动窗口指针
 		virtual void* GetNativeWindow() const = 0;
+
+		/// @brief 设置事件回调函数
+		/// @param callback 
+		virtual void SetEventCallBack(const EventCallBackFun& callback) = 0;
 	};
 
 }
