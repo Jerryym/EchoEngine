@@ -17,13 +17,14 @@ namespace Echo {
 
 	void Application::Run()
 	{
+		m_bRunning = true;
+
 		WindowResizeEvent event(1280, 720);
 		if (event.IsInCategory(EventCategory::EventCategoryApplication))
 		{
 			ECHO_CORE_TRACE(event.ToString());
 		}
 
-		m_bRunning = true;
 		while (m_bRunning)
 		{
 			//更新主窗口
