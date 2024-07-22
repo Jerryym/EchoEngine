@@ -143,6 +143,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\LayerStack.h" />
+    <ClInclude Include="src\Core\Layer.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
@@ -573,6 +575,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Core\Layer.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Platform\Windows\MainWindow_Windows.cpp" />
     <ClCompile Include="src\Utils\Log.cpp" />
