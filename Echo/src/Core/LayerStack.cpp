@@ -4,27 +4,26 @@
 namespace Echo {
 
 	LayerStack::LayerStack()
-		: m_nInsertIndex(0)
 	{
-		m_Layers.clear();
 	}
 
 	LayerStack::~LayerStack()
 	{
 		for (Layer* layer : m_Layers)
+		{
 			delete layer;
+		}
 	}
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_Layers.emplace(m_Layers.begin() + m_nInsertIndex, layer);
-		layer->OnAttach();
+		m_Layers.emplace(m_Layers.begin() + m_nLayerIndex, layer);
+		m_nLayerIndex++;
 	}
 
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
 		m_Layers.emplace_back(overlay);
-		overlay->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
@@ -33,7 +32,7 @@ namespace Echo {
 		if (it != m_Layers.end())
 		{
 			m_Layers.erase(it);
-			m_nInsertIndex--;
+			m_nLayerIndex--;
 		}
 	}
 
@@ -44,5 +43,11 @@ namespace Echo {
 		{
 			m_Layers.erase(it);
 		}
+	}
+
+	Layer* LayerStack::operator[](size_t index)
+	{
+		ECHO_CORE_ASSERT(index >= 0 && index < m_Layers.size());
+		return m_Layers[index];
 	}
 }

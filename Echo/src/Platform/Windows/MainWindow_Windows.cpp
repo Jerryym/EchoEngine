@@ -36,7 +36,7 @@ namespace Echo {
 		// 检查是否有事件触发
 		glfwPollEvents();
 		// 交换缓冲区
-		glfwSwapBuffers(m_pGLFWWindow);
+		m_pContext->SwapBuffers();
 	}
 
 	void MainWindow_Windows::SetVSync(bool bEnable)
@@ -68,7 +68,7 @@ namespace Echo {
 		m_sData.m_nHeight = props.m_iHeight;
 		m_sData.m_strTitle = props.m_sTitle;
 
-		ECHO_CORE_INFO("Create window {0} ({1}, {2})", props.m_sTitle, props.m_iWidth, props.m_iHeight);
+		ECHO_CORE_INFO("Create MainWindow {0} ({1}, {2})", props.m_sTitle, props.m_iWidth, props.m_iHeight);
 
 		if (!s_bGLFWInitialiazed)
 		{
@@ -80,7 +80,10 @@ namespace Echo {
 			s_bGLFWInitialiazed = true;
 		}
 		m_pGLFWWindow = glfwCreateWindow((int)props.m_iWidth, (int)props.m_iHeight, props.m_sTitle.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_pGLFWWindow);	//设置当前窗口上下文
+		
+		//初始化上下文
+		m_pContext = new OpenGLContext(m_pGLFWWindow);
+		m_pContext->Init();
 		glfwSetWindowUserPointer(m_pGLFWWindow, &m_sData);
 		SetVSync(true);	//设置垂直同步
 

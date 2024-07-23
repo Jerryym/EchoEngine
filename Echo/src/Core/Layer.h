@@ -17,7 +17,9 @@ namespace Echo {
 		virtual void OnDetach() {}
 		/// @brief 更新图层：此函数在主循环中每帧调用，用于处理逻辑更新
 		virtual void OnUpdate() {}
-		/// @brief 处理事件：此函数在主循环中每帧调用，用于处理图层中事件
+		/// @brief 渲染图层：此函数在主循环中每帧调用，用于处理渲染更新
+		virtual void OnRender() {}
+		/// @brief 处理事件：此函数用于处理图层中设置的事件
 		/// @param event 需处理事件
 		virtual void OnEvent(Event& event) {}
 
