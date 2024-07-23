@@ -13,6 +13,9 @@
     <Filter Include="src\GUI">
       <UniqueIdentifier>{C1782FA9-2D58-AE44-3670-391BA2CE14A6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\GUI\ImGUI">
+      <UniqueIdentifier>{6BB69958-D776-158F-A0B1-5E0C0C315A6B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -66,8 +69,17 @@
     <ClInclude Include="src\Core\Events\MouseEvent.hpp">
       <Filter>src\Core\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Layer.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\LayerStack.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Echo.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\ImGUI\ImGUILayer.h">
+      <Filter>src\GUI\ImGUI</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\MainWindow.h">
       <Filter>src\GUI</Filter>
@@ -1329,10 +1341,24 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
       <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Layer.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\LayerStack.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\ImGUI\ImGUIBuild.cpp">
+      <Filter>src\GUI\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUI\ImGUI\ImGUILayer.cpp">
+      <Filter>src\GUI\ImGUI</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\MainWindow_Windows.cpp">
       <Filter>src\Platform\Windows</Filter>
@@ -1343,5 +1369,6 @@
     <ClCompile Include="src\echopch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

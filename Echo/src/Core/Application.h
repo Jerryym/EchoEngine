@@ -1,7 +1,13 @@
 #pragma once
 #include "Core.h"
+
 #include "GUI/MainWindow.h"
 #include "Core/Events/ApplicationEvent.hpp"
+
+#include "Core/Layer.h"
+#include "Core/LayerStack.h"
+
+#include "GUI/ImGUI/ImGUILayer.h"
 
 namespace Echo {
 
@@ -28,6 +34,14 @@ namespace Echo {
 		/// @param event 
 		void OnEvent(Event& event);
 
+		/// @brief 添加层
+		/// @param layer 
+		void PushLayer(Layer* layer);
+
+		/// @brief 添加层
+		/// @param layer 
+		void PushOverLayer(Layer* layer);
+
 	private:
 		/// @brief 关闭窗口
 		/// @param closeEvent 窗口关闭事件
@@ -38,9 +52,14 @@ namespace Echo {
 		/// @brief 应用程序单例（程序运行时，当且只能一个应用程序存在）
 		static Application* s_Instance;
 		/// @brief 运行状态
-		bool m_bRunning = true;
+		bool m_bRunning = false;
+		/// @brief 应用程序层栈
+		LayerStack m_LayerStack;
+
 		/// @brief 应用程序主窗口
 		std::unique_ptr<MainWindow> m_MainWindow;
+		/// @brief ImGUI图层
+		ImGUILayer* m_ImGuiLayer = nullptr;
 	};
 
 	

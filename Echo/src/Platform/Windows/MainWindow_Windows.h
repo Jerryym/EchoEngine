@@ -1,6 +1,7 @@
 #pragma once
 #include "GUI/MainWindow.h"
 
+#include "Platform/OpenGL/OpenGLContext.h"
 #include <GLFW/glfw3.h>
 
 namespace Echo {
@@ -44,6 +45,8 @@ namespace Echo {
 
 		sWindowData m_sData;
 		GLFWwindow* m_pGLFWWindow;
+		/// @brief 渲染上下文
+		GraphicsContext* m_pContext;
 	};
 
 }
