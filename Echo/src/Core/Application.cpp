@@ -38,7 +38,7 @@ namespace Echo {
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->OnRender();
+				layer->OnRenderUI();
 			}
 			m_ImGuiLayer->End();
 

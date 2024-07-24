@@ -12,12 +12,17 @@ namespace SandBoxApp {
 	public:
 		virtual void OnUpdate() override
 		{
-			//ECHO_CLIENT_INFO("ExampleLayer: OnUpdate");
+			if (Echo::Input::IsKeyPressed(ECHO_KEY_TAB))
+				ECHO_CLIENT_INFO("Tab Key is pressed!");
 		}
 
 		virtual void OnEvent(Echo::Event& event) override
 		{
-			//ECHO_CLIENT_INFO("ExampleLayer: OnEvent");
+			if (event.GetEventType() == Echo::EventType::KeyPressed)
+			{
+				Echo::KeyPressedEvent& keyEvent = (Echo::KeyPressedEvent&)event;
+				ECHO_CLIENT_TRACE("{0}", (char)keyEvent.getKeyCode());		//输出按下的按键名称
+			}
 		}
 	};
 

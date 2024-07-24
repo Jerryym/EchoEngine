@@ -58,11 +58,8 @@ namespace Echo {
 		ImGui::DestroyContext();
 	}
 
-	void ImGUILayer::OnRender()
+	void ImGUILayer::OnRenderUI()
 	{
-		//测试
-		static bool show_demo_window = true;
-		ImGui::ShowDemoWindow(&show_demo_window);
 	}
 
 	void ImGUILayer::Begin()
