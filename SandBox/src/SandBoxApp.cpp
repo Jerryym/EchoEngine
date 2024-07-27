@@ -10,7 +10,7 @@ namespace SandBoxApp {
 		{}
 
 	public:
-		virtual void OnUpdate() override
+		virtual void OnUpdate(TimeStep ts) override
 		{
 			if (Echo::Input::IsKeyPressed(ECHO_KEY_TAB))
 				ECHO_CLIENT_INFO("Tab Key is pressed!");

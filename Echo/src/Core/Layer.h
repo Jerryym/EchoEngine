@@ -1,4 +1,5 @@
 #pragma once
+#include "Core/TimeStep.h"
 #include "Core/Events/Event.h"
 
 namespace Echo {
@@ -16,7 +17,8 @@ namespace Echo {
 		/// @brief 图层分离应用程序：此函数在层从应用程序的层栈(LayerStack)中移除时调用
 		virtual void OnDetach() {}
 		/// @brief 更新图层：此函数在主循环中每帧调用，用于处理逻辑更新
-		virtual void OnUpdate() {}
+		/// @param ts 时间步长
+		virtual void OnUpdate(TimeStep ts) {}
 		/// @brief 渲染GUI图层：此函数在主循环中每帧调用，用于处理GUI渲染更新
 		virtual void OnRenderUI() {}
 		/// @brief 处理事件：此函数用于处理图层中设置的事件

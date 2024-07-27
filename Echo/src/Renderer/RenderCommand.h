@@ -3,8 +3,8 @@
 
 namespace Echo {
 
-	/// @brief RenderCommond类：渲染指令，此类中的所有方法都是静态的
-	class RenderCommond
+	/// @brief RenderCommand类：渲染指令，此类中的所有方法都是静态的
+	class RenderCommand
 	{
 	public:
 		/// @brief 设置清屏颜色
