@@ -31,6 +31,8 @@ namespace Echo {
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
+		virtual uint32_t GetCount() const override { return m_iCount; }
+
 	private:
 		uint32_t m_RendererID;
 		uint32_t m_iCount;

@@ -150,6 +150,10 @@ namespace Echo {
 		virtual void Bind() const = 0;
 		/// @brief 解绑缓冲
 		virtual void UnBind() const = 0;
+
+		/// @brief 获取索引数组大小
+		/// @return 索引数组大小
+		virtual uint32_t GetCount() const = 0;
 	};
 }
 

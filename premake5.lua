@@ -106,6 +106,7 @@ project "Sandbox"
     {
         "Echo/vendor/spdlog/include",
         "Echo/src",
+        "Echo/vendor",
         "%{IncludeDir.glm}"
     }
 

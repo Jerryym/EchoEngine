@@ -12,6 +12,9 @@ namespace Echo {
 		static void SetClearColor(const glm::vec4& color);
 		/// @brief 清空缓冲区
 		static void Clear();
+		/// @brief 根据顶点数组渲染图元
+		/// @param vertexArray 
+		static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray);
 
 	private:
 		static RendererAPI* s_RendererAPI;
