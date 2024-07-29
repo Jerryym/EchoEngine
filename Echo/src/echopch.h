@@ -11,8 +11,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include <Windows.h>
-
-#include <QString>
+#ifndef ECHO_PLATFORM_WINDOWS
+	#include <Windows.h>
+#endif // !ECHO_PLATFORM_WINDOWS
 
 #include <Utils/Log.h>
