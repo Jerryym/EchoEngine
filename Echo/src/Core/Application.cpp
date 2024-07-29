@@ -1,7 +1,7 @@
 #include "echopch.h"
 #include "Application.h"
 
-#include <glad/glad.h>
+#include <glfw/glfw3.h>
 
 namespace Echo {
 
@@ -26,19 +26,21 @@ namespace Echo {
 		m_bRunning = true;
 		while (m_bRunning)
 		{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			float time = (float)glfwGetTime();
+			TimeStep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			//遍历应用程序层栈，更新各层
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			//渲染ImGUI
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->OnRender();
+				layer->OnRenderUI();
 			}
 			m_ImGuiLayer->End();
 

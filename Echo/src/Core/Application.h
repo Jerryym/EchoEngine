@@ -55,6 +55,8 @@ namespace Echo {
 		bool m_bRunning = false;
 		/// @brief 应用程序层栈
 		LayerStack m_LayerStack;
+		/// @brief 最后一帧的时间
+		float m_LastFrameTime = 0.0f;
 
 		/// @brief 应用程序主窗口
 		std::unique_ptr<MainWindow> m_MainWindow;
