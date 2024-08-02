@@ -9,11 +9,9 @@ namespace Echo {
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
-	void Renderer::BeginScene(Camera& camera)
+	void Renderer::BeginScene(const EditorCamera& camera)
 	{
-		m_SceneData->ViewProjectionMatrix = camera.GetProjectcionMat() * 
-			glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f)) * 
-			glm::rotate(glm::mat4(1.0f), glm::radians(-60.0f), glm::vec3(1.0f, 0.0f, 0.0f));;
+		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
 	void Renderer::EndScene()

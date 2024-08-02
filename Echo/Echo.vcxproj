@@ -143,6 +143,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Renderer\EditorCamera.h" />
     <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Core\EntryPoint.h" />
@@ -152,7 +153,7 @@
     <ClInclude Include="src\Core\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Core\Layer.h" />
     <ClInclude Include="src\Core\LayerStack.h" />
-    <ClInclude Include="src\Core\TimeStep.h" />
+    <ClInclude Include="src\Utils\TimeStep.h" />
     <ClInclude Include="src\Echo.h" />
     <ClInclude Include="src\GUI\ImGUI\ImGUILayer.h" />
     <ClInclude Include="src\GUI\MainWindow.h" />
@@ -595,10 +596,12 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Renderer\Camera.cpp" />
+    <ClCompile Include="src\Renderer\EditorCamera.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\Layer.cpp" />
     <ClCompile Include="src\Core\LayerStack.cpp" />
-    <ClCompile Include="src\Core\TimeStep.cpp" />
+    <ClCompile Include="src\Utils\TimeStep.cpp" />
     <ClCompile Include="src\GUI\ImGUI\ImGUIBuild.cpp" />
     <ClCompile Include="src\GUI\ImGUI\ImGUILayer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />

@@ -81,7 +81,7 @@
     <ClInclude Include="src\Core\LayerStack.h">
       <Filter>src\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\TimeStep.h">
+    <ClInclude Include="src\Utils\TimeStep.h">
       <Filter>src\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Echo.h">
@@ -1404,6 +1404,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Renderer\EditorCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
@@ -1415,7 +1416,7 @@
     <ClCompile Include="src\Core\LayerStack.cpp">
       <Filter>src\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\TimeStep.cpp">
+    <ClCompile Include="src\Utils\TimeStep.cpp">
       <Filter>src\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\GUI\ImGUI\ImGUIBuild.cpp">
@@ -1472,5 +1473,7 @@
     <ClCompile Include="src\echopch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderer\EditorCamera.cpp" />
+    <ClCompile Include="src\Renderer\Camera.cpp" />
   </ItemGroup>
 </Project>

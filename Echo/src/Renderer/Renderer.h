@@ -1,7 +1,8 @@
 #pragma once
 #include "RenderCommand.h"
-#include "Camera.h"
+
 #include "Shader.h"
+#include "EditorCamera.h"
 
 namespace Echo {
 
@@ -13,7 +14,7 @@ namespace Echo {
 		/// @return 
 		static RendererAPI::API GetAPI() { return RendererAPI::getAPI(); }
 		/// @brief 开始屏幕渲染
-		static void BeginScene(Camera& camera);
+		static void BeginScene(const EditorCamera& camera);
 		/// @brief 结束屏幕渲染
 		static void EndScene();
 

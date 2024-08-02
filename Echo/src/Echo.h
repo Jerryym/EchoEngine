@@ -19,6 +19,7 @@
 #include "Renderer/Shader.h"
 
 #include "Renderer/Camera.h"
+#include "Renderer/EditorCamera.h"
 #include "Renderer/SceneCamera.h"
 // ----------------------------------
 
