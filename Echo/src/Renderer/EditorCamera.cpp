@@ -32,15 +32,15 @@ namespace Echo {
 		glm::vec2 delta = (mouse - m_InitialMousePosition) * 0.003f;
 		m_InitialMousePosition = mouse;
 
-		if (Input::IsMouseButtonPressed(ECHO_MOUSE_BUTTON_MIDDLE))
+		if (Input::IsMouseButtonPressed(Mouse::MouseCode::ButtonMiddle))
 		{
 			MousePan(delta);
 		}
-		else if (Input::IsMouseButtonPressed(ECHO_MOUSE_BUTTON_LEFT))
+		else if (Input::IsMouseButtonPressed(Mouse::MouseCode::ButtonLeft))
 		{
 			MouseRotate(delta);
 		}
-		else if (Input::IsMouseButtonPressed(ECHO_MOUSE_BUTTON_RIGHT))
+		else if (Input::IsMouseButtonPressed(Mouse::MouseCode::ButtonRight))
 		{
 			MouseZoom(delta.y);
 		}

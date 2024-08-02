@@ -8,18 +8,18 @@ namespace Echo {
 
 	Input* Input::s_InputInstance = new WindowsInput();
 
-	bool WindowsInput::IsKeyPressedImpl(int keycode)
+	bool WindowsInput::IsKeyPressedImpl(Key::KeyCode keycode)
 	{
 		auto nativeWindow = static_cast<GLFWwindow*>(Application::GetApplication().GetMainWindow().GetNativeWindow());
-		auto state = glfwGetKey(nativeWindow, keycode);
+		auto state = glfwGetKey(nativeWindow, (int)keycode);
 
 		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
 
-	bool WindowsInput::IsMouseButtonPressedImpl(int mousebutton)
+	bool WindowsInput::IsMouseButtonPressedImpl(Mouse::MouseCode mousebutton)
 	{
 		auto nativeWindow = static_cast<GLFWwindow*>(Application::GetApplication().GetMainWindow().GetNativeWindow());
-		auto state = glfwGetMouseButton(nativeWindow, mousebutton);
+		auto state = glfwGetMouseButton(nativeWindow, (int)mousebutton);
 
 		return state == GLFW_PRESS;
 	}
