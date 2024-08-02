@@ -61,7 +61,7 @@ namespace SandBoxApp {
 			};
 
 			//创建顶点缓冲对象
-			std::shared_ptr<Echo::VertexBuffer> CubeVB;
+			Echo::Ref<Echo::VertexBuffer> CubeVB;
 			CubeVB.reset(Echo::VertexBuffer::CreateBuffer(CubeVertices, sizeof(CubeVertices)));
 			Echo::BufferLayout CubeLayout = {
 				{ Echo::ShaderDataType::Float3, "a_Position" },
@@ -70,7 +70,7 @@ namespace SandBoxApp {
 			m_CubeVA->AddVertexBuffer(CubeVB);
 
 			//创建索引缓冲对象
-			std::shared_ptr<Echo::IndexBuffer> Cube;
+			Echo::Ref<Echo::IndexBuffer> Cube;
 			uint32_t CubeIndices[] = {
 				// 背面
 				0, 1, 2,
@@ -135,9 +135,9 @@ namespace SandBoxApp {
 
 	private:
 		/// @brief 顶点数组对象
-		std::shared_ptr<Echo::VertexArray> m_CubeVA;
+		Echo::Ref<Echo::VertexArray> m_CubeVA;
 		/// @brief 着色器
-		std::shared_ptr<Echo::Shader> m_Shader;
+		Echo::Ref<Echo::Shader> m_Shader;
 
 		Echo::EditorCamera m_Camera;
 		glm::vec3 m_CameraPosition;
