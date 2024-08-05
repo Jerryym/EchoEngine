@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 #ifdef ECHO_PLATFORM_WINDOWS
 
@@ -17,3 +18,13 @@
 #define BIT(x) (1 << x)
 
 #define BIND_EVENT(x)	 std::bind(&x, this, std::placeholders::_1)
+
+namespace Echo {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}

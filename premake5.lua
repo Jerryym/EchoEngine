@@ -10,6 +10,7 @@ IncludeDir["GLFW"] = "Echo/vendor/GLFW/include"
 IncludeDir["Glad"] = "Echo/vendor/glad/include"
 IncludeDir["ImGui"] = "Echo/vendor/imgui"
 IncludeDir["glm"] = "Echo/vendor/glm"
+IncludeDir["stb_image"] = "Echo/vendor/stb_image"
 
 include "Echo/vendor/GLFW"
 include "Echo/vendor/glad"
@@ -34,7 +35,9 @@ project "Echo"
         "%{prj.name}/src/**.hpp",
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
-        "%{prj.name}/vendor/glm/glm/**.inl"
+        "%{prj.name}/vendor/glm/glm/**.inl",
+        "%{prj.name}/vendor/stb_image/**.h",
+        "%{prj.name}/vendor/stb_image/**.cpp"
     }
 
     defines
@@ -49,7 +52,8 @@ project "Echo"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.stb_image}"
     }
 
     links

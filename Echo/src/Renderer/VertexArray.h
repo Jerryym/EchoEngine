@@ -21,13 +21,13 @@ namespace Echo {
 
 		/// @brief 添加顶点缓冲对象
 		/// @param vertexbuffer 顶点缓冲对象
-		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexbuffer) = 0;
-		virtual const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() const = 0;
+		virtual void AddVertexBuffer(const Ref<VertexBuffer>& vertexbuffer) = 0;
+		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const = 0;
 
 		/// @brief 设置索引缓冲对象
 		/// @param indexbuffer 索引缓冲对象
-		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexbuffer) = 0;
-		virtual const std::shared_ptr<IndexBuffer>& GetIndexBuffer() const = 0;
+		virtual void SetIndexBuffer(const Ref<IndexBuffer>& indexbuffer) = 0;
+		virtual const Ref<IndexBuffer>& GetIndexBuffer() const = 0;
 	};
 
 }

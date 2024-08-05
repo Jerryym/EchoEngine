@@ -12,11 +12,12 @@ namespace Echo {
 
 	void OpenGLRendererAPI::Clear()
 	{
+		glEnable(GL_DEPTH_TEST);
 		// Clear the color buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
 	{
 		uint32_t iCount = vertexArray->GetIndexBuffer()->GetCount();
 		glDrawElements(GL_TRIANGLES, iCount, GL_UNSIGNED_INT, nullptr);
