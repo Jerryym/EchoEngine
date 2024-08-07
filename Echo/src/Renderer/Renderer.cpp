@@ -9,6 +9,11 @@ namespace Echo {
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
+	void Renderer::InitScene()
+	{
+		RenderCommand::InitScene();
+	}
+
 	void Renderer::BeginScene(const EditorCamera& camera)
 	{
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();

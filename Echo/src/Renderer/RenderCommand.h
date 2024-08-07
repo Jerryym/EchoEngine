@@ -7,6 +7,8 @@ namespace Echo {
 	class RenderCommand
 	{
 	public:
+		/// @brief 初始化场景
+		static void InitScene();
 		/// @brief 设置清屏颜色
 		/// @param color 
 		static void SetClearColor(const glm::vec4& color);

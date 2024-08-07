@@ -6,8 +6,8 @@
 namespace Echo {
 
 	SceneCamera::SceneCamera(ProjectionType enType)
-		: m_enType(enType)
 	{
+		m_enType = enType;
 		RecalculateProjection();
 	}
 

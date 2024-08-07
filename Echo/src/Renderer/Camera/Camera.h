@@ -3,6 +3,12 @@
 
 namespace Echo {
 
+	/// @brief 投影类型
+	enum class ProjectionType
+	{
+		Perspective = 0, Orthographic
+	};
+
 	/// @brief 相机类
 	class Camera
 	{
@@ -27,11 +33,11 @@ namespace Echo {
 		/// @param rFarPlane 远平面
 		void SetPerspectiveProjectionMatrix(float rFov, float rWidth, float rHeight, float rNearPlane, float rFarPlane);
 		/// @brief 设置正交投影矩阵
-		/// @param rWidth 宽度
-		/// @param rHeight 高度
-		/// @param rNearPlane 近平面 
-		/// @param rFarPlane 远平面
-		void SetOrthoProjectionMatrix(float rWidth, float rHeight, float rNearPlane, float rFarPlane);
+		/// @param rLeft
+		/// @param rRight 
+		/// @param rBottom 
+		/// @param rTop 
+		void SetOrthoProjectionMatrix(float rLeft, float rRight, float rBottom, float rTop);
 
 	protected:
 		/// @brief 投影矩阵

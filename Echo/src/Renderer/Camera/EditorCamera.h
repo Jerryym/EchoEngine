@@ -1,20 +1,19 @@
 #pragma once
 #include "Camera.h"
 
-#include "Core/Events/Event.h"
-#include "Core/Events/KeyEvent.hpp"
-#include "Core/Events/MouseEvent.hpp"
-
-#include "Utils/Input.h"
-#include "Utils/TimeStep.h"
-
 namespace Echo {
 
-	/// @brief 编辑器视图相机
+	/// @brief 编辑器视图相机: 此相机用于在编辑环境中查看和修改场景
 	class EditorCamera : public Camera
 	{
 	public:
-		/// @brief 构造函数
+		/// @brief 构造函数(正交相机)
+		/// @param rLeft
+		/// @param rRight 
+		/// @param rBottom 
+		/// @param rTop 
+		EditorCamera(float rLeft, float rRight, float rBottom, float rTop);
+		/// @brief 构造函数(透视相机)
 		/// @param rFov 视野角度(单位：度)
 		/// @param rWidth 宽度
 		/// @param rHeight 高度
@@ -27,12 +26,12 @@ namespace Echo {
 		/// @brief 初始化
 		void Initialize();
 
-		/// @brief 
-		/// @param ts 
-		void OnUpdate(TimeStep ts);
-		/// @brief 
-		/// @param e 
-		void OnEvent(Event& e);
+		/// @brief 设置投影类型
+		/// @param type 
+		void SetProjectionType(ProjectionType type);
+		/// @brief 是否是正交投影
+		/// @return 
+		bool IsOrthographic() const { return m_bIsOrthographic; }
 
 		/// @brief 设置焦点
 		/// @param focusPoint 
@@ -80,33 +79,12 @@ namespace Echo {
 		/// @brief 更新相机视图
 		void UpdateCameraView();
 
-		/// @brief 鼠标滚动事件
-		/// @param e 
-		/// @return 
-		bool OnMouseScroll(MouseScrolledEvent& e);
-		/// @brief 鼠标平移
-		/// @param delta 
-		void MousePan(const glm::vec2& delta);
-		/// @brief 鼠标旋转
-		/// @param delta 
-		void MouseRotate(const glm::vec2& delta);
-		/// @brief 鼠标缩放
-		/// @param delta 
-		void MouseZoom(float rDelta);
-
-		/// @brief 平移速度
-		/// @return 
-		std::pair<float, float> PanSpeed() const;
-		/// @brief 旋转速度
-		/// @return 
-		float RotationSpeed() const;
-		/// @brief 缩放速度
-		/// @return 
-		float ZoomSpeed() const;
-
 	private:
+		/// @brief 是否是正交投影
+		bool m_bIsOrthographic = false;
+
 		/// @brief 相机位置
-		glm::vec3 m_Position;
+		glm::vec3 m_Position = glm::vec3(0.0f);
 		/// @brief 方向
 		glm::vec3 m_Direction;
 		/// @brief 焦点
@@ -114,19 +92,34 @@ namespace Echo {
 		/// @brief 视图矩阵
 		glm::mat4 m_ViewMat;
 
+		/* 透视相机属性 */
 		/// @brief 相机视野角度(单位: 弧度)
-		float m_rFovRadians;
+		float m_rFovRadians = glm::radians(45.0f);
 		/// @brief 相机长宽比
 		float m_rAspectRatio;
-		/// @brief 相机近平面
-		float m_rNearPlane = 1.0f;
-		/// @brief 相机远平面
-		float m_rFarPlane = 2000.0f;
+		/// @brief 透视相机近平面
+		float m_rPerspectiveNear = 1.0f;
+		/// @brief 透视相机远平面
+		float m_rPerspectiveFar = 2000.0f;
+
+		/* 正交相机属性 */
+		/// @brief 正交相机视口大小
+		float m_rOrthographicSize = 10.0f;
+		/// @brief 正交相机左侧面，右侧面
+		float m_rOrthographicLeft = 0.0f, m_rOrthographicRight = 800.0f;
+		/// @brief 正交相机下底面，上底面
+		float m_rOrthographicBottom = 0.0f, m_rOrthographicTop = 600.0f;
+		/// @brief 正交相机近平面
+		float m_rOrthographicNear = -1.0f;
+		/// @brief 正交相机远平面
+		float m_rOrthographicFar = 1.0f;
 
 		/// @brief 偏航角（绕Y轴旋转）(单位: 弧度)
 		float m_rYaw;
 		/// @brief 俯仰角（绕X轴旋转）(单位: 弧度)
 		float m_rPitch;
+
+		float m_Rotation = 0.0f;
 		
 		/// @brief 相机到焦点的距离
 		float m_rDistance = 10.0f;
@@ -137,8 +130,6 @@ namespace Echo {
 		uint32_t m_nViewportWidth = 1280;
 		/// @brief 视口高度
 		uint32_t m_nViewportHeight = 720;
-
-		glm::vec2 m_InitialMousePosition = { 0.0f, 0.0f };
 	};
 
 }

@@ -7,11 +7,7 @@ namespace Echo {
 	class SceneCamera : public Camera
 	{
 	public:
-		/// @brief 投影类型
-		enum ProjectionType
-		{
-			Perspective = 0, Orthographic
-		};
+		
 
 	public:
 		SceneCamera() {}
@@ -90,9 +86,7 @@ namespace Echo {
 		/// @brief 投影类型
 		ProjectionType m_enType = ProjectionType::Orthographic;
 
-		/////////////////////////////////////////////////
-		//正交相机参数////////////////////////////////////
-		/////////////////////////////////////////////////
+		/* 正交相机属性 */
 		/// @brief 正交相机视口大小
 		float m_rOrthographicSize = 10.0f;
 		/// @brief 正交相机左侧面，右侧面
@@ -104,9 +98,7 @@ namespace Echo {
 		/// @brief 正交相机远平面
 		float m_rOrthographicFar = 1.0f;
 
-		/////////////////////////////////////////////////
-		//投影相机参数////////////////////////////////////
-		/////////////////////////////////////////////////
+		/* 透视相机属性 */
 		/// @brief 透视相机视野角度
 		float m_rPerspectiveFov = glm::radians(45.0f);
 		/// @brief 透视相机长宽比

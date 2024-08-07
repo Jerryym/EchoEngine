@@ -2,7 +2,7 @@
 #include "RenderCommand.h"
 
 #include "Shader.h"
-#include "EditorCamera.h"
+#include "Camera/EditorCamera.h"
 
 namespace Echo {
 
@@ -13,6 +13,9 @@ namespace Echo {
 		/// @brief 获取当前渲染API
 		/// @return 
 		static RendererAPI::API GetAPI() { return RendererAPI::getAPI(); }
+		
+		/// @brief 初始化场景
+		static void InitScene();
 		/// @brief 开始屏幕渲染
 		static void BeginScene(const EditorCamera& camera);
 		/// @brief 结束屏幕渲染

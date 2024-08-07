@@ -18,9 +18,9 @@
 #include "Renderer/VertexArray.h"
 #include "Renderer/Texture.h"
 
-#include "Renderer/Camera.h"
-#include "Renderer/EditorCamera.h"
-#include "Renderer/SceneCamera.h"
+#include "Renderer/Camera/Camera.h"
+#include "Renderer/Camera/EditorCamera.h"
+#include "Renderer/Camera/SceneCamera.h"
 // ----------------------------------
 
 // --Entry Point---------------------

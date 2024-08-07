@@ -20,9 +20,9 @@ namespace Echo {
 		m_ProjectionMat = glm::perspectiveFov(rFov, rWidth, rHeight, rNearPlane, rFarPlane);
 	}
 
-	void Camera::SetOrthoProjectionMatrix(float rWidth, float rHeight, float rNearPlane, float rFarPlane)
+	void Camera::SetOrthoProjectionMatrix(float rLeft, float rRight, float rBottom, float rTop)
 	{
-		m_ProjectionMat = glm::ortho(-rWidth * 0.5f, rWidth * 0.5f, -rHeight * 0.5f, rHeight * 0.5f, rNearPlane, rFarPlane);
+		m_ProjectionMat = glm::ortho(rLeft, rRight, rBottom, rTop, -1.0f, 1.0f);
 	}
 
 }

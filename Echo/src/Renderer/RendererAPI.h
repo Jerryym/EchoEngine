@@ -19,6 +19,8 @@ namespace Echo {
 		/// @brief 获取图形API
 		static API getAPI() { return s_API; }
 
+		/// @brief 图形API初始化
+		virtual void Init() = 0;
 		/// @brief 设置清屏颜色
 		/// @param color 
 		virtual void SetClearColor(const glm::vec4& color) = 0;

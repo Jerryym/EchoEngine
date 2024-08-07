@@ -12,7 +12,7 @@ namespace SandBoxApp {
 	{
 	public:
 		ExampleLayer()
-			: Echo::Layer("Example"), m_Camera(30.f, 800.0f, 600.0f, 0.1f, 1000.0f), m_CameraPosition(0.0f)
+			: Echo::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 		{
 			Draw();
 		}
@@ -23,13 +23,13 @@ namespace SandBoxApp {
 			Echo::RenderCommand::SetClearColor(glm::normalize(glm::vec4(112, 128, 144, 1)));
 			Echo::RenderCommand::Clear();
 
-			m_Camera.OnUpdate(ts);
-
+			Echo::Renderer::InitScene();
 			Echo::Renderer::BeginScene(m_Camera);
-			//std::dynamic_pointer_cast<Echo::OpenGLShader>(m_Shader)->Bind();
-			//std::dynamic_pointer_cast<Echo::OpenGLShader>(m_Shader)->SetUniformFloat3("u_Color", m_CubeColor);
+
+			auto textureShader = m_ShaderLib.Get("Texture");
 			m_Texture->Bind();
-			Echo::Renderer::Submit(m_TextureShader, m_CubeVA);
+			Echo::Renderer::Submit(textureShader, m_CubeVA);
+			
 			Echo::Renderer::EndScene();
 		}
 
@@ -102,82 +102,18 @@ namespace SandBoxApp {
 			m_CubeVA->SetIndexBuffer(Cube);
 
 			//创建着色器
-			std::string vertexShader = R"(
-				#version 330 core
-			
-				layout(location = 0) in vec3 a_Position;
-
-				uniform mat4 u_ViewProjection;
-				uniform mat4 u_Transform;
-
-				out vec3 v_Position;
-
-				void main()
-				{
-					gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
-				}
-			)";
-			std::string fragmentShader = R"(
-				#version 330 core
-			
-				layout(location = 0) out vec4 color;
-
-				in vec3 v_Position;
-			
-				uniform vec3 u_Color;
-
-				void main()
-				{
-					color = vec4(u_Color, 1.0);
-				}
-			)";
-			m_Shader.reset(Echo::Shader::Create(vertexShader, fragmentShader));
-
-			//纹理着色器
-			std::string textureShaderVertexSrc = R"(
-				#version 330 core
-			
-				layout(location = 0) in vec3 a_Position;
-				layout(location = 1) in vec2 a_TexCoord;
-
-				uniform mat4 u_ViewProjection;
-				uniform mat4 u_Transform;
-
-				out vec2 v_TexCoord;
-
-				void main()
-				{
-					v_TexCoord = a_TexCoord;
-					gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
-				}
-			)";
-			std::string textureShaderFragmentSrc = R"(
-				#version 330 core
-			
-				layout(location = 0) out vec4 color;
-
-				in vec2 v_TexCoord;
-			
-				uniform sampler2D u_Texture;
-
-				void main()
-				{
-					color = texture(u_Texture, v_TexCoord);
-				}
-			)";
-			m_TextureShader.reset(Echo::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+			auto TexturShader = m_ShaderLib.Load("assets/shaders/Texture.glsl");
 			m_Texture = Echo::Texture2D::CreateTexture("assets/textures/StuccoRoughCast.png");
 
-			std::dynamic_pointer_cast<Echo::OpenGLShader>(m_TextureShader)->Bind();
-			std::dynamic_pointer_cast<Echo::OpenGLShader>(m_TextureShader)->SetUniformInt("u_Texture", 0);
+			std::dynamic_pointer_cast<Echo::OpenGLShader>(TexturShader)->Bind();
+			std::dynamic_pointer_cast<Echo::OpenGLShader>(TexturShader)->SetUniformInt("u_Texture", 0);
 		}
 
 	private:
 		/// @brief 顶点数组对象
 		Echo::Ref<Echo::VertexArray> m_CubeVA;
-		/// @brief 着色器
-		Echo::Ref<Echo::Shader> m_Shader;
-		Echo::Ref<Echo::Shader> m_TextureShader;
+		/// @brief 着色器库
+		Echo::ShaderLibrary m_ShaderLib;
 		/// @brief 纹理贴图
 		Echo::Ref<Echo::Texture2D> m_Texture;
 
