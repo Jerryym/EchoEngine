@@ -134,12 +134,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\SandBox2D.cpp" />
     <ClCompile Include="src\SandBoxApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Echo\Echo.vcxproj">
       <Project>{A498847C-90CF-850D-39BC-6B1025D2010F}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\SandBox2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

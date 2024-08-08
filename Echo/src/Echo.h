@@ -22,7 +22,3 @@
 #include "Renderer/Camera/EditorCamera.h"
 #include "Renderer/Camera/SceneCamera.h"
 // ----------------------------------
-
-// --Entry Point---------------------
-#include "Core/EntryPoint.h"
-// ----------------------------------
