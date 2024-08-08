@@ -16,10 +16,16 @@ namespace Echo {
 		
 		/// @brief 初始化场景
 		static void InitScene();
+		/// @brief 窗口尺寸修改
+		/// @param width 
+		/// @param height 
+		static void WindowResize(uint32_t width, uint32_t height);
+
 		/// @brief 开始屏幕渲染
 		static void BeginScene(const EditorCamera& camera);
 		/// @brief 结束屏幕渲染
 		static void EndScene();
+
 
 		/// @brief 提交渲染用的顶点数组
 		/// @param shader 着色器

@@ -12,7 +12,7 @@ namespace SandBoxApp {
 	{
 	public:
 		ExampleLayer()
-			: Echo::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+			: Echo::Layer("Example"), m_Camera(1600.f / 900.f, 1.0f), m_CameraPosition(0.0f)
 		{
 			Draw();
 		}
@@ -20,22 +20,26 @@ namespace SandBoxApp {
 	public:
 		virtual void OnUpdate(Echo::TimeStep ts) override
 		{
+			//更新相机
+			m_Camera.OnUpdate(ts);
+
+			//渲染
+			Echo::Renderer::InitScene();
 			Echo::RenderCommand::SetClearColor(glm::normalize(glm::vec4(112, 128, 144, 1)));
 			Echo::RenderCommand::Clear();
 
-			Echo::Renderer::InitScene();
 			Echo::Renderer::BeginScene(m_Camera);
 
 			auto textureShader = m_ShaderLib.Get("Texture");
 			m_Texture->Bind();
 			Echo::Renderer::Submit(textureShader, m_CubeVA);
-			
+			  
 			Echo::Renderer::EndScene();
 		}
 
-		virtual void OnEvent(Echo::Event& event) override
+		virtual void OnEvent(Echo::Event& e) override
 		{
-			
+			m_Camera.OnEvent(e);
 		}
 
 		virtual void OnRenderUI() override

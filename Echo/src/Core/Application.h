@@ -47,12 +47,18 @@ namespace Echo {
 		/// @param closeEvent 窗口关闭事件
 		/// @return true
 		bool OnWindowClose(WindowCloseEvent& closeEvent);
+		/// @brief 修改窗口大小
+		/// @param resizeEvent 
+		/// @return 
+		bool OnWindowResized(WindowResizeEvent& resizeEvent);
 
 	private:
 		/// @brief 应用程序单例（程序运行时，当且只能一个应用程序存在）
 		static Application* s_Instance;
 		/// @brief 运行状态
 		bool m_bRunning = false;
+		/// @brief 最小化
+		bool m_bMinimized = false;
 		/// @brief 应用程序层栈
 		LayerStack m_LayerStack;
 		/// @brief 最后一帧的时间

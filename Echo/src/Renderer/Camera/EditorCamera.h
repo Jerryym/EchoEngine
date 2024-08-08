@@ -1,18 +1,26 @@
 #pragma once
 #include "Camera.h"
 
+#include "Core/Events/Event.h"
+#include "Core/Events/ApplicationEvent.hpp"
+#include "Core/Events/MouseEvent.hpp"
+#include "Core/Events/KeyEvent.hpp"
+
+#include "Utils/TimeStep.h"
+#include "Utils/Input.h"
+#include "Utils/MouseCodes.h"
+#include "Utils/KeyCodes.h"
+
 namespace Echo {
 
 	/// @brief 编辑器视图相机: 此相机用于在编辑环境中查看和修改场景
 	class EditorCamera : public Camera
 	{
 	public:
-		/// @brief 构造函数(正交相机)
-		/// @param rLeft
-		/// @param rRight 
-		/// @param rBottom 
-		/// @param rTop 
-		EditorCamera(float rLeft, float rRight, float rBottom, float rTop);
+		/// @brief @brief 构造函数(正交相机)
+		/// @param rAspectRaio 长宽比
+		/// @param rZoomLevel 缩放等级
+		EditorCamera(float rAspectRaio, float rZoomLevel);
 		/// @brief 构造函数(透视相机)
 		/// @param rFov 视野角度(单位：度)
 		/// @param rWidth 宽度
@@ -26,6 +34,14 @@ namespace Echo {
 		/// @brief 初始化
 		void Initialize();
 
+		/// @brief 更新
+		/// @param ts 
+		void OnUpdate(TimeStep ts);
+		/// @brief 处理事件
+		/// @param e 
+		void OnEvent(Event& e);
+
+	public:
 		/// @brief 设置投影类型
 		/// @param type 
 		void SetProjectionType(ProjectionType type);
@@ -79,6 +95,15 @@ namespace Echo {
 		/// @brief 更新相机视图
 		void UpdateCameraView();
 
+		/// @brief 鼠标滚轮事件
+		/// @param e 
+		/// @return 
+		bool OnMouseScrolled(MouseScrolledEvent& e);
+		/// @brief 窗口大小修改事件
+		/// @param e 
+		/// @return 
+		bool OnWindowResized(WindowResizeEvent& e);
+
 	private:
 		/// @brief 是否是正交投影
 		bool m_bIsOrthographic = false;
@@ -86,23 +111,26 @@ namespace Echo {
 		/// @brief 相机位置
 		glm::vec3 m_Position = glm::vec3(0.0f);
 		/// @brief 方向
-		glm::vec3 m_Direction;
+		glm::vec3 m_Direction = glm::vec3(0.0f);
 		/// @brief 焦点
-		glm::vec3 m_FocalPoint;
+		glm::vec3 m_FocalPoint = glm::vec3(0.0f);
 		/// @brief 视图矩阵
-		glm::mat4 m_ViewMat;
+		glm::mat4 m_ViewMat = glm::mat4(1.0f);
+
+		/// @brief 相机长宽比
+		float m_rAspectRatio;
 
 		/* 透视相机属性 */
 		/// @brief 相机视野角度(单位: 弧度)
 		float m_rFovRadians = glm::radians(45.0f);
-		/// @brief 相机长宽比
-		float m_rAspectRatio;
 		/// @brief 透视相机近平面
 		float m_rPerspectiveNear = 1.0f;
 		/// @brief 透视相机远平面
 		float m_rPerspectiveFar = 2000.0f;
 
 		/* 正交相机属性 */
+		/// @brief 缩放等级
+		float m_rZoomLevel = 1.0f;
 		/// @brief 正交相机视口大小
 		float m_rOrthographicSize = 10.0f;
 		/// @brief 正交相机左侧面，右侧面
@@ -115,11 +143,11 @@ namespace Echo {
 		float m_rOrthographicFar = 1.0f;
 
 		/// @brief 偏航角（绕Y轴旋转）(单位: 弧度)
-		float m_rYaw;
+		float m_rYaw = 0.0f;
 		/// @brief 俯仰角（绕X轴旋转）(单位: 弧度)
-		float m_rPitch;
+		float m_rPitch = 0.0f;;
 
-		float m_Rotation = 0.0f;
+		float m_rRotation = 0.0f;
 		
 		/// @brief 相机到焦点的距离
 		float m_rDistance = 10.0f;

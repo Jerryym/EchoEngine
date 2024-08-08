@@ -1,6 +1,8 @@
 #include "echopch.h"
 #include "Application.h"
 
+#include "Renderer/Renderer.h"
+
 #include <glfw/glfw3.h>
 
 namespace Echo {
@@ -30,10 +32,13 @@ namespace Echo {
 			TimeStep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			//遍历应用程序层栈，更新各层
-			for (Layer* layer : m_LayerStack)
+			if (m_bMinimized != true)
 			{
-				layer->OnUpdate(timestep);
+				//遍历应用程序层栈，更新各层
+				for (Layer* layer : m_LayerStack)
+				{
+					layer->OnUpdate(timestep);
+				}
 			}
 
 			//渲染ImGUI
@@ -49,15 +54,20 @@ namespace Echo {
 		}
 	}
 
-	void Application::OnEvent(Event& event)
+	void Application::OnEvent(Event& e)
 	{
-		EventDispatcher dispatcher(event);
-		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));	//控制窗口关闭
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));	//窗口关闭
+		dispatcher.Dispatcher<WindowResizeEvent>(BIND_EVENT(Application::OnWindowResized));	//窗口大小修改
 
 		//遍历应用程序层栈，处理各层事件
-		for (Layer* layer : m_LayerStack)
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
-			layer->OnEvent(event);
+			(*--it)->OnEvent(e);
+			if (e.Handled() == true)
+			{
+				break;
+			}
 		}
 	}
 
@@ -77,6 +87,18 @@ namespace Echo {
 	{
 		m_bRunning = false;
 		return true;
+	}
+
+	bool Application::OnWindowResized(WindowResizeEvent& resizeEvent)
+	{
+		if (resizeEvent.getWidth() == 0 || resizeEvent.getHeight() == 0)
+		{
+			m_bMinimized = true;
+			return false;
+		}
+		m_bMinimized = false;
+		Renderer::WindowResize(resizeEvent.getWidth(), resizeEvent.getHeight());
+		return false;
 	}
 
 }

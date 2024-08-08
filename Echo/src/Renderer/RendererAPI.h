@@ -21,11 +21,19 @@ namespace Echo {
 
 		/// @brief 图形API初始化
 		virtual void Init() = 0;
+		/// @brief 设置视口大小
+		/// @param x 
+		/// @param y 
+		/// @param width 
+		/// @param height 
+		virtual void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) = 0;
+
 		/// @brief 设置清屏颜色
 		/// @param color 
 		virtual void SetClearColor(const glm::vec4& color) = 0;
 		/// @brief 清空缓冲区
 		virtual void Clear() = 0;
+
 		/// @brief 根据顶点数组渲染图元
 		/// @param vertexArray 渲染用的顶点数组
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;

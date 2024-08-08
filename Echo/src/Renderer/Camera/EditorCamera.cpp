@@ -7,15 +7,14 @@
 
 namespace Echo {
 
-	EditorCamera::EditorCamera(float rLeft, float rRight, float rBottom, float rTop)
-		: Camera(glm::ortho(rLeft, rRight, rBottom, rTop, -1.0f, 1.0f)),
-		m_FocalPoint(0.0f), 
-		m_rOrthographicLeft(rLeft), m_rOrthographicRight(rRight), 
-		m_rOrthographicBottom(rBottom), m_rOrthographicTop(rTop),
+	EditorCamera::EditorCamera(float rAspectRaio, float rZoomLevel)
+		: Camera(glm::ortho(-rAspectRaio * rZoomLevel, rAspectRaio * rZoomLevel, -rZoomLevel, rZoomLevel, -1.0f, 1.0f)),
+		m_rAspectRatio(rAspectRaio), m_rZoomLevel(rZoomLevel),
+		m_rOrthographicLeft(-rAspectRaio * rZoomLevel), m_rOrthographicRight(rAspectRaio* rZoomLevel),
+		m_rOrthographicBottom(-rZoomLevel), m_rOrthographicTop(rZoomLevel),
 		m_rOrthographicNear(-1.0f), m_rOrthographicFar(1.0f)
 	{
 		m_bIsOrthographic = true;
-		m_ViewMat = glm::mat4(1.0f);
 		SetOrthoProjectionMatrix(m_rOrthographicLeft, m_rOrthographicRight, m_rOrthographicBottom, m_rOrthographicTop);
 	}
 
@@ -35,6 +34,27 @@ namespace Echo {
 		m_ViewMat = glm::translate(glm::mat4(1.0f), m_Position) * glm::toMat4(orientation);
 		m_ViewMat = glm::inverse(m_ViewMat);
 		SetPerspectiveProjectionMatrix(m_rFovRadians, (float)m_nViewportWidth, (float)m_nViewportHeight, m_rPerspectiveNear, m_rPerspectiveFar);
+	}
+
+	void EditorCamera::OnUpdate(TimeStep ts)
+	{
+		if (Input::IsKeyPressed(Key::KeyCode::A))				m_Position.x -= m_rMoveSpeed * ts;
+		else if (Input::IsKeyPressed(Key::KeyCode::D))			m_Position.x += m_rMoveSpeed * ts;
+
+		if (Input::IsKeyPressed(Key::KeyCode::W))				m_Position.y += m_rMoveSpeed * ts;
+		else if (Input::IsKeyPressed(Key::KeyCode::S))			m_Position.y -= m_rMoveSpeed * ts;
+
+		if (Input::IsKeyPressed(Key::KeyCode::Q))				m_rRotation += 180.f * ts;
+		else if (Input::IsKeyPressed(Key::KeyCode::E))			m_rRotation -= 180.f * ts;
+
+		UpdateCameraView();
+	}
+
+	void EditorCamera::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatcher<MouseScrolledEvent>(BIND_EVENT(EditorCamera::OnMouseScrolled));
+		dispatcher.Dispatcher<WindowResizeEvent>(BIND_EVENT(EditorCamera::OnWindowResized));
 	}
 
 	void EditorCamera::SetProjectionType(ProjectionType type)
@@ -100,9 +120,30 @@ namespace Echo {
 		}
 		else
 		{
-			glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position) * glm::rotate(glm::mat4(1.0f), glm::radians(m_Rotation), glm::vec3(0, 0, 1));
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position) * glm::rotate(glm::mat4(1.0f), glm::radians(m_rRotation), glm::vec3(0, 0, 1));
 			m_ViewMat = glm::inverse(transform);
 		}
+	}
+
+	bool EditorCamera::OnMouseScrolled(MouseScrolledEvent& e)
+	{
+		if (m_bIsOrthographic == true)
+		{
+			m_rZoomLevel -= e.getYOffset() * 0.25f;
+			m_rZoomLevel = std::max(m_rZoomLevel, 0.25f);
+			SetOrthoProjectionMatrix(-m_rAspectRatio * m_rZoomLevel, m_rAspectRatio * m_rZoomLevel, -m_rZoomLevel, m_rZoomLevel);
+		}
+		return false;
+	}
+
+	bool EditorCamera::OnWindowResized(WindowResizeEvent& e)
+	{
+		if (m_bIsOrthographic == true)
+		{
+			m_rAspectRatio = (float)e.getWidth() / (float)e.getHeight();
+			SetOrthoProjectionMatrix(-m_rAspectRatio * m_rZoomLevel, m_rAspectRatio * m_rZoomLevel, -m_rZoomLevel, m_rZoomLevel);
+		}
+		return false;
 	}
 
 }

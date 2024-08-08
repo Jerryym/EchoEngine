@@ -47,6 +47,9 @@ namespace Echo {
 		virtual int GetEventCategory() const = 0;
 		/// @brief 事件类型转换为字符串 
 		virtual std::string ToString() const { return GetName(); }
+		/// @brief 事件是否已被处理
+		/// @return 
+		virtual bool Handled() const { return m_bHandled; }
 
 		inline bool IsInCategory(EventCategory category)
 		{
