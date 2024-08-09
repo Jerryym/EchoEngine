@@ -2,6 +2,7 @@
 #include "Application.h"
 
 #include "Renderer/Renderer.h"
+#include "Renderer/Renderer2D.h"
 
 #include <glfw/glfw3.h>
 
@@ -17,6 +18,10 @@ namespace Echo {
 		//创建主窗口
 		m_MainWindow = std::unique_ptr<MainWindow>(MainWindow::CreateMainWindow());
 		m_MainWindow->SetEventCallBack(BIND_EVENT(Application::OnEvent));
+
+		//渲染器初始化
+		Renderer2D::Initialize();
+		Renderer2D::Initialize();
 
 		//创建ImGUI图层
 		m_ImGuiLayer = new ImGUILayer;

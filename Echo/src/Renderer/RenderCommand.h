@@ -8,7 +8,7 @@ namespace Echo {
 	{
 	public:
 		/// @brief 初始化场景
-		static void InitScene();
+		static void Initialize();
 		/// @brief 设置视口大小
 		/// @param x 
 		/// @param y 

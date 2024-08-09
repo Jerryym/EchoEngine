@@ -169,6 +169,7 @@
     <ClInclude Include="src\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Renderer\Renderer.h" />
+    <ClInclude Include="src\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Renderer\Camera\SceneCamera.h" />
     <ClInclude Include="src\Renderer\Shader.h" />
@@ -617,6 +618,7 @@
     <ClCompile Include="src\Renderer\Camera\EditorCamera.cpp" />
     <ClCompile Include="src\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Renderer\Camera\SceneCamera.cpp" />
     <ClCompile Include="src\Renderer\Shader.cpp" />

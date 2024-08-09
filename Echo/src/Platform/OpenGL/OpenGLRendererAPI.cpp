@@ -7,8 +7,12 @@ namespace Echo {
 	
 	void OpenGLRendererAPI::Init()
 	{
+		//开启混合
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		//开启深度检测
+		glEnable(GL_DEPTH_TEST);
 	}
 
 	void OpenGLRendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
@@ -23,7 +27,6 @@ namespace Echo {
 
 	void OpenGLRendererAPI::Clear()
 	{
-		glEnable(GL_DEPTH_TEST);
 		// Clear the color buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}

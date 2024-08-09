@@ -145,14 +145,14 @@ namespace Echo {
 		/// @brief 偏航角（绕Y轴旋转）(单位: 弧度)
 		float m_rYaw = 0.0f;
 		/// @brief 俯仰角（绕X轴旋转）(单位: 弧度)
-		float m_rPitch = 0.0f;;
+		float m_rPitch = 0.0f;
 
 		float m_rRotation = 0.0f;
 		
 		/// @brief 相机到焦点的距离
 		float m_rDistance = 10.0f;
 		/// @brief 相机移动速度
-		float m_rMoveSpeed = 2.5f;
+		float m_rMoveSpeed = 5.0f;
 
 		/// @brief 视口宽度
 		uint32_t m_nViewportWidth = 1280;

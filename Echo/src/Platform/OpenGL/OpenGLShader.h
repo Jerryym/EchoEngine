@@ -21,6 +21,12 @@ namespace Echo {
 
 		virtual const std::string& GetName() const override { return m_sName; }
 
+		virtual void SetInt(const std::string& name, int value) override;
+		virtual void SetFloat3(const std::string& name, const glm::vec3& value) override;
+		virtual void SetFloat4(const std::string& name, const glm::vec4& value) override;
+		virtual void SetMat4(const std::string& name, const glm::mat4& value) override;
+
+	public:
 		//设置uniform
 		void SetUniformInt(const std::string& name, int value);
 

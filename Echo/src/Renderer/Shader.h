@@ -1,4 +1,5 @@
 #pragma once
+#include <glm/glm.hpp>
 
 namespace Echo {
 
@@ -26,6 +27,12 @@ namespace Echo {
 		/// @param fragmentSrc 片元着色器
 		/// @return 返回对应RendererAPI创建的着色器，若无对应RendererAPI则返回nullptr！
 		static Ref<Shader> Create(const std::string& sShaderName, const std::string& vertexSrc, const std::string& fragmentSrc);
+
+	public:
+		virtual void SetInt(const std::string& name, int value) = 0;
+		virtual void SetFloat3(const std::string& name, const glm::vec3& value) = 0;
+		virtual void SetFloat4(const std::string& name, const glm::vec4& value) = 0;
+		virtual void SetMat4(const std::string& name, const glm::mat4& value) = 0;
 	};
 
 	/// @brief 着色器库

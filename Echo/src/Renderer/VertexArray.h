@@ -11,7 +11,7 @@ namespace Echo {
 
 		/// @brief 创建顶点数组
 		/// @return 返回对应RendererAPI创建的顶点数组，若无对应RendererAPI则返回nullptr！
-		static VertexArray* CreateVertexArray();
+		static Ref <VertexArray> CreateVertexArray();
 
 	public:
 		/// @brief 绑定对应顶点数组
