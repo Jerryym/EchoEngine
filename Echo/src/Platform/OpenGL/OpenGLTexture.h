@@ -12,6 +12,8 @@ namespace Echo {
 		OpenGLTexture2D(uint32_t width, uint32_t height);
 		virtual ~OpenGLTexture2D();
 
+		virtual bool operator==(const Texture& texture) const override;
+
 	public:
 		virtual uint32_t GetWidth() const override { return m_nWidth; }
 		virtual uint32_t GetHeight() const override { return m_nHeight; }

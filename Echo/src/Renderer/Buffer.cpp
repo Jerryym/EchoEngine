@@ -24,7 +24,7 @@ namespace Echo {
 		}
 	}
 
-	VertexBuffer* VertexBuffer::CreateBuffer(float* vertices, uint32_t size)
+	Ref<VertexBuffer> VertexBuffer::CreateBuffer(uint32_t size)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -34,13 +34,29 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return new OpenGLVertexBuffer(vertices, size);
+				return std::make_shared<OpenGLVertexBuffer>(size);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
 	}
 
-	IndexBuffer* IndexBuffer::CreateBuffer(uint32_t* indices, uint32_t count)
+	Ref<VertexBuffer> VertexBuffer::CreateBuffer(float* vertices, uint32_t size)
+	{
+		switch (Renderer::GetAPI())
+		{
+			case RendererAPI::API::None:
+			{
+				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
+				return nullptr;
+			}
+			case RendererAPI::API::OpenGL:
+				return std::make_shared<OpenGLVertexBuffer>(vertices, size);
+		}
+		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
+		return nullptr;
+	}
+
+	Ref<IndexBuffer> IndexBuffer::CreateBuffer(uint32_t* indices, uint32_t count)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -50,7 +66,7 @@ namespace Echo {
 			return nullptr;
 		}
 		case RendererAPI::API::OpenGL:
-			return new OpenGLIndexBuffer(indices, count);
+			return std::make_shared<OpenGLIndexBuffer>(indices, count);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;

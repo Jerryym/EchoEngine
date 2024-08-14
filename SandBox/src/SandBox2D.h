@@ -20,7 +20,7 @@ private:
 	/// @brief 着色器库
 	Echo::ShaderLibrary m_ShaderLib;
 	/// @brief 纹理贴图
-	Echo::Ref<Echo::Texture2D> m_Texture;
+	Echo::Ref<Echo::Texture2D> m_Texture, m_Texture2;
 	/// @brief 编辑器相机
 	Echo::EditorCamera m_Camera;
 };

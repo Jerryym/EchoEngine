@@ -62,6 +62,21 @@ namespace Echo {
 		SetUniformInt(name, value);
 	}
 
+	void OpenGLShader::SetIntArray(const std::string& name, int* values, uint32_t size)
+	{
+		SetUniformIntArray(name, values, size);
+	}
+
+	void OpenGLShader::SetFloat(const std::string& name, float value)
+	{
+		SetUniformFloat(name, value);
+	}
+
+	void OpenGLShader::SetFloat2(const std::string& name, const glm::vec2& value)
+	{
+		SetUniformFloat2(name, value);
+	}
+
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
 		SetUniformFloat3(name, value);
@@ -81,6 +96,12 @@ namespace Echo {
 	{
 		int iLocation = GetUniformLocation(name);
 		glUniform1i(iLocation, value);
+	}
+
+	void OpenGLShader::SetUniformIntArray(const std::string& name, int* values, uint32_t size)
+	{
+		int iLocation = GetUniformLocation(name);
+		glUniform1iv(iLocation, size, values);
 	}
 
 	void OpenGLShader::SetUniformFloat(const std::string& name, float value)

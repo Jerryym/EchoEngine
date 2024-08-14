@@ -35,8 +35,9 @@ namespace Echo {
 		virtual void Clear() = 0;
 
 		/// @brief 根据顶点数组渲染图元
-		/// @param vertexArray 渲染用的顶点数组
-		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;
+		/// @param vertexArray 顶点数组
+		/// @param indexCount 索引数量
+		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0) = 0;
 
 	private:
 		/// @brief 图形API

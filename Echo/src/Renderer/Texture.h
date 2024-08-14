@@ -9,6 +9,8 @@ namespace Echo {
 	public:
 		virtual ~Texture() {}
 
+		virtual bool operator==(const Texture& texture) const = 0;
+
 	public:
 		/// @brief 获取纹理宽度
 		/// @return 

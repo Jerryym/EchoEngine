@@ -70,6 +70,11 @@ namespace Echo {
 		glDeleteTextures(1, &m_RendererID);
 	}
 
+	bool OpenGLTexture2D::operator==(const Texture& texture) const
+	{
+		return (m_RendererID == ((OpenGLTexture2D&)texture).m_RendererID);
+	}
+
 	void OpenGLTexture2D::SetData(void* data, uint32_t size)
 	{
 		uint32_t bpp = m_DataFormat == GL_RGBA ? 4 : 3;

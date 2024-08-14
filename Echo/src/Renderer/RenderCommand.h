@@ -23,8 +23,9 @@ namespace Echo {
 		static void Clear();
 
 		/// @brief 根据顶点数组渲染图元
-		/// @param vertexArray 
-		static void DrawIndexed(const Ref<VertexArray>& vertexArray);
+		/// @param vertexArray 顶点数组
+		/// @param indexCount 索引数量 
+		static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0);
 
 	private:
 		static RendererAPI* s_RendererAPI;
