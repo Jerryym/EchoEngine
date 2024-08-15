@@ -21,6 +21,8 @@ namespace Echo {
 	public:
 		/// @brief 启动应用程序
 		void Run();
+		/// @brief 关闭应用程序
+		void Close();
 
 		/// @brief 获取当前应用程序
 		/// @return 当前运行的应用程序指针

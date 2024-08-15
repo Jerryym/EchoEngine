@@ -17,7 +17,6 @@ namespace Echo {
 	public:
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void OnRenderUI() override;
 
 		/// @brief 启动ImGUI框架
 		void Begin();

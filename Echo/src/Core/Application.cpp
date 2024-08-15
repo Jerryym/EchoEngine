@@ -16,7 +16,7 @@ namespace Echo {
 		s_Instance = this;
 
 		//创建主窗口
-		m_MainWindow = std::unique_ptr<MainWindow>(MainWindow::CreateMainWindow());
+		m_MainWindow = MainWindow::CreateMainWindow();
 		m_MainWindow->SetEventCallBack(BIND_EVENT(Application::OnEvent));
 
 		//渲染器初始化
@@ -57,6 +57,11 @@ namespace Echo {
 			//更新主窗口
 			m_MainWindow->OnUpdate();
 		}
+	}
+
+	void Application::Close()
+	{
+		m_bRunning = false;
 	}
 
 	void Application::OnEvent(Event& e)

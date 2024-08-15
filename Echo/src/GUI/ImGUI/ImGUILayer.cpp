@@ -58,10 +58,6 @@ namespace Echo {
 		ImGui::DestroyContext();
 	}
 
-	void ImGUILayer::OnRenderUI()
-	{
-	}
-
 	void ImGUILayer::Begin()
 	{
 		//启动ImGUI框架

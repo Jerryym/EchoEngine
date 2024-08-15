@@ -16,11 +16,6 @@ namespace Echo {
 
 	///////////////////////////////////////////////////////////////////
 	// MainWindow_Windows
-	MainWindow* MainWindow::CreateMainWindow(const sWindowProp& prop)
-	{
-		return new MainWindow_Windows(prop);
-	}
-
 	MainWindow_Windows::MainWindow_Windows(const sWindowProp& sProp)
 	{
 		Initialize(sProp);

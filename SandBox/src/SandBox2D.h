@@ -15,6 +15,9 @@ public:
 	virtual void OnEvent(Echo::Event& e) override;
 
 private:
+	void CreateDockSpace(bool bEnable);
+
+private:
 	/// @brief 顶点数组对象
 	Echo::Ref<Echo::VertexArray> m_CubeVA;
 	/// @brief 着色器库

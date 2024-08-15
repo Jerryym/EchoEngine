@@ -19,7 +19,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return std::make_shared<OpenGLShader>(sFilePath);
+				return CreateRef<OpenGLShader>(sFilePath);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
@@ -35,7 +35,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return std::make_shared<OpenGLShader>(sShaderName, vertexSrc, fragmentSrc);
+				return CreateRef<OpenGLShader>(sShaderName, vertexSrc, fragmentSrc);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;

@@ -34,7 +34,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return std::make_shared<OpenGLVertexBuffer>(size);
+				return CreateRef<OpenGLVertexBuffer>(size);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
@@ -50,7 +50,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return std::make_shared<OpenGLVertexBuffer>(vertices, size);
+				return CreateRef<OpenGLVertexBuffer>(vertices, size);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
@@ -66,7 +66,7 @@ namespace Echo {
 			return nullptr;
 		}
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLIndexBuffer>(indices, count);
+			return CreateRef<OpenGLIndexBuffer>(indices, count);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;

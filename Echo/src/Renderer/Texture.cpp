@@ -16,7 +16,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return std::make_shared<OpenGLTexture2D>(sPath);
+				return CreateRef<OpenGLTexture2D>(sPath);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
@@ -32,7 +32,7 @@ namespace Echo {
 			return nullptr;
 		}
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLTexture2D>(width, height);
+			return CreateRef<OpenGLTexture2D>(width, height);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;

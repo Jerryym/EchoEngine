@@ -16,7 +16,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return std::make_shared<OpenGLVertexArray>();
+				return CreateRef<OpenGLVertexArray>();
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
