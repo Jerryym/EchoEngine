@@ -30,7 +30,9 @@ namespace Echo {
 		m_InternalFormat = internalFormat;
 		m_DataFormat = dataFormat;
 
+		//创建纹理
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_RendererID);
+		//存储纹理至内存
 		glTextureStorage2D(m_RendererID, 1, GL_RGB8, m_nWidth, m_nHeight);
 
 		//设置纹理过滤方式
@@ -53,7 +55,9 @@ namespace Echo {
 		m_InternalFormat = GL_RGBA8;
 		m_DataFormat = GL_RGBA;
 
+		//创建纹理
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_RendererID);
+		//存储纹理至内存
 		glTextureStorage2D(m_RendererID, 1, m_InternalFormat, m_nWidth, m_nHeight);
 
 		//设置纹理过滤方式

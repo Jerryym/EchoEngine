@@ -58,7 +58,7 @@ namespace Echo {
 		void Compile(const std::unordered_map<GLenum, std::string>& ShaderSources);
 
 	private:
-		uint32_t m_RendererID;
+		uint32_t m_RendererID = 0;
 		/// @brief 着色器名称
 		std::string m_sName;
 		std::unordered_map<std::string, int> m_UniformLocationCache;

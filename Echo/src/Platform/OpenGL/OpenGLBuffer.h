@@ -20,7 +20,7 @@ namespace Echo {
 		virtual void SetData(const void* data, uint32_t size) override;
 
 	private:
-		uint32_t m_RendererID;
+		uint32_t m_RendererID = 0;
 		BufferLayout m_layout;
 	};
 
@@ -37,7 +37,7 @@ namespace Echo {
 		virtual uint32_t GetCount() const override { return m_iCount; }
 
 	private:
-		uint32_t m_RendererID;
+		uint32_t m_RendererID = 0;
 		uint32_t m_iCount;
 	};
 }

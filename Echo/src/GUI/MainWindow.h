@@ -9,9 +9,9 @@ namespace Echo {
 	{
 		uint32_t m_iWidth;		//窗口宽
 		uint32_t m_iHeight;		//窗口高
-		std::string m_sTitle;		//窗口标题
+		std::string m_sTitle;	//窗口标题
 
-		sWindowProp(uint32_t iWidth = 1600, uint32_t iHeight = 900, const std::string& sTitle = "Echo Engine")
+		sWindowProp(const std::string& sTitle = "Echo Engine", uint32_t iWidth = 1600, uint32_t iHeight = 900)
 			: m_iWidth(iWidth), m_iHeight(iHeight), m_sTitle(sTitle)
 		{}
 

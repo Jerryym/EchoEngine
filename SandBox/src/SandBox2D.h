@@ -18,13 +18,11 @@ private:
 	void CreateDockSpace(bool bEnable);
 
 private:
-	/// @brief 顶点数组对象
-	Echo::Ref<Echo::VertexArray> m_CubeVA;
-	/// @brief 着色器库
-	Echo::ShaderLibrary m_ShaderLib;
 	/// @brief 纹理贴图
 	Echo::Ref<Echo::Texture2D> m_Texture, m_Texture2;
 	/// @brief 编辑器相机
 	Echo::EditorCamera m_Camera;
+	/// @brief 帧缓冲对象
+	Echo::Ref<Echo::FrameBuffer> m_FBO;
 };
 

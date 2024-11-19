@@ -1,6 +1,9 @@
 #include "SandBox2D.h"
 #include <imgui/imgui.h>
 
+#include <locale>
+#include <codecvt> 
+
 SandBox2D::SandBox2D()
 	: Echo::Layer("SandBox2D"), m_Camera(1600.f / 900.f, 1.0f)
 {
@@ -10,6 +13,11 @@ void SandBox2D::OnAttach()
 {
 	m_Texture = Echo::Texture2D::CreateTexture("assets/textures/TestTexture.png");
 	m_Texture2 = Echo::Texture2D::CreateTexture("assets/textures/StuccoRough.png");
+
+	Echo::FrameBufferSpecification fboSpc;
+	fboSpc.m_nWidth = Echo::Application::GetApplication().GetMainWindow().GetWidth();
+	fboSpc.m_nHeight = Echo::Application::GetApplication().GetMainWindow().GetHeight();
+	m_FBO = Echo::FrameBuffer::CreateFrameBuffer(fboSpc);
 }
 
 void SandBox2D::OnDetach()
@@ -26,8 +34,9 @@ void SandBox2D::OnUpdate(Echo::TimeStep ts)
 
 	//渲染
 	Echo::Renderer2D::ResetStats();
-
 	Echo::Renderer::Initialize();
+	m_FBO->Bind();
+
 	Echo::RenderCommand::SetClearColor(glm::vec4(169.f / 255.f, 169.f / 255.f, 169.f / 255.f, 0.4f));
 	Echo::RenderCommand::Clear();
 
@@ -48,23 +57,31 @@ void SandBox2D::OnUpdate(Echo::TimeStep ts)
 		}
 	}
 	Echo::Renderer2D::EndScene();
+	m_FBO->UnBind();
 }
 
 void SandBox2D::OnRenderUI()
 {
-	CreateDockSpace(true);
+	bool bDockingEnabled = true;
+	CreateDockSpace(bDockingEnabled);
 
 	ImGui::Begin("Settings");
-
 	auto stats = Echo::Renderer2D::GetStats();
 	ImGui::Text("Renderer2D Stats:");
 	ImGui::Text("Draw Calls: %d", stats.m_iDrawCalls);
 	ImGui::Text("Quads: %d", stats.m_iQuadCount);
 	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+	if (bDockingEnabled == true)
+	{
+		uint32_t textureID = m_FBO->GetColorAttachmentRendererID();
+		float rWidth = (float)Echo::Application::GetApplication().GetMainWindow().GetWidth();
+		float rHeight = (float)Echo::Application::GetApplication().GetMainWindow().GetHeight();
+		ImGui::Image((void*)textureID, ImVec2{ rWidth, rHeight });
+		ImGui::End();
+	}
 	ImGui::End();
-
-	ImGui::End();
+	
 }
 
 void SandBox2D::OnEvent(Echo::Event& e)

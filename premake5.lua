@@ -2,6 +2,7 @@
 workspace "EchoEngine"
     architecture "x64"
     configurations { "Debug", "Release", "Dist" }
+    startproject "Echo-Editor"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -12,9 +13,12 @@ IncludeDir["ImGui"] = "Echo/vendor/imgui"
 IncludeDir["glm"] = "Echo/vendor/glm"
 IncludeDir["stb_image"] = "Echo/vendor/stb_image"
 
-include "Echo/vendor/GLFW"
-include "Echo/vendor/glad"
-include "Echo/vendor/imgui"
+--依赖项
+group "Dependencies"
+    include "Echo/vendor/GLFW"
+    include "Echo/vendor/glad"
+    include "Echo/vendor/imgui"
+group ""
 
 project "Echo"
     location "Echo"
@@ -141,3 +145,109 @@ project "Sandbox"
         defines "ECHO_DIST"
         runtime "Release"
 		optimize "On"
+
+project "Echo-Editor"
+    location "Echo-Editor"
+    kind "ConsoleApp"
+    language "C++"
+    cppdialect "C++17"
+    staticruntime "On"
+
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --输出目录
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --中间目录
+
+    files
+    {
+        "%{prj.name}/src/**.h",
+        "%{prj.name}/src/**.hpp",
+        "%{prj.name}/src/**.cpp"
+    }
+
+    includedirs
+    {
+        "Echo/vendor/spdlog/include",
+        "Echo/src",
+        "Echo/vendor",
+        "%{IncludeDir.glm}"
+    }
+
+    links
+    {
+        "Echo"
+    }
+
+    filter "system:windows"
+		systemversion "latest"  --windows sdk 版本
+
+        defines
+		{
+			"ECHO_PLATFORM_WINDOWS",
+		}
+
+    filter "configurations:Debug"
+        defines "ECHO_DEBUG"
+        runtime "Debug"
+		symbols "On"
+
+    filter "configurations:Release"
+        defines "ECHO_RELEASE"
+        runtime "Release"
+		optimize "On"
+
+    filter "configurations:Dist"
+        defines "ECHO_DIST"
+        runtime "Release"
+		optimize "On"
+
+        project "Sandbox"
+        location "Sandbox"
+        kind "ConsoleApp"
+        language "C++"
+        cppdialect "C++17"
+        staticruntime "On"
+    
+        targetdir ("bin/" .. outputdir .. "/%{prj.name}")   --输出目录
+        objdir ("bin-int/" .. outputdir .. "/%{prj.name}")  --中间目录
+    
+        files
+        {
+            "%{prj.name}/src/**.h",
+            "%{prj.name}/src/**.hpp",
+            "%{prj.name}/src/**.cpp"
+        }
+    
+        includedirs
+        {
+            "Echo/vendor/spdlog/include",
+            "Echo/src",
+            "Echo/vendor",
+            "%{IncludeDir.glm}"
+        }
+    
+        links
+        {
+            "Echo"
+        }
+    
+        filter "system:windows"
+            systemversion "latest"  --windows sdk 版本
+    
+            defines
+            {
+                "ECHO_PLATFORM_WINDOWS",
+            }
+    
+        filter "configurations:Debug"
+            defines "ECHO_DEBUG"
+            runtime "Debug"
+            symbols "On"
+    
+        filter "configurations:Release"
+            defines "ECHO_RELEASE"
+            runtime "Release"
+            optimize "On"
+    
+        filter "configurations:Dist"
+            defines "ECHO_DIST"
+            runtime "Release"
+            optimize "On"

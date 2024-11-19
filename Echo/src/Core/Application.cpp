@@ -10,13 +10,13 @@ namespace Echo {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application(const std::string& sAppName)
 	{
 		ECHO_CORE_ASSERT(s_Instance != nullptr, "Application already exists!");
 		s_Instance = this;
 
 		//创建主窗口
-		m_MainWindow = MainWindow::CreateMainWindow();
+		m_MainWindow = MainWindow::CreateMainWindow(sWindowProp(sAppName));
 		m_MainWindow->SetEventCallBack(BIND_EVENT(Application::OnEvent));
 
 		//渲染器初始化

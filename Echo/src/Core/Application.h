@@ -15,7 +15,7 @@ namespace Echo {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& sAppName = "Echo Engine");
 		virtual ~Application() {}
 
 	public:

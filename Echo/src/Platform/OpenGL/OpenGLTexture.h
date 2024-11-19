@@ -30,8 +30,8 @@ namespace Echo {
 		/// @brief 纹理高度
 		uint32_t m_nHeight;
 		/// @brief 渲染ID
-		uint32_t m_RendererID;
-		/// @brief 内部数据类型
+		uint32_t m_RendererID = 0;
+		/// @brief 纹理的内部数据类型
 		GLenum m_InternalFormat;
 		/// @brief 数据类型
 		GLenum m_DataFormat;

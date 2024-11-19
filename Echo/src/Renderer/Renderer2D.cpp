@@ -30,7 +30,7 @@ namespace Echo {
 		static const uint32_t m_iMaxVertices = m_iMaxQuadCount * 4;
 		/// @brief 渲染四边形最大顶点索引数
 		static const uint32_t m_iMaxIndices = m_iMaxQuadCount * 6;
-		/// @brief 渲染四边形最大纹理槽
+		/// @brief 渲染四边形最大纹理单元
 		static const uint32_t m_iMaxTextureSlots = 32;
 
 		/// @brief 顶点数组对象
@@ -49,9 +49,9 @@ namespace Echo {
 		/// @brief 顶点缓冲指针
 		QuadVertexInfo* m_pQuadVertexBufferPtr = nullptr;
 
-		/// @brief 纹理槽
+		/// @brief 纹理单元
 		std::array<Ref<Texture2D>, m_iMaxTextureSlots> m_TextureSlots;
-		/// @brief 当前纹理槽
+		/// @brief 当前纹理单元
 		uint32_t m_iTextureSlotIndex = 1; //0 == white texture
 
 		/// @brief 四边形顶点坐标
@@ -118,7 +118,7 @@ namespace Echo {
 		s_pData->m_Shader->Bind();
 		s_pData->m_Shader->SetIntArray("u_Textures", samplers, s_pData->m_iMaxTextureSlots);
 
-		//初始化纹理槽
+		//初始化纹理单元
 		s_pData->m_TextureSlots[0] = s_pData->m_Texture;
 
 		//初始化四边形顶点坐标
@@ -139,7 +139,7 @@ namespace Echo {
 		s_pData->m_Shader->Bind();
 		s_pData->m_Shader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 
-		//每次开始渲染场景使，初始化顶点索引数量、顶点缓冲指针地址指向和当前纹理槽索引
+		//每次开始渲染场景使，初始化顶点索引数量、顶点缓冲指针地址指向和当前纹理单元索引
 		s_pData->m_iQuadIndexCount = 0;
 		s_pData->m_pQuadVertexBufferPtr = s_pData->m_pQuadVertexBufferBase;
 		s_pData->m_iTextureSlotIndex = 1;
@@ -243,7 +243,7 @@ namespace Echo {
 		float rTextureIndex = 0.0f;
 		for (uint32_t i = 1; i < s_pData->m_iTextureSlotIndex; i++)
 		{
-			if (*s_pData->m_TextureSlots[i].get() == *texture.get())// 如果当前纹理已经存储在纹理槽，就直接读取
+			if (*s_pData->m_TextureSlots[i].get() == *texture.get())// 如果当前纹理已经存储在纹理单元，就直接读取
 			{
 				rTextureIndex = (float)i;
 				break;
@@ -375,7 +375,7 @@ namespace Echo {
 		float rTextureIndex = 0.0f;
 		for (uint32_t i = 1; i < s_pData->m_iTextureSlotIndex; i++)
 		{
-			if (*s_pData->m_TextureSlots[i].get() == *texture.get())// 如果当前纹理已经存储在纹理槽，就直接读取
+			if (*s_pData->m_TextureSlots[i].get() == *texture.get())// 如果当前纹理已经存储在纹理单元，就直接读取
 			{
 				rTextureIndex = (float)i;
 				break;
