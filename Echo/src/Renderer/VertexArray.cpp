@@ -6,7 +6,7 @@
 
 namespace Echo {
 
-	VertexArray* VertexArray::CreateVertexArray()
+	Ref <VertexArray> VertexArray::CreateVertexArray()
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -16,7 +16,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RendererAPI::API::OpenGL:
-				return new OpenGLVertexArray;
+				return CreateRef<OpenGLVertexArray>();
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;

@@ -28,6 +28,9 @@
     <Filter Include="src\Renderer">
       <UniqueIdentifier>{73D1DFBF-5F34-6F64-08BA-A71AF4FB3AE7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Renderer\Camera">
+      <UniqueIdentifier>{8BE6B0F4-F747-8E02-80B5-D4B4EC15C5C1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Utils">
       <UniqueIdentifier>{4D9AFFB3-B904-B42A-0243-65D06EEC917F}</UniqueIdentifier>
     </Filter>
@@ -99,6 +102,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -114,16 +120,19 @@
     <ClInclude Include="src\Platform\Windows\MainWindow_Windows.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>src\Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\Renderer\Buffer.h">
       <Filter>src\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\Camera.h">
-      <Filter>src\Renderer</Filter>
+    <ClInclude Include="src\Renderer\Camera\Camera.h">
+      <Filter>src\Renderer\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\EditorCamera.h">
+    <ClInclude Include="src\Renderer\Camera\EditorCamera.h">
+      <Filter>src\Renderer\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\Camera\SceneCamera.h">
+      <Filter>src\Renderer\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\FrameBuffer.h">
       <Filter>src\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\GraphicsContext.h">
@@ -135,10 +144,10 @@
     <ClInclude Include="src\Renderer\Renderer.h">
       <Filter>src\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\RendererAPI.h">
+    <ClInclude Include="src\Renderer\Renderer2D.h">
       <Filter>src\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer\SceneCamera.h">
+    <ClInclude Include="src\Renderer\RendererAPI.h">
       <Filter>src\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\Shader.h">
@@ -1436,10 +1445,16 @@
     <ClCompile Include="src\GUI\ImGUI\ImGUILayer.cpp">
       <Filter>src\GUI\ImGUI</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\MainWindow.cpp">
+      <Filter>src\GUI</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1463,10 +1478,16 @@
     <ClCompile Include="src\Renderer\Buffer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\Camera.cpp">
-      <Filter>src\Renderer</Filter>
+    <ClCompile Include="src\Renderer\Camera\Camera.cpp">
+      <Filter>src\Renderer\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\EditorCamera.cpp">
+    <ClCompile Include="src\Renderer\Camera\EditorCamera.cpp">
+      <Filter>src\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\Camera\SceneCamera.cpp">
+      <Filter>src\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\FrameBuffer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderer\RenderCommand.cpp">
@@ -1475,10 +1496,10 @@
     <ClCompile Include="src\Renderer\Renderer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\RendererAPI.cpp">
+    <ClCompile Include="src\Renderer\Renderer2D.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer\SceneCamera.cpp">
+    <ClCompile Include="src\Renderer\RendererAPI.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderer\Shader.cpp">

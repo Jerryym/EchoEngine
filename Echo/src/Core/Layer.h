@@ -23,7 +23,7 @@ namespace Echo {
 		virtual void OnRenderUI() {}
 		/// @brief 处理事件：此函数用于处理图层中设置的事件
 		/// @param event 需处理事件
-		virtual void OnEvent(Event& event) {}
+		virtual void OnEvent(Event& e) {}
 
 		/// @brief 获取层名
 		/// @return 

@@ -2,7 +2,7 @@
 #include "RenderCommand.h"
 
 #include "Shader.h"
-#include "EditorCamera.h"
+#include "Camera/EditorCamera.h"
 
 namespace Echo {
 
@@ -13,10 +13,18 @@ namespace Echo {
 		/// @brief 获取当前渲染API
 		/// @return 
 		static RendererAPI::API GetAPI() { return RendererAPI::getAPI(); }
+		
+		/// @brief 渲染器初始化
+		static void Initialize();
 		/// @brief 开始屏幕渲染
 		static void BeginScene(const EditorCamera& camera);
 		/// @brief 结束屏幕渲染
 		static void EndScene();
+
+		/// @brief 窗口尺寸修改
+		/// @param width 
+		/// @param height 
+		static void WindowResize(uint32_t width, uint32_t height);
 
 		/// @brief 提交渲染用的顶点数组
 		/// @param shader 着色器

@@ -9,6 +9,11 @@ namespace Echo {
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
+	void Renderer::Initialize()
+	{
+		RenderCommand::Initialize();
+	}
+
 	void Renderer::BeginScene(const EditorCamera& camera)
 	{
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
@@ -16,6 +21,11 @@ namespace Echo {
 
 	void Renderer::EndScene()
 	{
+	}
+
+	void Renderer::WindowResize(uint32_t width, uint32_t height)
+	{
+		RenderCommand::SetViewport(0, 0, width, height);
 	}
 
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)

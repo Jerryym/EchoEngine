@@ -1,14 +1,12 @@
 #include "echopch.h"
-#include "WindowsInput.h"
+#include "Utils/Input.h"
 #include "Core/Application.h"
 
 #include <GLFW/glfw3.h>
 
 namespace Echo {
 
-	Input* Input::s_InputInstance = new WindowsInput();
-
-	bool WindowsInput::IsKeyPressedImpl(Key::KeyCode keycode)
+	bool Input::IsKeyPressed(Key::KeyCode keycode)
 	{
 		auto nativeWindow = static_cast<GLFWwindow*>(Application::GetApplication().GetMainWindow().GetNativeWindow());
 		auto state = glfwGetKey(nativeWindow, (int)keycode);
@@ -16,7 +14,7 @@ namespace Echo {
 		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
 
-	bool WindowsInput::IsMouseButtonPressedImpl(Mouse::MouseCode mousebutton)
+	bool Input::IsMouseButtonPressed(Mouse::MouseCode mousebutton)
 	{
 		auto nativeWindow = static_cast<GLFWwindow*>(Application::GetApplication().GetMainWindow().GetNativeWindow());
 		auto state = glfwGetMouseButton(nativeWindow, (int)mousebutton);
@@ -24,7 +22,7 @@ namespace Echo {
 		return state == GLFW_PRESS;
 	}
 
-	std::pair<float, float> WindowsInput::GetMousePosImpl()
+	std::pair<float, float> Input::GetMousePos()
 	{
 		auto nativeWindow = static_cast<GLFWwindow*>(Application::GetApplication().GetMainWindow().GetNativeWindow());
 		double rXPos, rYPos;
@@ -33,15 +31,15 @@ namespace Echo {
 		return std::pair<float, float>((float)rXPos, (float)rYPos);
 	}
 
-	float WindowsInput::GetMouseXImpl()
+	float Input::GetMouseX()
 	{
-		auto[x, y] = GetMousePosImpl();
+		auto[x, y] = GetMousePos();
 		return x;
 	}
 
-	float WindowsInput::GetMouseYImpl()
+	float Input::GetMouseY()
 	{
-		auto [x, y] = GetMousePosImpl();
+		auto [x, y] = GetMousePos();
 		return y;
 	}
 
