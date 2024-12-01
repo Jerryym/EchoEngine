@@ -1,7 +1,8 @@
 #pragma once
 #include "RenderCommand.h"
-#include "Camera.h"
+
 #include "Shader.h"
+#include "Camera/EditorCamera.h"
 
 namespace Echo {
 
@@ -12,16 +13,24 @@ namespace Echo {
 		/// @brief 获取当前渲染API
 		/// @return 
 		static RendererAPI::API GetAPI() { return RendererAPI::getAPI(); }
+		
+		/// @brief 渲染器初始化
+		static void Initialize();
 		/// @brief 开始屏幕渲染
-		static void BeginScene(Camera& camera);
+		static void BeginScene(const EditorCamera& camera);
 		/// @brief 结束屏幕渲染
 		static void EndScene();
+
+		/// @brief 窗口尺寸修改
+		/// @param width 
+		/// @param height 
+		static void WindowResize(uint32_t width, uint32_t height);
 
 		/// @brief 提交渲染用的顶点数组
 		/// @param shader 着色器
 		/// @param vertexArray 顶点数组
 		/// @param transform 变换矩阵
-		static void Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f));
+		static void Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f));
 
 	private:
 		struct SceneData

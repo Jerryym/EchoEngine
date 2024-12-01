@@ -7,11 +7,11 @@ namespace Echo {
 	/// @brief 窗口属性
 	typedef struct sWindowProp 
 	{
-		unsigned int m_iWidth;		//窗口宽
-		unsigned int m_iHeight;		//窗口高
-		std::string m_sTitle;		//窗口标题
+		uint32_t m_iWidth;		//窗口宽
+		uint32_t m_iHeight;		//窗口高
+		std::string m_sTitle;	//窗口标题
 
-		sWindowProp(unsigned int iWidth = 1600, unsigned int iHeight = 900, const std::string& sTitle = "Echo Engine")
+		sWindowProp(const std::string& sTitle = "Echo Engine", uint32_t iWidth = 1600, uint32_t iHeight = 900)
 			: m_iWidth(iWidth), m_iHeight(iHeight), m_sTitle(sTitle)
 		{}
 
@@ -29,16 +29,16 @@ namespace Echo {
 		/// @brief 创建主窗口
 		/// @param prop 窗口属性
 		/// @return 
-		static MainWindow* CreateMainWindow(const sWindowProp& prop = sWindowProp());
+		static Scope<MainWindow> CreateMainWindow(const sWindowProp& prop = sWindowProp());
 
 	public:
         /// @brief 窗口更新
         virtual void OnUpdate() = 0;
 
 		/// @brief 获取窗口宽度
-		virtual unsigned int GetWidth() const = 0;
+		virtual uint32_t GetWidth() const = 0;
 		/// @brief 获取窗口高度
-		virtual unsigned int GetHeight() const = 0;
+		virtual uint32_t GetHeight() const = 0;
 		/// @brief 获取窗口标题
 		virtual const std::string& GetTitle() const = 0;
 

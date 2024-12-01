@@ -11,17 +11,16 @@
 
 // ---Renderer------------------------
 #include "Renderer/Renderer.h"
+#include "Renderer/Renderer2D.h"
 #include "Renderer/RenderCommand.h"
 
 #include "Renderer/Buffer.h"
 #include "Renderer/Shader.h"
 #include "Renderer/VertexArray.h"
-#include "Renderer/Shader.h"
+#include "Renderer/Texture.h"
+#include "Renderer/FrameBuffer.h"
 
-#include "Renderer/Camera.h"
-#include "Renderer/SceneCamera.h"
-// ----------------------------------
-
-// --Entry Point---------------------
-#include "Core/EntryPoint.h"
+#include "Renderer/Camera/Camera.h"
+#include "Renderer/Camera/EditorCamera.h"
+#include "Renderer/Camera/SceneCamera.h"
 // ----------------------------------

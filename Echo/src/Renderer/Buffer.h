@@ -114,10 +114,14 @@ namespace Echo {
 		virtual ~VertexBuffer() {}
 
 		/// @brief 创建顶点缓冲对象
-		/// @param vertices 
-		/// @param size 
+		/// @param size 顶点数组大小
 		/// @return 返回对应RendererAPI创建的顶点缓冲对象，若无对应RendererAPI则返回nullptr！
-		static VertexBuffer* CreateBuffer(float* vertices, uint32_t size);
+		static Ref<VertexBuffer> CreateBuffer(uint32_t size);
+		/// @brief 创建顶点缓冲对象
+		/// @param vertices 顶点数组
+		/// @param size 顶点数组大小
+		/// @return 返回对应RendererAPI创建的顶点缓冲对象，若无对应RendererAPI则返回nullptr！
+		static Ref<VertexBuffer> CreateBuffer(float* vertices, uint32_t size);
 
 	public:
 		/// @brief 绑定缓冲
@@ -131,6 +135,11 @@ namespace Echo {
 		/// @brief 获取布局
 		/// @return 布局
 		virtual const BufferLayout& GetLayout() const = 0;
+
+		/// @brief 设置顶点数据
+		/// @param data 待更新的顶点数据
+		/// @param size 顶点数据大小（以字节为单位）
+		virtual void SetData(const void* data, uint32_t size) = 0;
 	};
 
 	/// @brief 索引缓冲类(IBO): 用于存储索引数据, 并且可以绑定到渲染管线中
@@ -143,7 +152,7 @@ namespace Echo {
 		/// @param indeices 
 		/// @param count 
 		/// @return 返回对应RendererAPI创建的顶点缓冲对象，若无对应RendererAPI则返回nullptr！
-		static IndexBuffer* CreateBuffer(uint32_t* indices, uint32_t count);
+		static Ref<IndexBuffer> CreateBuffer(uint32_t* indices, uint32_t count);
 
 	public:
 		/// @brief 绑定缓冲
