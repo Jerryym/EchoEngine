@@ -1,9 +1,25 @@
 # Directories
 .vs/
-bin/
-bin-int/
-/*/x64
 
-# Files
-*.user
-*.sln
+# 配置文件
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeUserPresets.json
+
+# 生成文件
+CMakeFiles
+CMakeScripts
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+
+# 测试相关
+Testing
+
+# 依赖管理
+_deps
+
+# 构建输出
+/out
