@@ -4,12 +4,12 @@
 cmake_minimum_required(VERSION 3.16)
 
 #设置版本号
-set(ECHO_VERSION_MAJOR 0)
-set(ECHO_VERSION_MINOR 3)
-set(ECHO_VERSION_PATCH 0)
-set(ECHO_VERSION "${ECHO_VERSION_MAJOR}.${ECHO_VERSION_MINOR}.${ECHO_VERSION_PATCH}")
-message(STATUS "EchoEngine Version: ${ECHO_VERSION}")
-project(EchoEngine VERSION ${ECHO_VERSION} LANGUAGES CXX)
+set(ECHOENGINE_VERSION_MAJOR 0)
+set(ECHOENGINE_VERSION_MINOR 1)
+set(ECHOENGINE_VERSION_PATCH 0)
+set(ECHOENGINE_VERSION "${ECHOENGINE_VERSION_MAJOR}.${ECHOENGINE_VERSION_MINOR}.${ECHOENGINE_VERSION_PATCH}")
+message(STATUS "EchoEngine Version: ${ECHOENGINE_VERSION}")
+project(EchoEngine VERSION ${ECHOENGINE_VERSION} LANGUAGES CXX)
 
 # 设置C++版本
 set(CMAKE_CXX_STANDARD 17)
@@ -45,5 +45,5 @@ set(ECHO_PLATFORM "x64")
 ##################################
 # 添加子项目
 ##################################
-# add_subdirectory(Echo)
+add_subdirectory(Nest)
 add_subdirectory(EchoEditor)

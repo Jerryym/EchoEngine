@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>EchoEditor.png</file>
+    </qresource>
+</RCC>
