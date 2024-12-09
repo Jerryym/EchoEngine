@@ -39,6 +39,7 @@ namespace EchoEditor {
 		{
 			uint32_t m_nWidth = 0;
 			uint32_t m_nHeight = 0;
+			double m_rPixelRation = 1.0;
 			QString m_STitle;
 			bool m_bVSync = true;	//是否开启垂直同步
 		}sWindowData;

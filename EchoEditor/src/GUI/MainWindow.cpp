@@ -21,20 +21,23 @@ namespace EchoEditor {
 	{
 		m_sData.m_nWidth = sProp.m_nWidth;
 		m_sData.m_nHeight = sProp.m_nHeight;
+		m_sData.m_rPixelRation = QGuiApplication::primaryScreen()->devicePixelRatio();//获取像素比
 		m_sData.m_STitle = sProp.m_STitle;
 
 		//设置窗口标题
-		setWindowTitle(sProp.m_STitle);
+		setWindowTitle(m_sData.m_STitle);
 		//初始化窗口大小
-		resize(QSize(sProp.m_nWidth, sProp.m_nHeight));
+		resize(QSize(m_sData.m_nWidth * m_sData.m_rPixelRation, m_sData.m_nHeight * m_sData.m_rPixelRation));
 		//设置窗口图标
-		setWindowIcon(QIcon(":/icons/EchoEditor.png"));
+		setWindowIcon(QIcon(":/icons/cross-ring-two.svg"));
 		//初始化DockWidget
 		InitializeDockWidgets();
 		//初始化GLWidget
 		InitializeGLWidget(m_sData.m_bVSync);
+		//设置最大化
+		showMaximized();
 		
-		NEST_CLIENT_INFO("Create MainWindow {0} ({1}, {2})", sProp.m_STitle.toStdString(), sProp.m_nWidth, sProp.m_nHeight);
+		NEST_CLIENT_INFO("Create MainWindow {0} ({1}, {2}, {3})", sProp.m_STitle.toStdString(), this->width(), this->height(), m_sData.m_rPixelRation);
 	}
 
 	void MainWindow::InitializeDockWidgets()

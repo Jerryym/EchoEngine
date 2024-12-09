@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/icons">
-        <file>EchoEditor.png</file>
+        <file>cross-ring-two.svg</file>
     </qresource>
 </RCC>
