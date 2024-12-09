@@ -29,7 +29,7 @@ namespace EchoEditor {
 		//初始化窗口大小
 		resize(QSize(m_sData.m_nWidth * m_sData.m_rPixelRation, m_sData.m_nHeight * m_sData.m_rPixelRation));
 		//设置窗口图标
-		setWindowIcon(QIcon(":/icons/cross-ring-two.svg"));
+		setWindowIcon(QIcon(":/icons/EchoEditor.ico"));
 		//初始化DockWidget
 		InitializeDockWidgets();
 		//初始化GLWidget
