@@ -99,5 +99,15 @@ add_custom_command(
     $<TARGET_FILE:NestUI> # 获取生成的 DLL 文件
     $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/EchoEditor/NestUId.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/EchoEditor/NestUI.dll>
 
+	# 复制GLFW的DLL文件到相应的文件夹
+	COMMAND ${CMAKE_COMMAND} -E copy
+    $<TARGET_FILE:glfw> # 获取生成的 DLL 文件
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/EchoEditor/glfw.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/EchoEditor/glfw.dll>
+
+	# 复制NestUI的DLL文件到相应的文件夹
+    COMMAND ${CMAKE_COMMAND} -E copy
+    $<TARGET_FILE:Echo> # 获取生成的 DLL 文件
+    $<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/bin/Debug-windows-x86_64/EchoEditor/Echod.dll,${CMAKE_BINARY_DIR}/bin/Release-windows-x86_64/EchoEditor/Echo.dll>
+
     VERBATIM
 )

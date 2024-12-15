@@ -1,9 +1,10 @@
 #pragma once
 #include <QOpenGLWidget>
+#include <QOpenGLFunctions>
 
 namespace EchoEditor {
 
-	class GLWidget : public QOpenGLWidget
+	class GLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 	{
 		Q_OBJECT
 	public:
