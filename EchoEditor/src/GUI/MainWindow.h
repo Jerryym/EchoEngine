@@ -29,9 +29,8 @@ namespace EchoEditor {
 		void Initialize(const NestUI::sWindowProp& sProp);
 		/// @brief 初始化DockWidgets
 		void InitializeDockWidgets();
-		/// @brief 初始化GLWidget
-		/// @param bVSync 是否开启垂直同步
-		void InitializeGLWidget(bool bVsync);
+		/// @brief 初始化GraphicWidget
+		void InitializeGraphicWidget();
 
 	private:
 		/// @brief 窗口数据

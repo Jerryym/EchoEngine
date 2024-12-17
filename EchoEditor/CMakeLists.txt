@@ -19,14 +19,14 @@ qt_standard_project_setup()
 set(EDITOR_HEADERS
     src/GUI/MainWindow.h
 	src/GUI/ConsoleDock.h 
-	src/GUI/GLWidget.h
+	src/GUI/GraphicWidget.h
 )
 
 # 定义源文件列表
 set(EDITOR_SOURCES
 	src/GUI/MainWindow.cpp
 	src/GUI/ConsoleDock.cpp
-	src/GUI/GLWidget.cpp
+	src/GUI/GraphicWidget.cpp
 	src/main.cpp
 )
 

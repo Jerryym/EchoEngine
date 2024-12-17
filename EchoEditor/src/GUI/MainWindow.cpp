@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "MainWindow.h"
 #include "ConsoleDock.h"
-#include "GLWidget.h"
+#include "GraphicWidget.h"
 
 namespace EchoEditor {
 
@@ -32,8 +32,8 @@ namespace EchoEditor {
 		setWindowIcon(QIcon(":/icons/EchoEditor.ico"));
 		//初始化DockWidget
 		InitializeDockWidgets();
-		//初始化GLWidget
-		InitializeGLWidget(m_sData.m_bVSync);
+		//初始化GraphicWidget
+		InitializeGraphicWidget();
 		//设置最大化
 		showMaximized();
 		
@@ -56,11 +56,11 @@ namespace EchoEditor {
 		NEST_CLIENT_INFO("DockWidgetNum = {0}", m_pDockManager->GetDockWidgetNum());
 	}
 
-	void MainWindow::InitializeGLWidget(bool bVsync)
+	void MainWindow::InitializeGraphicWidget()
 	{
-		GLWidget* pGLWidget = new GLWidget(m_sData.m_nWidth, m_sData.m_nHeight, m_sData.m_STitle, bVsync, this);
-		NEST_CORE_ASSERT(pGLWidget == nullptr, "Create GLWidget Fail!");
-		setCentralWidget(pGLWidget);
+		GraphicWidget* pWidget = new GraphicWidget(m_sData.m_nWidth, m_sData.m_nHeight, this);
+		NEST_CORE_ASSERT(pWidget == nullptr, "Create GraphicWidget Fail!");
+		setCentralWidget(pWidget);
 	}
 
 }
