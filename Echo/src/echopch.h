@@ -7,8 +7,13 @@
 
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <filesystem>
 #include <array>
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+
+#if defined(_WIN32)
+#include <windows.h>
+#endif

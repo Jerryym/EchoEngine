@@ -17,6 +17,7 @@ qt_standard_project_setup()
 
 # 定义头文件列表
 set(EDITOR_HEADERS
+	#GUI
     src/GUI/MainWindow.h
 	src/GUI/ConsoleDock.h 
 	src/GUI/GraphicWidget.h
@@ -24,6 +25,7 @@ set(EDITOR_HEADERS
 
 # 定义源文件列表
 set(EDITOR_SOURCES
+	#GUI
 	src/GUI/MainWindow.cpp
 	src/GUI/ConsoleDock.cpp
 	src/GUI/GraphicWidget.cpp
@@ -45,14 +47,17 @@ target_include_directories(${Editor_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/src/GUI
 )
 
+target_link_libraries(${Editor_NAME} PUBLIC Echo)
 target_link_libraries(${Editor_NAME} PUBLIC NestApp)
 target_link_libraries(${Editor_NAME} PUBLIC NestUI)
 target_link_libraries(${Editor_NAME} PUBLIC
     Qt${QT_VERSION_MAJOR}::Core 
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Widgets
-    Qt${QT_VERSION_MAJOR}::OpenGLWidgets
 )
+
+# 预处理宏定义
+target_compile_definitions(${Editor_NAME} PRIVATE _CRT_SECURE_NO_WARNINGS GLFW_INCLUDE_NONE)
 
 set_target_properties(${Editor_NAME} PROPERTIES
     AUTOMOC ON
@@ -76,8 +81,10 @@ set_target_properties(${Editor_NAME} PROPERTIES
 
 # 设置Visual Studio的文件树结构
 file(GLOB Base_SRC "src/*.h" "src/*.cpp")
+file(GLOB Core_SRC "src/Core/*.h" "src/Core/*.cpp")
 file(GLOB GUI_SRC "src/GUI/*.h" "src/GUI/*.cpp")
 source_group("src" FILES ${Base_SRC})
+source_group("src\\Core" FILES ${Core_SRC})
 source_group("src\\GUI" FILES ${GUI_SRC})
 
 # 设置生成后事件

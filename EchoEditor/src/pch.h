@@ -13,5 +13,12 @@
 #include <unordered_map>
 #include <unordered_set>
 
+//---- Qt Headers ----
+#include <QWidget>
+#include <QWindow>
+#include <QVBoxLayout>
+//--------------------
+
+#include <Echo.h>
 #include <NestApp.h>
 #include <NestUI.h>

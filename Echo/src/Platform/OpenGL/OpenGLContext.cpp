@@ -1,24 +1,20 @@
 #include "echopch.h"
 #include "OpenGLContext.h"
 
+#define GLFW_EXPOSE_NATIVE_WIN32
 #include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
+
 #include <glad/glad.h>
 
 namespace Echo {
 
-	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle, bool bSync)
-		: m_pWindowHandle(windowHandle)
+	static bool s_bGLFWInitialiazed = false;
+
+	OpenGLContext::OpenGLContext(uint32_t nWidth, uint32_t nHeight, const std::string& sTitle, bool bShowWindow)
 	{
-		ECHO_CORE_ASSERT(windowHandle, "Window handle is null!");
-		//设置垂直同步
-		if (bSync)
-		{
-			glfwSwapInterval(1);
-		}
-		else
-		{
-			glfwSwapInterval(0);
-		}
+		Create(nWidth, nHeight, sTitle, bShowWindow)
+		ECHO_CORE_ASSERT(m_pWindowHandle, "Window handle is null!");
 	}
 
 	void OpenGLContext::Init()
@@ -27,7 +23,17 @@ namespace Echo {
 		glfwMakeContextCurrent(m_pWindowHandle);
 		//初始化GLAD
 		int iStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		ECHO_CORE_ASSERT(iStatus, "Failed to initiazlize Glad!");
+		ECHO_CORE_ASSERT(iStatus != 1, "Failed to initiazlize Glad!");
+		//设置垂直同步
+		glfwSwapInterval(1);
+	}
+
+	void OpenGLContext::MakeCurrent()
+	{
+		if (m_pWindowHandle) 
+		{
+			glfwMakeContextCurrent(m_pWindowHandle);
+		}
 	}
 
 	void OpenGLContext::SwapBuffers()
@@ -38,6 +44,30 @@ namespace Echo {
 	void OpenGLContext::Destroy()
 	{
 		glfwDestroyWindow(m_pWindowHandle);
+	}
+
+	void* OpenGLContext::GetWindowHandle()
+	{
+		#if defined(_WIN32)// Windows: Use glfwGetWin32Window
+			return glfwGetWin32Window(m_pWindowHandle);
+		#else
+			ECHO_CORE_ASSERT(false, "Unsupported platform for embedding GLFW window.");
+			return nullptr;
+		#endif
+	}
+
+	void OpenGLContext::Create(uint32_t nWidth, uint32_t nHeight, const std::string& sTitle, bool bShowWindow)
+	{
+		//创建GLFW窗口
+		if (!s_bGLFWInitialiazed)
+		{
+			// glfwTerminate on system shutdown
+			int success = glfwInit();
+			ECHO_CORE_ASSERT(success, "Could not intialiaz GLFW!");
+			s_bGLFWInitialiazed = true;
+		}
+		glfwWindowHint(GLFW_VISIBLE, bShowWindow == true ? GLFW_TRUE : GLFW_FALSE);
+		m_pWindowHandle = glfwCreateWindow((int)nWidth, (int)nHeight, "EchoEngine", nullptr, nullptr);
 	}
 
 }

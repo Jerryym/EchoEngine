@@ -15,6 +15,7 @@ set(ECHO_LIB_NAME Echo)
 # 定义头文件列表
 set(ECHO_HEADERS
 	src/Core.h
+	src/Echo.h
 
 	# Core
 	src/Core/Events/Event.h
@@ -28,17 +29,41 @@ set(ECHO_HEADERS
 	
 	# Renderer
 	src/Renderer/GraphicsContext.h
+	src/Renderer/Buffer.h
+    src/Renderer/VertexArray.h
+    src/Renderer/Shader.h
+	src/Renderer/RendererAPI.h
+	src/Renderer/RenderCommand.h
+    src/Renderer/Renderer.h
+
+	# Platform
 	src/Platform/OpenGL/OpenGLContext.h
+	src/Platform/OpenGL/OpenGLBuffer.h
+    src/Platform/OpenGL/OpenGLVertexArray.h
+    src/Platform/OpenGL/OpenGLShader.h
+	src/Platform/OpenGL/OpenGLRendererAPI.h
 )
 
 # 定义源文件列表
 set(ECHO_SOURCES
 	# Core
 	src/Core/Layer.cpp
+	src/Core/LayerStack.cpp
 
 	# Renderer
+	src/Renderer/GraphicsContext.cpp
+	src/Renderer/Buffer.cpp
+    src/Renderer/VertexArray.cpp
+    src/Renderer/Shader.cpp
+	src/Renderer/RenderCommand.cpp
+    src/Renderer/Renderer.cpp
+
+	# Platform
 	src/Platform/OpenGL/OpenGLContext.cpp
-	src/Core/LayerStack.cpp
+	src/Platform/OpenGL/OpenGLBuffer.cpp
+    src/Platform/OpenGL/OpenGLVertexArray.cpp
+    src/Platform/OpenGL/OpenGLShader.cpp
+	src/Platform/OpenGL/OpenGLRendererAPI.cpp
 )
 
 # 创建一个共享库
@@ -55,6 +80,7 @@ target_include_directories(${ECHO_LIB_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/src
     ${PROJECT_SOURCE_DIR}/vendor/GLFW/include
 	${PROJECT_SOURCE_DIR}/vendor/Glad/include
+	${PROJECT_SOURCE_DIR}/vendor/glm
 )
 
 # 添加GLFW
