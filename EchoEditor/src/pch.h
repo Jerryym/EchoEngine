@@ -17,6 +17,7 @@
 #include <QWidget>
 #include <QWindow>
 #include <QVBoxLayout>
+#include <QTimer>
 //--------------------
 
 #include <Echo.h>

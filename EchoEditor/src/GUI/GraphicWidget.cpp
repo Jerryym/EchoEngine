@@ -1,27 +1,34 @@
 #include "pch.h"
 #include "GraphicWidget.h"
 
-#include <glad/glad.h>
-
 namespace EchoEditor {
-
-	static bool s_bGLFWInitialiazed = false;
 
 	GraphicWidget::GraphicWidget(uint32_t nWidth, uint32_t nHeight, QWidget* parent)
 		: QWidget(parent)
 	{
 		// 设置直接绘制在屏幕上
 		setAttribute(Qt::WA_PaintOnScreen);
-		setAutoFillBackground(false);  // 禁用背景填充
+		// 禁用背景填充
+		setAutoFillBackground(false);
 		// 设置大小
 		resize((int)nWidth, (int)nHeight);
 		// 初始化
 		Initialize();
+
+		// 创建定时器，每秒刷新60次
+		m_pTimer = new QTimer(this);
+		connect(m_pTimer, &QTimer::timeout, this, QOverload<>::of(&GraphicWidget::update));
+		m_pTimer->start(16.6); // 16ms间隔，大约等于60FPS
 	}
 	
 	GraphicWidget::~GraphicWidget()
 	{
 		m_pGraphicsContext->Destroy();
+		if (m_pTimer != nullptr)
+		{
+			delete m_pTimer;
+			m_pTimer = nullptr;
+		}
 	}
 
 	void GraphicWidget::paintEvent(QPaintEvent* event)

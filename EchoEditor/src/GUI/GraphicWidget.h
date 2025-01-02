@@ -12,7 +12,7 @@ namespace EchoEditor {
 		GraphicWidget(uint32_t nWidth, uint32_t nHeight, QWidget* parent = nullptr);
 		virtual ~GraphicWidget();
 
-	public:
+	protected:
 		virtual void paintEvent(QPaintEvent* event) override;
 		virtual void resizeEvent(QResizeEvent* event) override;
 
@@ -29,6 +29,8 @@ namespace EchoEditor {
 		GLFWwindow* m_pWindow;
 		/// @brief 渲染上下文
 		Echo::Ref<Echo::GraphicsContext> m_pGraphicsContext;
+		/// @brief 定时器：用于组件刷新
+		QTimer* m_pTimer = nullptr;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 	};
