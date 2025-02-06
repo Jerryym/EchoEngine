@@ -46,5 +46,3 @@ set(ECHO_PLATFORM "x64")
 # 添加子项目
 ##################################
 add_subdirectory(Echo)
-add_subdirectory(Nest)
-add_subdirectory(EchoEditor)

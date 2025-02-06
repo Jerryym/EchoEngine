@@ -4,6 +4,6 @@
 [submodule "Echo/vendor/glm"]
 	path = Echo/vendor/glm
 	url = git@github.com:Jerryym/glm.git
-[submodule "Nest"]
-	path = Nest
-	url = git@github.com:Jerryym/Nest.git
+
+
+
