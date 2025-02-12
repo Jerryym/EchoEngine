@@ -5,7 +5,6 @@
 ## Development Environment
 
 * **IDE:** Visual Studio 2022
-* **Qt Version:** 6.5.3
 
 ## Dependencies
 

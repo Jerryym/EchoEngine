@@ -12,7 +12,3 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
-
-#include <Windows.h>
-
-#include <Utils/Log.h>
