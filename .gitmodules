@@ -4,6 +4,6 @@
 [submodule "Echo/vendor/glm"]
 	path = Echo/vendor/glm
 	url = git@github.com:Jerryym/glm.git
-
-
-
+[submodule "Echo/vendor/spdlog"]
+	path = Echo/vendor/spdlog
+	url = git@github.com:Jerryym/spdlog.git
