@@ -1,6 +1,12 @@
 #pragma once
 #include <memory>
 
+#ifdef ECHO_PLATFORM_WINDOWS
+
+#else
+	#error EchoEngine only supports Windows!
+#endif // ECHO_PLATFORM_WINDOWS
+
 #ifdef ECHO_BUILD_DLL
 	#define ECHO_API __declspec(dllexport)
 #else
@@ -16,6 +22,8 @@
 #endif // ECHO_ENABLE_ASSERTS
 
 #define BIT(x) (1 << x)
+
+#define BIND_EVENT(x)	 std::bind(&x, this, std::placeholders::_1)
 
 namespace Echo {
 

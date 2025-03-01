@@ -1,5 +1,6 @@
 #pragma once
 
+#ifdef ECHO_PLATFORM_WINDOWS
 extern Echo::Application* Echo::CreateApplication();
 
 int main(int argc, char** argv)
@@ -7,7 +8,7 @@ int main(int argc, char** argv)
 	//初始化日志系统
 	Echo::Log::Init();
 	ECHO_CORE_INFO("Initialized Log!");
-	ECHO_CLIENT_INFO("Hello, Echo Engine!");
+	ECHO_CLIENT_INFO("Hello, EchoEngine!");
 
 	auto app = Echo::CreateApplication();
 	app->Run();
@@ -15,3 +16,4 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+#endif // ECHO_PLATFORM_WINDOWS

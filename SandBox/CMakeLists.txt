@@ -10,7 +10,7 @@ project(SandBox VERSION ${SANDBOX_VERSION} LANGUAGES CXX)
 
 add_executable(SandBox
 	src/SandBoxApp.cpp
-)
+ "src/ExampleLayer.h")
 
 # 预编译头文件
 target_precompile_headers(SandBox PRIVATE src/pch.h)
@@ -21,6 +21,11 @@ target_include_directories(SandBox PUBLIC
 )
 
 target_link_libraries(SandBox PUBLIC Echo)
+
+# 预处理宏定义
+target_compile_definitions(SandBox PRIVATE 
+	ECHO_PLATFORM_WINDOWS
+)
 
 # 设置目标属性
 include(GNUInstallDirs)

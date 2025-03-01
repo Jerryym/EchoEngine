@@ -26,6 +26,9 @@ set(ECHO_HEADERS
 	src/Core/Events/MouseEvent.h
 	src/Core/Layer.h
 	src/Core/LayerStack.h
+
+	# GUI
+	src/GUI/MainWindow.h
 	
 	# Renderer
 	src/Renderer/GraphicsContext.h
@@ -37,6 +40,7 @@ set(ECHO_HEADERS
 	src/Renderer/Renderer.h
 
 	# Platform
+	src/Platform/Windows/MainWindow_Windows.h
 	src/Platform/OpenGL/OpenGLContext.h
 	src/Platform/OpenGL/OpenGLBuffer.h
 	src/Platform/OpenGL/OpenGLVertexArray.h
@@ -47,6 +51,8 @@ set(ECHO_HEADERS
 	src/Utils/Log.h
 	src/Utils/KeyCodes.h
 	src/Utils/MouseCodes.h
+	src/Utils/Input.h
+	src/Utils/TimeStep.h
 )
 
 # 定义源文件列表
@@ -56,8 +62,11 @@ set(ECHO_SOURCES
 	src/Core/Layer.cpp
 	src/Core/LayerStack.cpp
 
+	# GUI
+	src/GUI/MainWindow.cpp
+
 	# Renderer
-	src/Renderer/GraphicsContext.cpp
+	
 	src/Renderer/Buffer.cpp
 	src/Renderer/VertexArray.cpp
 	src/Renderer/Shader.cpp
@@ -65,6 +74,8 @@ set(ECHO_SOURCES
 	src/Renderer/Renderer.cpp
 
 	# Platform
+	src/Platform/Windows/MainWindow_Windows.cpp
+	src/Platform/Windows/WindowsInput.cpp
 	src/Platform/OpenGL/OpenGLContext.cpp
 	src/Platform/OpenGL/OpenGLBuffer.cpp
 	src/Platform/OpenGL/OpenGLVertexArray.cpp
@@ -73,6 +84,7 @@ set(ECHO_SOURCES
 
 	# Utils
 	src/Utils/Log.cpp
+	src/Utils/TimeStep.cpp
 )
 
 # 创建一个共享库
@@ -101,8 +113,12 @@ add_subdirectory(vendor/Glad)
 target_link_libraries(${ECHO_LIB_NAME} PUBLIC Glad)
 
 # 预处理宏定义
-target_compile_definitions(${ECHO_LIB_NAME} PRIVATE _CRT_SECURE_NO_WARNINGS ECHO_BUILD_DLL GLFW_INCLUDE_NONE)
-message(STATUS "macros predefined: #define ECHO_BUILD_DLL")
+target_compile_definitions(${ECHO_LIB_NAME} PRIVATE 
+	_CRT_SECURE_NO_WARNINGS
+	ECHO_BUILD_DLL
+	ECHO_PLATFORM_WINDOWS
+	GLFW_INCLUDE_NONE
+)
 
 # 设置目标属性
 include(GNUInstallDirs)
@@ -127,14 +143,18 @@ set_target_properties(${ECHO_LIB_NAME} PROPERTIES
 file(GLOB Base_SRC "src/*.h" "src/*.cpp")
 file(GLOB Core_SRC "src/Core/*.h" "src/Core/*.cpp")
 file(GLOB Event_SRC "src/Core/Events/*.h" "src/Core/Events/*.cpp")
+file(GLOB GUI_SRC "src/GUI/*.h" "src/GUI/*.cpp")
 file(GLOB Utils_SRC "src/Utils/*.h" "src/Utils/*.cpp")
 file(GLOB Renderer_SRC "src/Renderer/*.h" "src/Renderer/*.cpp")
+file(GLOB Windows_SRC "src/Platform/Windows/*.h" "src/Platform/Windows/*.cpp")
 file(GLOB OpenGL_SRC "src/Platform/OpenGL/*.h" "src/Platform/OpenGL/*.cpp")
 source_group("src" FILES ${Base_SRC})
 source_group("src\\Core" FILES ${Core_SRC})
 source_group("src\\Core\\Events" FILES ${Event_SRC})
+source_group("src\\GUI" FILES ${GUI_SRC})
 source_group("src\\Utils" FILES ${Utils_SRC})
 source_group("src\\Renderer" FILES ${Renderer_SRC})
+source_group("src\\Platform\\Windows" FILES ${Windows_SRC})
 source_group("src\\Platform\\OpenGL" FILES ${OpenGL_SRC})
 
 # 设置生成后事件

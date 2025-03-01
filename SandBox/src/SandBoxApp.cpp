@@ -3,13 +3,10 @@
 
 namespace SandBoxApp {
 	
-	class SandBox : public Echo::Application {
+	class SandBox : public Echo::Application 
+	{
 	public:
-		SandBox()
-			: Echo::Application("SandBoxApp")
-		{
-
-		}
+		SandBox() {}
 		~SandBox() = default;
 	};
 

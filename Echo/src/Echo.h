@@ -8,7 +8,8 @@
 #include "Utils/Log.h"
 #include "Utils/MouseCodes.h"
 #include "Utils/KeyCodes.h"
-//
+#include "Utils/TimeStep.h"
+// -------------------------------------------
 
 // ---Renderer--------------------------------
 #include "Renderer/GraphicsContext.h"
@@ -19,4 +20,3 @@
 #include "Renderer/RenderCommand.h"
 #include "Renderer/Renderer.h"
 // -------------------------------------------
-
