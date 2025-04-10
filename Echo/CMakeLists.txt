@@ -35,6 +35,7 @@ set(ECHO_HEADERS
 	src/Renderer/Buffer.h
 	src/Renderer/VertexArray.h
 	src/Renderer/Shader.h
+	src/Renderer/Camera.h
 	src/Renderer/RendererAPI.h
 	src/Renderer/RenderCommand.h
 	src/Renderer/Renderer.h
@@ -66,10 +67,10 @@ set(ECHO_SOURCES
 	src/GUI/MainWindow.cpp
 
 	# Renderer
-	
 	src/Renderer/Buffer.cpp
 	src/Renderer/VertexArray.cpp
 	src/Renderer/Shader.cpp
+	src/Renderer/Camera.cpp
 	src/Renderer/RenderCommand.cpp
 	src/Renderer/Renderer.cpp
 
