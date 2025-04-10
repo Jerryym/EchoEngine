@@ -8,9 +8,19 @@ set(SANDBOX_VERSION 0.1.0)
 message(STATUS "SANDBOX_VERSION: ${SANDBOX_VERSION}")
 project(SandBox VERSION ${SANDBOX_VERSION} LANGUAGES CXX)
 
-add_executable(SandBox
+set(SANDBOX_HEADERS
+	src/ExampleLayer.h
+)
+
+set(SANDBOX_SOURCES
+	src/ExampleLayer.cpp
 	src/SandBoxApp.cpp
- "src/ExampleLayer.h")
+)
+
+add_executable(SandBox
+	${SANDBOX_HEADERS}
+	${SANDBOX_SOURCES}
+)
 
 # 预编译头文件
 target_precompile_headers(SandBox PRIVATE src/pch.h)

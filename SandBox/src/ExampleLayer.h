@@ -12,9 +12,9 @@ namespace SandBoxApp {
 	public:
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void OnUpdate(TimeStep ts) override;
+		virtual void OnUpdate(Echo::TimeStep ts) override;
 		virtual void OnRenderUI() override;
-		virtual void OnEvent(Event& e) override;
+		virtual void OnEvent(Echo::Event& e) override;
 	};
 
 }

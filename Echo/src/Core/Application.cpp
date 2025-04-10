@@ -4,6 +4,7 @@
 #include "Renderer/Renderer.h"
 
 #include <glfw/glfw3.h>
+#include <glad/glad.h>
 
 namespace Echo {
 
@@ -24,6 +25,8 @@ namespace Echo {
 		m_bRunning = true;
 		while (m_bRunning)
 		{
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 			float time = (float)glfwGetTime();
 			TimeStep timestep = time - m_rLastFrameTime;
 			m_rLastFrameTime = time;
@@ -55,6 +58,7 @@ namespace Echo {
 	{
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));	//控制窗口关闭
+		
 		//遍历应用程序层栈，处理各层事件
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
