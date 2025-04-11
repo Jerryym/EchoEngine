@@ -25,8 +25,6 @@ namespace Echo {
 		m_bRunning = true;
 		while (m_bRunning)
 		{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 			float time = (float)glfwGetTime();
 			TimeStep timestep = time - m_rLastFrameTime;
 			m_rLastFrameTime = time;

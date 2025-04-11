@@ -28,12 +28,39 @@ namespace Echo {
 		/// @brief 获取相机投影类型
 		/// @return 
 		ProjectionType GetProjectionType() const { return m_enType; }
+
+		/// @brief 设置相机位置
+		/// @param position 
+		void SetPosition(const glm::vec3& position);
+		/// @brief 获取相机位置
+		/// @return 
+		const glm::vec3 GetPosition() const { return m_Position; }
+		/// @brief 设置相机方向(目标点)
+		/// @param direction 
+		void SetDirection(const glm::vec3& direction);
+		/// @brief 获取相机方向
+		/// @return 
+		const glm::vec3 GetDirection() const { return m_Direction; }
+		/// @brief 设置相机的向上向量
+		/// @param up 
+		void SetUpVector(const glm::vec3& up);
+		/// @brief 获取相机的向上向量
+		/// @return 
+		const glm::vec3 GetUpVector() const { return m_UpVector; }
+
 		/// @brief 设置相机投影矩阵
 		/// @param projectionMat 
 		void SetProjectionMat(const glm::mat4& projectionMat);
 		/// @brief 获取相机投影矩阵
 		/// @return 
 		const glm::mat4 GetProjectionMat() const { return m_ProjectionMat; }
+
+		/// @brief 获取视图矩阵
+		/// @return 
+		glm::mat4 GetViewMat() const;
+		/// @brief 获取视图投影矩阵
+		/// @return 
+		glm::mat4 GetViewProjectionMatrix() const;
 
 		/// @brief 设置透视投影矩阵
 		/// @param fov 视野角度(单位: 弧度)
@@ -52,8 +79,14 @@ namespace Echo {
 	private:
 		/// @brief 投影类型
 		ProjectionType m_enType = ProjectionType::Perspective;
+
 		/// @brief 相机位置
 		glm::vec3 m_Position = glm::vec3(0.0f);
+		/// @brief 相机朝向
+		glm::vec3 m_Direction = glm::vec3(0.0f);
+		/// @brief 向上向量
+		glm::vec3 m_UpVector = glm::vec3(0.0f, 1.0f, 0.0f);
+
 		/// @brief 投影矩阵
 		glm::mat4 m_ProjectionMat = glm::mat4(1.0f);
 	};
