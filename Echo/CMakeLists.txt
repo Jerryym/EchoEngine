@@ -35,6 +35,7 @@ set(ECHO_HEADERS
 	src/Renderer/Buffer.h
 	src/Renderer/VertexArray.h
 	src/Renderer/Shader.h
+	src/Renderer/Texture.h
 	src/Renderer/Camera.h
 	src/Renderer/RendererAPI.h
 	src/Renderer/RenderCommand.h
@@ -46,6 +47,7 @@ set(ECHO_HEADERS
 	src/Platform/OpenGL/OpenGLBuffer.h
 	src/Platform/OpenGL/OpenGLVertexArray.h
 	src/Platform/OpenGL/OpenGLShader.h
+	src/Platform/OpenGL/OpenGLTexture.h
 	src/Platform/OpenGL/OpenGLRendererAPI.h
 
 	# Utils
@@ -70,6 +72,7 @@ set(ECHO_SOURCES
 	src/Renderer/Buffer.cpp
 	src/Renderer/VertexArray.cpp
 	src/Renderer/Shader.cpp
+	src/Renderer/Texture.cpp
 	src/Renderer/Camera.cpp
 	src/Renderer/RenderCommand.cpp
 	src/Renderer/Renderer.cpp
@@ -81,6 +84,7 @@ set(ECHO_SOURCES
 	src/Platform/OpenGL/OpenGLBuffer.cpp
 	src/Platform/OpenGL/OpenGLVertexArray.cpp
 	src/Platform/OpenGL/OpenGLShader.cpp
+	src/Platform/OpenGL/OpenGLTexture.cpp
 	src/Platform/OpenGL/OpenGLRendererAPI.cpp
 
 	# Utils

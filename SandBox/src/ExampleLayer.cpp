@@ -3,13 +3,18 @@
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
+#define GLM_ENABLE_EXPERIMENTAL
+#include<glm/gtc/matrix_transform.hpp>
+#include<glm/gtx/transform2.hpp>
+#include<glm/gtx/euler_angles.hpp>
+
 namespace SandBoxApp {
 
 	ExampeleLayer::ExampeleLayer()
 		: Echo::Layer("ExampleLayer")
 	{
-		m_Camera.SetPosition(glm::vec3(0.0f, -100.0f, 0.0));
-		m_Camera.SetPerspectiveMat(30.f, 1600.0f, 900.0f, 0.1f, 1000.0f);
+		m_Camera.SetPosition(glm::vec3(0, 0, 10));
+		m_Camera.SetPerspectiveMat(45.f, 1600.0f, 900.0f, 0.1f, 1000.0f);
 		DrawCube();
 	}
 
@@ -30,10 +35,18 @@ namespace SandBoxApp {
 		Echo::RenderCommand::SetClearColor(glm::normalize(glm::vec4(112, 128, 144, 1)));
 		Echo::RenderCommand::Clear();
 
+		glm::mat4 trans = glm::translate(glm::vec3(0, 0, 0)); //不移动顶点坐标;
+		static float rotate_eulerAngle = 0.f;
+		rotate_eulerAngle += 1;
+		glm::mat4 rotation = glm::eulerAngleYXZ(glm::radians(rotate_eulerAngle), glm::radians(rotate_eulerAngle), glm::radians(rotate_eulerAngle)); //使用欧拉角旋转;
+		glm::mat4 scale = glm::scale(glm::vec3(2.0f, 2.0f, 2.0f)); //缩放;
+		glm::mat4 model = trans * scale * rotation;
+
+		Echo::Renderer::InitScene();
 		Echo::Renderer::BeginScene(m_Camera);
 		m_Shader->Bind();
 		m_Shader->SetFloat3("u_Color", m_CubeColor);
-		Echo::Renderer::Submit(m_Shader, m_CubeVA);
+		Echo::Renderer::Submit(m_Shader, m_CubeVA, model);
 		Echo::Renderer::EndScene();
 	}
 
@@ -107,9 +120,11 @@ namespace SandBoxApp {
 				uniform mat4 u_Transform;
 
 				out vec3 v_Position;
+				out vec4 v_Color;
 
 				void main()
 				{
+					v_Position = a_Position;
 					gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
 				}
 			)";
@@ -125,7 +140,7 @@ namespace SandBoxApp {
 
 				void main()
 				{
-					color = vec4(u_Color, 1.0);
+					color = vec4(v_Position * 2, 1.0) + vec4(u_Color, 1.0);
 				}
 			)";
 		m_Shader = Echo::Shader::Create("CubeShader", vertexShader, fragmentShader);

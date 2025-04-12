@@ -29,7 +29,7 @@ namespace SandBoxApp {
 		Echo::Ref<Echo::Shader> m_Shader;
 
 		/// @brief 立方体颜色
-		glm::vec3 m_CubeColor = glm::normalize(glm::vec3(0, 255, 127));
+		glm::vec3 m_CubeColor = glm::vec3(0.5, 0.5, 0.5);
 	};
 
 }

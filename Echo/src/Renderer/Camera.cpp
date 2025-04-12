@@ -49,7 +49,7 @@ namespace Echo {
 
 	void Camera::SetPerspectiveMat(float fov, float width, float height, float nearPlane, float farPlane)
 	{
-		m_ProjectionMat = glm::perspectiveFov(fov, width, height, nearPlane, farPlane);
+		m_ProjectionMat = glm::perspectiveFov(glm::radians(fov), width, height, nearPlane, farPlane);
 		m_enType = ProjectionType::Perspective;
 	}
 

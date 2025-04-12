@@ -63,7 +63,7 @@ namespace Echo {
 		glm::mat4 GetViewProjectionMatrix() const;
 
 		/// @brief 设置透视投影矩阵
-		/// @param fov 视野角度(单位: 弧度)
+		/// @param fov 视野角度(单位: 角度)
 		/// @param width 宽度
 		/// @param height 高度
 		/// @param nearPlane 近平面

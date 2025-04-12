@@ -16,12 +16,12 @@ namespace Echo {
 	class RendererAPI
 	{
 	public:
-		/// @brief 获取渲染器API类型
-		/// @return 
-		static RenderAPIType GetAPIType() { return s_APIType; }
 		/// @brief 设置渲染器API类型
 		/// @param type 
 		static void SetAPIType(RenderAPIType type) { s_APIType = type; }
+		/// @brief 获取渲染器API类型
+		/// @return 
+		static RenderAPIType GetAPIType() { return s_APIType; }
 
 		/// @brief 图形API初始化
 		virtual void Init() = 0;
