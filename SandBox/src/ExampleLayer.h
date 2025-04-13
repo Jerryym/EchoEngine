@@ -25,8 +25,10 @@ namespace SandBoxApp {
 		Echo::Camera m_Camera;
 		/// @brief 顶点数组对象
 		Echo::Ref<Echo::VertexArray> m_CubeVA;
-		/// @brief 着色器
-		Echo::Ref<Echo::Shader> m_Shader;
+		/// @brief 着色器库
+		Echo::ShaderLibrary m_ShaderLib;
+		/// @brief 纹理
+		Echo::Ref<Echo::Texture2D> m_Texture;
 
 		/// @brief 立方体颜色
 		glm::vec3 m_CubeColor = glm::vec3(0.5, 0.5, 0.5);

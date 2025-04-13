@@ -17,7 +17,7 @@ namespace Echo {
 
 	public:
 		/// @brief 初始化渲染器
-		static void InitScene();
+		static void InitRenderer();
 		/// @brief 窗口尺寸修改
 		/// @param width 
 		/// @param height 

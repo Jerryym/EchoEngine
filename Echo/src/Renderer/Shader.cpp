@@ -13,13 +13,13 @@ namespace Echo {
 	{
 		switch (RendererAPI::GetAPIType())
 		{
-		case RenderAPIType::None:
-		{
-			ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
-			return nullptr;
-		}
-		case RenderAPIType::OpenGL:
-			return CreateRef<OpenGLShader>(sFilePath);
+			case RenderAPIType::None:
+			{
+				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
+				return nullptr;
+			}
+			case RenderAPIType::OpenGL:
+				return CreateRef<OpenGLShader>(sFilePath);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
@@ -29,13 +29,13 @@ namespace Echo {
 	{
 		switch (RendererAPI::GetAPIType())
 		{
-		case RenderAPIType::None:
-		{
-			ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
-			return nullptr;
-		}
-		case RenderAPIType::OpenGL:
-			return CreateRef<OpenGLShader>(sShaderName, vertexSrc, fragmentSrc);
+			case RenderAPIType::None:
+			{
+				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
+				return nullptr;
+			}
+			case RenderAPIType::OpenGL:
+				return CreateRef<OpenGLShader>(sShaderName, vertexSrc, fragmentSrc);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;

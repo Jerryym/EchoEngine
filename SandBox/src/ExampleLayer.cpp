@@ -32,9 +32,6 @@ namespace SandBoxApp {
 
 	void ExampeleLayer::OnUpdate(Echo::TimeStep ts)
 	{
-		Echo::RenderCommand::SetClearColor(glm::normalize(glm::vec4(112, 128, 144, 1)));
-		Echo::RenderCommand::Clear();
-
 		glm::mat4 trans = glm::translate(glm::vec3(0, 0, 0)); //不移动顶点坐标;
 		static float rotate_eulerAngle = 0.f;
 		rotate_eulerAngle += 1;
@@ -42,11 +39,18 @@ namespace SandBoxApp {
 		glm::mat4 scale = glm::scale(glm::vec3(2.0f, 2.0f, 2.0f)); //缩放;
 		glm::mat4 model = trans * scale * rotation;
 
-		Echo::Renderer::InitScene();
+		//初始化渲染器
+		Echo::Renderer::InitRenderer();
+
+		Echo::RenderCommand::SetClearColor(glm::normalize(glm::vec4(112, 128, 144, 1)));
+		Echo::RenderCommand::Clear();
+
 		Echo::Renderer::BeginScene(m_Camera);
-		m_Shader->Bind();
-		m_Shader->SetFloat3("u_Color", m_CubeColor);
-		Echo::Renderer::Submit(m_Shader, m_CubeVA, model);
+		
+		auto cubeShader = m_ShaderLib.Get("CubeShader");
+		m_Texture->Bind();
+		Echo::Renderer::Submit(cubeShader, m_CubeVA, model);
+		
 		Echo::Renderer::EndScene();
 	}
 
@@ -63,87 +67,77 @@ namespace SandBoxApp {
 		//创建顶点数组对象
 		m_CubeVA = Echo::VertexArray::CreateVertexArray();
 		float CubeVertices[] = {
-			-0.5f, -0.5f, -0.5f,  // 0: 左下后
-			 0.5f, -0.5f, -0.5f,  // 1: 右下后
-			 0.5f,  0.5f, -0.5f,  // 2: 右上后
-			-0.5f,  0.5f, -0.5f,  // 3: 左上后
-			-0.5f, -0.5f,  0.5f,  // 4: 左下前
-			 0.5f, -0.5f,  0.5f,  // 5: 右下前
-			 0.5f,  0.5f,  0.5f,  // 6: 右上前
-			-0.5f,  0.5f,  0.5f   // 7: 左上前
+			//Position           //TexCoord
+			//正面
+			-0.5f, -0.5f,  0.5f,   0.0f, 0.0f,
+			 0.5f, -0.5f,  0.5f,   1.0f, 0.0f,
+			 0.5f,  0.5f,  0.5f,   1.0f, 1.0f,
+			-0.5f,  0.5f,  0.5f,   0.0f, 1.0f,
+
+			//背面
+			0.5f, -0.5f, -0.5f,    0.0f, 0.0f,
+		   -0.5f, -0.5f, -0.5f,    1.0f, 0.0f,
+		   -0.5f,  0.5f, -0.5f,    1.0f, 1.0f,
+			0.5f,  0.5f, -0.5f,    0.0f, 1.0f,
+
+			//左侧面
+			-0.5f, -0.5f, -0.5f,    0.0f, 0.0f,
+			-0.5f, -0.5f,  0.5f,    1.0f, 0.0f,
+			-0.5f,  0.5f,  0.5f,    1.0f, 1.0f,
+			-0.5f,  0.5f, -0.5f,    0.0f, 1.0f,
+
+			//右侧面
+			0.5f, -0.5f,  0.5f,    0.0f, 0.0f,
+			0.5f, -0.5f, -0.5f,    1.0f, 0.0f,
+			0.5f,  0.5f, -0.5f,    1.0f, 1.0f,
+			0.5f,  0.5f,  0.5f,    0.0f, 1.0f,
+
+			//顶面
+			-0.5f,  0.5f,  0.5f,    0.0f, 0.0f,
+			 0.5f,  0.5f,  0.5f,    1.0f, 0.0f,
+			 0.5f,  0.5f, -0.5f,    1.0f, 1.0f,
+			-0.5f,  0.5f, -0.5f,    0.0f, 1.0f,
+
+			//底面
+			-0.5f, -0.5f, -0.5f,    0.0f, 0.0f,
+			 0.5f, -0.5f, -0.5f,    1.0f, 0.0f,
+			 0.5f, -0.5f,  0.5f,    1.0f, 1.0f,
+			-0.5f, -0.5f,  0.5f,    0.0f, 1.0f
 		};
 
 		//创建顶点缓冲对象
 		Echo::Ref<Echo::VertexBuffer> CubeVB = Echo::VertexBuffer::CreateBuffer(CubeVertices, sizeof(CubeVertices));
 		Echo::BufferLayout CubeLayout = {
 			{ Echo::ShaderDataType::Float3, "a_Position" },
+			{ Echo::ShaderDataType::Float2, "a_TexCoord" }
 		};
 		CubeVB->SetLayout(CubeLayout);
 		m_CubeVA->AddVertexBuffer(CubeVB);
 
 		//创建索引缓冲对象
 		uint32_t CubeIndices[] = {
-			// 背面
-			0, 1, 2,
-			2, 3, 0,
-
-			// 正面
-			4, 5, 6,
-			6, 7, 4,
-
-			// 左面
-			0, 3, 7,
-			7, 4, 0,
-
-			// 右面
-			1, 5, 6,
-			6, 2, 1,
-
-			// 底面
-			0, 4, 5,
-			5, 1, 0,
-
-			// 顶面
-			3, 2, 6,
-			6, 7, 3
+			//正面
+			0, 1, 2, 2, 3, 0,
+			//背面
+			4, 5, 6, 6, 7, 4,
+			//左侧面
+			8, 9,10,10,11, 8,
+			//右侧面
+			12,13,14,14,15,12,
+			//顶面
+			16,17,18,18,19,16,
+			//底面
+			20,21,22,22,23,20
 		};
 		Echo::Ref<Echo::IndexBuffer> Cube = Echo::IndexBuffer::CreateBuffer(CubeIndices, sizeof(CubeIndices) / sizeof(uint32_t));
 		m_CubeVA->SetIndexBuffer(Cube);
 
 		//创建着色器
-		std::string vertexShader = R"(
-				#version 330 core
-			
-				layout(location = 0) in vec3 a_Position;
-
-				uniform mat4 u_ViewProjection;
-				uniform mat4 u_Transform;
-
-				out vec3 v_Position;
-				out vec4 v_Color;
-
-				void main()
-				{
-					v_Position = a_Position;
-					gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
-				}
-			)";
-
-		std::string fragmentShader = R"(
-				#version 330 core
-			
-				layout(location = 0) out vec4 color;
-
-				in vec3 v_Position;
-			
-				uniform vec3 u_Color;
-
-				void main()
-				{
-					color = vec4(v_Position * 2, 1.0) + vec4(u_Color, 1.0);
-				}
-			)";
-		m_Shader = Echo::Shader::Create("CubeShader", vertexShader, fragmentShader);
+		auto shader = m_ShaderLib.Load("CubeShader", "assets/shaders/Texture.glsl");
+		//创建纹理
+		m_Texture = Echo::Texture2D::CreateTexture("assets/textures/Moon.png");
+		shader->Bind();
+		shader->SetInt("u_Texture", 0);
 	}
 
 }

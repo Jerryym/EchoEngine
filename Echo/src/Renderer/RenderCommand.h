@@ -10,8 +10,8 @@ namespace Echo {
 	class ECHO_API RenderCommand
 	{
 	public:
-		/// @brief 初始化场景
-		static void InitScene();
+		/// @brief 初始化渲染器
+		static void InitRenderer();
 		/// @brief 设置视口大小
 		/// @param x 
 		/// @param y 

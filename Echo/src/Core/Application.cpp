@@ -55,7 +55,8 @@ namespace Echo {
 	void Application::OnEvent(Event& event)
 	{
 		EventDispatcher dispatcher(event);
-		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));	//控制窗口关闭
+		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));//窗口关闭
+		dispatcher.Dispatcher<WindowResizeEvent>(BIND_EVENT(Application::OnWindowResized));//调整窗口大小
 		
 		//遍历应用程序层栈，处理各层事件
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )

@@ -8,9 +8,9 @@ namespace Echo {
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
-	void Renderer::InitScene()
+	void Renderer::InitRenderer()
 	{
-		RenderCommand::InitScene();
+		RenderCommand::InitRenderer();
 	}
 
 	void Renderer::WindowResize(uint32_t width, uint32_t height)

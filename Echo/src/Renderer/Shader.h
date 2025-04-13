@@ -40,7 +40,7 @@ namespace Echo {
 	};
 
 	/// @brief 着色器库
-	class ShaderLibrary
+	class ECHO_API ShaderLibrary
 	{
 	public:
 		/// @brief 添加着色器

@@ -7,7 +7,7 @@ namespace Echo {
 
 	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
 
-	void RenderCommand::InitScene()
+	void RenderCommand::InitRenderer()
 	{
 		s_RendererAPI->Init();
 	}
