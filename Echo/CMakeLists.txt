@@ -108,6 +108,7 @@ target_include_directories(${ECHO_LIB_NAME} PUBLIC
 	${PROJECT_SOURCE_DIR}/vendor/GLFW/include
 	${PROJECT_SOURCE_DIR}/vendor/Glad/include
 	${PROJECT_SOURCE_DIR}/vendor/glm
+	${PROJECT_SOURCE_DIR}/vendor/stb_image
 )
 
 # 添加GLFW

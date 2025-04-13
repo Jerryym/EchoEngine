@@ -16,7 +16,7 @@ namespace Echo {
 				return nullptr;
 			}
 			case RenderAPIType::OpenGL:
-				return std::make_shared<OpenGLTexture2D>(sPath);
+				return CreateRef<OpenGLTexture2D>(sPath);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
 		return nullptr;
