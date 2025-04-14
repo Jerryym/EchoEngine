@@ -6,7 +6,7 @@
 
 namespace Echo {
 
-	class Input
+	class ECHO_API Input
 	{
 	public:
 		/// @brief 键盘是否按下

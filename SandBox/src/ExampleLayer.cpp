@@ -32,12 +32,15 @@ namespace SandBoxApp {
 
 	void ExampeleLayer::OnUpdate(Echo::TimeStep ts)
 	{
-		glm::mat4 trans = glm::translate(glm::vec3(0, 0, 0)); //不移动顶点坐标;
-		static float rotate_eulerAngle = 0.f;
-		rotate_eulerAngle += 1;
-		glm::mat4 rotation = glm::eulerAngleYXZ(glm::radians(rotate_eulerAngle), glm::radians(rotate_eulerAngle), glm::radians(rotate_eulerAngle)); //使用欧拉角旋转;
-		glm::mat4 scale = glm::scale(glm::vec3(2.0f, 2.0f, 2.0f)); //缩放;
-		glm::mat4 model = trans * scale * rotation;
+		const float speed = 5.0f;
+		if (Echo::Input::IsKeyPressed(Echo::Key::KeyCode::W))
+			m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(0, 0, -speed * ts.GetSeconds()));
+		if (Echo::Input::IsKeyPressed(Echo::Key::KeyCode::S))
+			m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(0, 0, speed * ts.GetSeconds()));
+		if (Echo::Input::IsKeyPressed(Echo::Key::KeyCode::A))
+			m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(-speed * ts.GetSeconds(), 0, 0));
+		if (Echo::Input::IsKeyPressed(Echo::Key::KeyCode::D))
+			m_Camera.SetPosition(m_Camera.GetPosition() + glm::vec3(speed * ts.GetSeconds(), 0, 0));
 
 		//初始化渲染器
 		Echo::Renderer::InitRenderer();
@@ -48,8 +51,12 @@ namespace SandBoxApp {
 		Echo::Renderer::BeginScene(m_Camera);
 		
 		auto cubeShader = m_ShaderLib.Get("CubeShader");
+		cubeShader->SetFloat3("u_CameraPos", m_Camera.GetPosition());
+		cubeShader->SetFloat("u_Metallic", 1.0f);//金属度
+		cubeShader->SetFloat("u_Roughness", 0.0f);//粗糙度
+		cubeShader->SetFloat("u_AO", 1.0f);//环境遮蔽
 		m_Texture->Bind();
-		Echo::Renderer::Submit(cubeShader, m_CubeVA, model);
+		Echo::Renderer::Submit(cubeShader, m_CubeVA);
 		
 		Echo::Renderer::EndScene();
 	}
@@ -60,6 +67,7 @@ namespace SandBoxApp {
 
 	void ExampeleLayer::OnEvent(Echo::Event& e)
 	{
+		
 	}
 
 	void ExampeleLayer::DrawCube()
@@ -133,7 +141,7 @@ namespace SandBoxApp {
 		m_CubeVA->SetIndexBuffer(Cube);
 
 		//创建着色器
-		auto shader = m_ShaderLib.Load("CubeShader", "assets/shaders/Texture.glsl");
+		auto shader = m_ShaderLib.Load("CubeShader", "assets/shaders/BasicPBR.glsl");
 		//创建纹理
 		m_Texture = Echo::Texture2D::CreateTexture("assets/textures/Moon.png");
 		shader->Bind();

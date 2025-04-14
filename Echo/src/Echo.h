@@ -8,6 +8,7 @@
 #include "Utils/MouseCodes.h"
 #include "Utils/KeyCodes.h"
 #include "Utils/TimeStep.h"
+#include "Utils/Input.h"
 // -------------------------------------------
 
 // ---Renderer--------------------------------

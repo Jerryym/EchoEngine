@@ -32,20 +32,22 @@ set(ECHO_HEADERS
 	
 	# Renderer
 	src/Renderer/GraphicsContext.h
-	src/Renderer/Buffer.h
-	src/Renderer/VertexArray.h
-	src/Renderer/Shader.h
-	src/Renderer/Texture.h
-	src/Renderer/Camera.h
 	src/Renderer/RendererAPI.h
 	src/Renderer/RenderCommand.h
 	src/Renderer/Renderer.h
+	src/Renderer/Buffer.h
+	src/Renderer/VertexArray.h
+	src/Renderer/FrameBuffer.h
+	src/Renderer/Shader.h
+	src/Renderer/Texture.h
+	src/Renderer/Camera.h
 
 	# Platform
 	src/Platform/Windows/MainWindow_Windows.h
 	src/Platform/OpenGL/OpenGLContext.h
 	src/Platform/OpenGL/OpenGLBuffer.h
 	src/Platform/OpenGL/OpenGLVertexArray.h
+	src/Platform/OpenGL/OpenGLFrameBuffer.h
 	src/Platform/OpenGL/OpenGLShader.h
 	src/Platform/OpenGL/OpenGLTexture.h
 	src/Platform/OpenGL/OpenGLRendererAPI.h
@@ -70,12 +72,13 @@ set(ECHO_SOURCES
 
 	# Renderer
 	src/Renderer/Buffer.cpp
+	src/Renderer/RenderCommand.cpp
+	src/Renderer/Renderer.cpp
 	src/Renderer/VertexArray.cpp
+	src/Renderer/FrameBuffer.cpp
 	src/Renderer/Shader.cpp
 	src/Renderer/Texture.cpp
 	src/Renderer/Camera.cpp
-	src/Renderer/RenderCommand.cpp
-	src/Renderer/Renderer.cpp
 
 	# Platform
 	src/Platform/Windows/MainWindow_Windows.cpp
@@ -83,6 +86,7 @@ set(ECHO_SOURCES
 	src/Platform/OpenGL/OpenGLContext.cpp
 	src/Platform/OpenGL/OpenGLBuffer.cpp
 	src/Platform/OpenGL/OpenGLVertexArray.cpp
+	src/Platform/OpenGL/OpenGLFrameBuffer.cpp
 	src/Platform/OpenGL/OpenGLShader.cpp
 	src/Platform/OpenGL/OpenGLTexture.cpp
 	src/Platform/OpenGL/OpenGLRendererAPI.cpp
