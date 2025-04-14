@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
@@ -7,8 +6,7 @@
 
 namespace Echo {
 
-	/// @brief 日志
-	class Log
+	class ECHO_API Log
 	{
 	public:
 		/// @brief 初始化日志系统
@@ -23,9 +21,10 @@ namespace Echo {
 		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 
 	private:
-		static std::shared_ptr<spdlog::logger> s_CoreLogger;		// 引擎端日志对象(智能指针)
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;		// 客户端日志对象(智能指针)
-
+		/// @brief 引擎端日志对象(智能指针)
+		static std::shared_ptr<spdlog::logger> s_CoreLogger;
+		/// @brief 客户端日志对象(智能指针)
+		static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
 
 }

@@ -1,20 +1,24 @@
 #include "echopch.h"
 #include "Renderer.h"
+#include "RenderCommand.h"
 
 #include "Platform/OpenGL/OpenGLShader.h"
-
-#include <glm/gtc/matrix_transform.hpp>
 
 namespace Echo {
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
-	void Renderer::Initialize()
+	void Renderer::InitRenderer()
 	{
-		RenderCommand::Initialize();
+		RenderCommand::InitRenderer();
 	}
 
-	void Renderer::BeginScene(const EditorCamera& camera)
+	void Renderer::WindowResize(uint32_t width, uint32_t height)
+	{
+		RenderCommand::SetViewport(0, 0, width, height);
+	}
+
+	void Renderer::BeginScene(const Camera& camera)
 	{
 		m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
@@ -23,16 +27,11 @@ namespace Echo {
 	{
 	}
 
-	void Renderer::WindowResize(uint32_t width, uint32_t height)
-	{
-		RenderCommand::SetViewport(0, 0, width, height);
-	}
-
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->SetUniformMat4f("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->SetUniformMat4f("u_Transform", transform);
+		shader->SetMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
+		shader->SetMat4("u_Transform", transform);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);

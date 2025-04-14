@@ -1,10 +1,11 @@
 #pragma once
+#include "Core.h"
 #include <glm/glm.hpp>
 
 namespace Echo {
 
 	/// @brief 着色器类
-	class Shader
+	class ECHO_API Shader
 	{
 	public:
 		virtual ~Shader() = default;
@@ -39,7 +40,7 @@ namespace Echo {
 	};
 
 	/// @brief 着色器库
-	class ShaderLibrary
+	class ECHO_API ShaderLibrary
 	{
 	public:
 		/// @brief 添加着色器
@@ -76,5 +77,4 @@ namespace Echo {
 	};
 
 }
-
 

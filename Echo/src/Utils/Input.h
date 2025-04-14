@@ -6,14 +6,14 @@
 
 namespace Echo {
 
-	class Input
+	class ECHO_API Input
 	{
 	public:
 		/// @brief 键盘是否按下
 		/// @param keycode 键盘按键映射
 		/// @return 
 		static bool IsKeyPressed(Key::KeyCode keycode);
-		
+
 		/// @brief 鼠标是否按下
 		/// @param mousebutton 鼠标按钮映射
 		/// @return 

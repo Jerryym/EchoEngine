@@ -18,11 +18,11 @@ namespace Echo {
 	enum EventCategory
 	{
 		None = 0,
-		EventCategoryApplication	= BIT(0),	//应用程序事件
-		EventCategoryInput			= BIT(1),	//输入事件
-		EventCategoryKeyboard		= BIT(2),	//键盘事件
-		EventCategoryMouse			= BIT(3),	//鼠标事件
-		EventCategoryMouseButton	= BIT(4)	//鼠标按键事件
+		EventCategoryApplication = BIT(0),	//应用程序事件
+		EventCategoryInput = BIT(1),	//输入事件
+		EventCategoryKeyboard = BIT(2),	//键盘事件
+		EventCategoryMouse = BIT(3),	//鼠标事件
+		EventCategoryMouseButton = BIT(4)	//鼠标按键事件
 	};
 
 #define EVENT_CLASS_TYPE(type)	static EventType GetStaticType() { return EventType::type; }\
@@ -31,7 +31,7 @@ namespace Echo {
 
 #define EVENT_CLASS_CATEGORY(category)	virtual int GetEventCategory() const override { return category; }
 
-	
+
 	/// @brief 事件类，此类为抽象类，需要继承并实现其纯虚函数
 	class Event
 	{
@@ -72,7 +72,8 @@ namespace Echo {
 	public:
 		EventDispatcher(Event& event)
 			: m_Event(event)
-		{}
+		{
+		}
 
 		/// @brief 事件调度函数：调度一个特定类型的事件处理函数。如果事件类型匹配，则调用处理函数。
 		template<typename T, typename F>

@@ -1,4 +1,5 @@
 #pragma once
+#include "Core.h"
 
 namespace Echo {
 
@@ -32,7 +33,7 @@ namespace Echo {
 	}
 
 	/// @brief 缓冲元素结构体: 描述顶点数据的属性
-	typedef struct BufferElement
+	typedef struct ECHO_API BufferElement
 	{
 		/// @brief 属性名称
 		std::string m_sName;
@@ -78,12 +79,12 @@ namespace Echo {
 	}BufferElement;
 
 	/// @brief 缓冲布局类: 用于描述顶点数据的布局
-	class BufferLayout
+	class ECHO_API BufferLayout
 	{
 	public:
-		BufferLayout() {}
+		BufferLayout() = default;
 		BufferLayout(const std::initializer_list<BufferElement>& elements);
-		~BufferLayout() {}
+		~BufferLayout() = default;
 
 	public:
 		const std::vector<BufferElement>& GetElements() const { return m_Elements; }
@@ -108,10 +109,10 @@ namespace Echo {
 	};
 
 	/// @brief 顶点缓冲类(VBO): 用于存储顶点数据, 并且可以绑定到渲染管线中
-	class VertexBuffer
+	class ECHO_API VertexBuffer
 	{
 	public:
-		virtual ~VertexBuffer() {}
+		virtual ~VertexBuffer() = default;
 
 		/// @brief 创建顶点缓冲对象
 		/// @param size 顶点数组大小
@@ -143,10 +144,10 @@ namespace Echo {
 	};
 
 	/// @brief 索引缓冲类(IBO): 用于存储索引数据, 并且可以绑定到渲染管线中
-	class IndexBuffer
+	class ECHO_API IndexBuffer
 	{
 	public:
-		virtual ~IndexBuffer() {}
+		virtual ~IndexBuffer() = default;
 
 		/// @brief 创建索引缓冲对象
 		/// @param indeices 
@@ -164,6 +165,5 @@ namespace Echo {
 		/// @return 索引数组大小
 		virtual uint32_t GetCount() const = 0;
 	};
+
 }
-
-

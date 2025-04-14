@@ -1,14 +1,17 @@
 #pragma once
+#include "Core.h"
 #include "RendererAPI.h"
+
+#include <glm/glm.hpp>
 
 namespace Echo {
 
 	/// @brief RenderCommand类：渲染指令，此类中的所有方法都是静态的
-	class RenderCommand
+	class ECHO_API RenderCommand
 	{
 	public:
-		/// @brief 初始化场景
-		static void Initialize();
+		/// @brief 初始化渲染器
+		static void InitRenderer();
 		/// @brief 设置视口大小
 		/// @param x 
 		/// @param y 
@@ -23,14 +26,11 @@ namespace Echo {
 		static void Clear();
 
 		/// @brief 根据顶点数组渲染图元
-		/// @param vertexArray 顶点数组
-		/// @param indexCount 索引数量 
-		static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0);
-
+		/// @param vertexArray 
+		static void DrawIndexed(const Ref<VertexArray>& vertexArray);
+	
 	private:
 		static RendererAPI* s_RendererAPI;
 	};
 
 }
-
-

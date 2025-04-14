@@ -1,9 +1,10 @@
 #pragma once
+#include "Core.h"
 
 namespace Echo {
 
 	/// @brief 帧缓冲配置
-	typedef struct FrameBufferSpecification 
+	typedef struct FrameBufferConfiguration
 	{
 		/// @brief 宽度
 		uint32_t m_nWidth;
@@ -11,18 +12,18 @@ namespace Echo {
 		uint32_t m_nHeight;
 		/// @brief 是否为缓冲交换链目标
 		bool m_bSwapChainTarget = false;
-	} FrameBufferSpecification;
+	} FrameBufferConfiguration;
 
-	/// @brief 帧缓冲类
-	class FrameBuffer
+
+	class ECHO_API FrameBuffer
 	{
 	public:
 		virtual ~FrameBuffer() = default;
 
 		/// @brief 创建帧缓冲
-		/// @param spec 帧缓冲配置 
+		/// @param configuration 帧缓冲配置 
 		/// @return 返回对应RendererAPI创建的帧缓冲对象，若无对应RendererAPI则返回nullptr！
-		static Ref<FrameBuffer> CreateFrameBuffer(const FrameBufferSpecification& spec);
+		static Ref<FrameBuffer> CreateBuffer(const FrameBufferConfiguration& configuration);
 
 	public:
 		/// @brief 绑定
@@ -41,9 +42,7 @@ namespace Echo {
 
 		/// @brief 获取帧缓冲配置对象
 		/// @return 
-		virtual const FrameBufferSpecification& GetSpecification() const = 0;
+		virtual const FrameBufferConfiguration& GetConfiguration() const = 0;
 	};
 
 }
-
-

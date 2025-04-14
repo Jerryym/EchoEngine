@@ -32,8 +32,8 @@ namespace Echo {
 		static Scope<MainWindow> CreateMainWindow(const sWindowProp& prop = sWindowProp());
 
 	public:
-        /// @brief 窗口更新
-        virtual void OnUpdate() = 0;
+		/// @brief 窗口更新
+		virtual void OnUpdate() = 0;
 
 		/// @brief 获取窗口宽度
 		virtual uint32_t GetWidth() const = 0;

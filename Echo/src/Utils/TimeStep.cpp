@@ -1,11 +1,11 @@
 #include "echopch.h"
 #include "TimeStep.h"
 
-namespace Echo {
+namespace Echo{
 
-	TimeStep::TimeStep(float time)
-		: m_rTime(time)
-	{
-	}
+    TimeStep::TimeStep(float time)
+        : m_rTime(time)
+    {
+    }
 
 }

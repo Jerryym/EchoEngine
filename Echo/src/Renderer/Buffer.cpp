@@ -1,6 +1,6 @@
 #include "echopch.h"
 #include "Buffer.h"
-#include "Renderer.h"
+#include "RendererAPI.h"
 
 #include "Platform/OpenGL/OpenGLBuffer.h"
 
@@ -26,14 +26,14 @@ namespace Echo {
 
 	Ref<VertexBuffer> VertexBuffer::CreateBuffer(uint32_t size)
 	{
-		switch (Renderer::GetAPI())
+		switch (RendererAPI::GetAPIType())
 		{
-			case RendererAPI::API::None:
+			case RenderAPIType::None:
 			{
 				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
 				return nullptr;
 			}
-			case RendererAPI::API::OpenGL:
+			case RenderAPIType::OpenGL:
 				return CreateRef<OpenGLVertexBuffer>(size);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
@@ -42,14 +42,14 @@ namespace Echo {
 
 	Ref<VertexBuffer> VertexBuffer::CreateBuffer(float* vertices, uint32_t size)
 	{
-		switch (Renderer::GetAPI())
+		switch (RendererAPI::GetAPIType())
 		{
-			case RendererAPI::API::None:
+			case RenderAPIType::None:
 			{
 				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
 				return nullptr;
 			}
-			case RendererAPI::API::OpenGL:
+			case RenderAPIType::OpenGL:
 				return CreateRef<OpenGLVertexBuffer>(vertices, size);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
@@ -58,14 +58,14 @@ namespace Echo {
 
 	Ref<IndexBuffer> IndexBuffer::CreateBuffer(uint32_t* indices, uint32_t count)
 	{
-		switch (Renderer::GetAPI())
+		switch (RendererAPI::GetAPIType())
 		{
-		case RendererAPI::API::None:
+		case RenderAPIType::None:
 		{
 			ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
 			return nullptr;
 		}
-		case RendererAPI::API::OpenGL:
+		case RenderAPIType::OpenGL:
 			return CreateRef<OpenGLIndexBuffer>(indices, count);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");

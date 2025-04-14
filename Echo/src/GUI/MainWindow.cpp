@@ -5,7 +5,6 @@
 	#include "Platform/Windows/MainWindow_Windows.h"
 #endif // ECHO_PLATFORM_WINDOWS
 
-
 namespace Echo {
 
 	Scope<MainWindow> MainWindow::CreateMainWindow(const sWindowProp& prop)

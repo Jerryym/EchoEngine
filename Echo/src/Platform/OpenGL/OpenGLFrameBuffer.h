@@ -6,7 +6,7 @@ namespace Echo {
 	class OpenGLFrameBuffer : public FrameBuffer
 	{
 	public:
-		OpenGLFrameBuffer(const FrameBufferSpecification& spec);
+		OpenGLFrameBuffer(const FrameBufferConfiguration& configuration);
 		virtual ~OpenGLFrameBuffer();
 
 	public:
@@ -16,7 +16,7 @@ namespace Echo {
 		virtual void ReSize(uint32_t nWidth, uint32_t nHeight) override;
 
 		virtual uint32_t GetColorAttachmentRendererID() const override { return m_nColorAttachment; }
-		virtual const FrameBufferSpecification& GetSpecification() const override { return m_sSpec; }
+		virtual const FrameBufferConfiguration& GetConfiguration() const override { return m_sConfiguration; }
 
 	private:
 		/// @brief 初始化
@@ -26,7 +26,7 @@ namespace Echo {
 
 	private:
 		/// @brief 帧缓冲配置
-		FrameBufferSpecification m_sSpec;
+		FrameBufferConfiguration m_sConfiguration;
 		/// @brief 渲染ID
 		uint32_t m_RendererID = 0;
 		/// @brief 颜色附件

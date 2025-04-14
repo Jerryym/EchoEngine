@@ -1,22 +1,21 @@
 #include <Echo.h>
 #include "Core/EntryPoint.h"
 
-#include "SandBox2D.h"
+#include "ExampleLayer.h"
 
 namespace SandBoxApp {
-
-	class SandBox : public Echo::Application
+	
+	class SandBox : public Echo::Application 
 	{
 	public:
-		SandBox() 
+		SandBox()
 		{
-			Echo::Application::PushLayer(new SandBox2D);
+			Echo::Application::PushLayer(new ExampeleLayer);
 		}
-
-		~SandBox() {}
+		~SandBox() = default;
 	};
 
-}
+} // namespace SandBoxApp
 
 Echo::Application* Echo::CreateApplication()
 {

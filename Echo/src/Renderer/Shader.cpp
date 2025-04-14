@@ -1,6 +1,6 @@
 #include "echopch.h"
 #include "Shader.h"
-#include "Renderer.h"
+#include "RendererAPI.h"
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -11,14 +11,14 @@ namespace Echo {
 	/////////////////////////////////////////////////////
 	Ref<Shader> Shader::Create(const std::string& sFilePath)
 	{
-		switch (Renderer::GetAPI())
+		switch (RendererAPI::GetAPIType())
 		{
-			case RendererAPI::API::None:
+			case RenderAPIType::None:
 			{
 				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
 				return nullptr;
 			}
-			case RendererAPI::API::OpenGL:
+			case RenderAPIType::OpenGL:
 				return CreateRef<OpenGLShader>(sFilePath);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");
@@ -27,14 +27,14 @@ namespace Echo {
 
 	Ref<Shader> Shader::Create(const std::string& sShaderName, const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
-		switch (Renderer::GetAPI())
+		switch (RendererAPI::GetAPIType())
 		{
-			case RendererAPI::API::None:
+			case RenderAPIType::None:
 			{
 				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
 				return nullptr;
 			}
-			case RendererAPI::API::OpenGL:
+			case RenderAPIType::OpenGL:
 				return CreateRef<OpenGLShader>(sShaderName, vertexSrc, fragmentSrc);
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");

@@ -1,17 +1,23 @@
 #pragma once
+#include "Core.h"
+
 #include "Core/Events/Event.h"
 #include "Utils/TimeStep.h"
 
 namespace Echo {
 
-	/// @brief 图层类：用于管理引擎中的事件和更新逻辑/渲染逻辑
-	class Layer
+	/// @brief 层类
+	class ECHO_API Layer
 	{
 	public:
 		Layer(const std::string& sLayerName);
-		virtual ~Layer() {}
+		virtual ~Layer() = default;
 
 	public:
+		/// @brief 获取层名称
+		/// @return 
+		const std::string& GetName() const { return m_sLayerName; }
+
 		/// @brief 图层附加应用程序：此函数在层附加到应用程序的层栈(LayerStack)时调用
 		virtual void OnAttach() {}
 		/// @brief 图层分离应用程序：此函数在层从应用程序的层栈(LayerStack)中移除时调用
@@ -25,14 +31,9 @@ namespace Echo {
 		/// @param event 需处理事件
 		virtual void OnEvent(Event& e) {}
 
-		/// @brief 获取层名
-		/// @return 
-		inline const std::string& GetName() const { return m_sLayerName; }
-
-	protected:
-		/// @brief 层名
+	private:
+		/// @brief 层名称
 		std::string m_sLayerName;
 	};
 
 }
-

@@ -1,10 +1,11 @@
 #pragma once
+#include "Core.h"
 #include "Layer.h"
 
 namespace Echo {
 
-	/// @brief 层栈：用于管理应用程序的图层容器
-	class LayerStack
+	/// @brief 层栈
+	class ECHO_API LayerStack
 	{
 	public:
 		LayerStack();
@@ -33,11 +34,9 @@ namespace Echo {
 
 	private:
 		/// @brief 层栈索引
-		unsigned int m_nLayerIndex = 0;
+		uint32_t m_nLayerIndex = 0;
 		/// @brief 层栈
 		std::vector<Layer*> m_Layers;
 	};
 
 }
-
-

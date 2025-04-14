@@ -4,7 +4,7 @@
 #include <glad/glad.h>
 
 namespace Echo {
-	
+
 	void OpenGLRendererAPI::Init()
 	{
 		//开启混合
@@ -20,7 +20,7 @@ namespace Echo {
 		glViewport(x, y, width, height);
 	}
 
-	void OpenGLRendererAPI::SetClearColor(const glm::vec4 &color)
+	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
 	{
 		glClearColor(color.r, color.g, color.b, color.a);
 	}
@@ -31,9 +31,9 @@ namespace Echo {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount)
+	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
 	{
-		uint32_t iCount = (indexCount == 0) ? vertexArray->GetIndexBuffer()->GetCount() : indexCount;
+		uint32_t iCount = vertexArray->GetIndexBuffer()->GetCount();
 		glDrawElements(GL_TRIANGLES, iCount, GL_UNSIGNED_INT, nullptr);
 	}
 

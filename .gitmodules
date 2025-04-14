@@ -7,6 +7,3 @@
 [submodule "Echo/vendor/spdlog"]
 	path = Echo/vendor/spdlog
 	url = git@github.com:Jerryym/spdlog.git
-[submodule "Echo/vendor/imgui"]
-	path = Echo/vendor/imgui
-	url = git@github.com:Jerryym/imgui.git

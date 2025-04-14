@@ -1,13 +1,14 @@
 #pragma once
+#include "Core.h"
 #include "Buffer.h"
 
 namespace Echo {
 
 	/// @brief 顶点数组类
-	class VertexArray
+	class ECHO_API VertexArray
 	{
 	public:
-		virtual ~VertexArray() {}
+		virtual ~VertexArray() = default;
 
 		/// @brief 创建顶点数组
 		/// @return 返回对应RendererAPI创建的顶点数组，若无对应RendererAPI则返回nullptr！

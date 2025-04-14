@@ -148,7 +148,7 @@ namespace Echo {
 		int location = glGetUniformLocation(m_RendererID, name.c_str());
 		if (location == -1)
 		{
-			ECHO_CLIENT_ERROR("[Warning]: uniform {0} doesn't exist!", name);
+			return -1;
 		}
 
 		m_UniformLocationCache[name] = location;
@@ -169,7 +169,7 @@ namespace Echo {
 		}
 		else
 		{
-			ECHO_CORE_ERROR("Could not open file '{0}'", sFilepath);
+			return "";
 		}
 		return result;
 	}
@@ -224,7 +224,6 @@ namespace Echo {
 
 				glDeleteShader(shader);
 
-				ECHO_CORE_ERROR("{0}", infoLog.data());
 				ECHO_CORE_ASSERT(false, "Shader compilation failure!");
 				break;
 			}
@@ -256,7 +255,6 @@ namespace Echo {
 				glDeleteShader(id);
 			}
 
-			ECHO_CORE_ERROR("{0}", infoLog.data());
 			ECHO_CORE_ASSERT(false, "Shader link failure!");
 			return;
 		}

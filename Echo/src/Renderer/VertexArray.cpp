@@ -1,6 +1,6 @@
 #include "echopch.h"
 #include "VertexArray.h"
-#include "Renderer.h"
+#include "RendererAPI.h"
 
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
@@ -8,14 +8,14 @@ namespace Echo {
 
 	Ref <VertexArray> VertexArray::CreateVertexArray()
 	{
-		switch (Renderer::GetAPI())
+		switch (RendererAPI::GetAPIType())
 		{
-			case RendererAPI::API::None:
+			case RenderAPIType::None:
 			{
 				ECHO_CORE_ASSERT(false, "RendererAPI::None is currently not sopported!");
 				return nullptr;
 			}
-			case RendererAPI::API::OpenGL:
+			case RenderAPIType::OpenGL:
 				return CreateRef<OpenGLVertexArray>();
 		}
 		ECHO_CORE_ASSERT(false, "Unkown RendererAPI!");

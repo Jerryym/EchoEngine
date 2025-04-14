@@ -1,9 +1,9 @@
 #include "echopch.h"
 #include "MainWindow_Windows.h"
 
-#include "Core/Events/ApplicationEvent.hpp"
-#include "Core/Events/KeyEvent.hpp"
-#include "Core/Events/MouseEvent.hpp"
+#include "Core/Events/ApplicationEvent.h"
+#include "Core/Events/KeyEvent.h"
+#include "Core/Events/MouseEvent.h"
 
 namespace Echo {
 
@@ -62,7 +62,6 @@ namespace Echo {
 		m_sData.m_nWidth = props.m_iWidth;
 		m_sData.m_nHeight = props.m_iHeight;
 		m_sData.m_strTitle = props.m_sTitle;
-
 		ECHO_CORE_INFO("Create MainWindow {0} ({1}, {2})", props.m_sTitle, props.m_iWidth, props.m_iHeight);
 
 		if (!s_bGLFWInitialiazed)

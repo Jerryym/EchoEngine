@@ -1,23 +1,27 @@
 #pragma once
-#include <glm/glm.hpp>
+#include "Core.h"
 
-#include "VertexArray.h"
+#include "Renderer/VertexArray.h"
+#include <glm/glm.hpp>
 
 namespace Echo {
 
-	/// @brief 渲染器API：此类为抽象类，提供渲染API的接口，具体实现由具体图形API子类实现
+	/// @brief 渲染API类型
+	enum class RenderAPIType
+	{
+		None = 0, OpenGL
+	};
+
+	/// @brief 渲染器API
 	class RendererAPI
 	{
 	public:
-		/// @brief 枚举：图形API
-		enum API
-		{
-			None = 0, OpenGL
-		};
-
-	public:
-		/// @brief 获取图形API
-		static API getAPI() { return s_API; }
+		/// @brief 设置渲染器API类型
+		/// @param type 
+		static void SetAPIType(RenderAPIType type) { s_APIType = type; }
+		/// @brief 获取渲染器API类型
+		/// @return 
+		static RenderAPIType GetAPIType() { return s_APIType; }
 
 		/// @brief 图形API初始化
 		virtual void Init() = 0;
@@ -35,15 +39,12 @@ namespace Echo {
 		virtual void Clear() = 0;
 
 		/// @brief 根据顶点数组渲染图元
-		/// @param vertexArray 顶点数组
-		/// @param indexCount 索引数量
-		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0) = 0;
+		/// @param vertexArray 渲染用的顶点数组
+		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;
 
 	private:
-		/// @brief 图形API
-		static API s_API;
+		/// @brief 渲染API类型
+		inline static RenderAPIType s_APIType = RenderAPIType::OpenGL;
 	};
 
 }
-
-

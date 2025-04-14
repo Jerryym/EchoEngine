@@ -1,8 +1,8 @@
 #pragma once
-#include "Renderer/Shader.h"
-
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Renderer/Shader.h"
 
 typedef unsigned int GLenum;
 
@@ -65,4 +65,3 @@ namespace Echo {
 	};
 
 }
-

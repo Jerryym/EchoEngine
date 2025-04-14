@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Echo {
-	
+
 	/// @brief 渲染上下文：此类为抽象类，需根据渲染平台实现具体子类
 	class GraphicsContext
 	{

@@ -2,9 +2,9 @@
 #include "Application.h"
 
 #include "Renderer/Renderer.h"
-#include "Renderer/Renderer2D.h"
 
 #include <glfw/glfw3.h>
+#include <glad/glad.h>
 
 namespace Echo {
 
@@ -18,14 +18,6 @@ namespace Echo {
 		//创建主窗口
 		m_MainWindow = MainWindow::CreateMainWindow(sWindowProp(sAppName));
 		m_MainWindow->SetEventCallBack(BIND_EVENT(Application::OnEvent));
-
-		//渲染器初始化
-		Renderer2D::Initialize();
-		Renderer2D::Initialize();
-
-		//创建ImGUI图层
-		m_ImGuiLayer = new ImGUILayer;
-		PushOverLayer(m_ImGuiLayer);
 	}
 
 	void Application::Run()
@@ -34,25 +26,21 @@ namespace Echo {
 		while (m_bRunning)
 		{
 			float time = (float)glfwGetTime();
-			TimeStep timestep = time - m_LastFrameTime;
-			m_LastFrameTime = time;
+			TimeStep timestep = time - m_rLastFrameTime;
+			m_rLastFrameTime = time;
 
-			if (m_bMinimized != true)
+			if (!m_bMinimized)
 			{
-				//遍历应用程序层栈，更新各层
 				for (Layer* layer : m_LayerStack)
 				{
 					layer->OnUpdate(timestep);
 				}
 			}
 
-			//渲染ImGUI
-			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnRenderUI();
 			}
-			m_ImGuiLayer->End();
 
 			//更新主窗口
 			m_MainWindow->OnUpdate();
@@ -64,17 +52,17 @@ namespace Echo {
 		m_bRunning = false;
 	}
 
-	void Application::OnEvent(Event& e)
+	void Application::OnEvent(Event& event)
 	{
-		EventDispatcher dispatcher(e);
-		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));	//窗口关闭
-		dispatcher.Dispatcher<WindowResizeEvent>(BIND_EVENT(Application::OnWindowResized));	//窗口大小修改
-
+		EventDispatcher dispatcher(event);
+		dispatcher.Dispatcher<WindowCloseEvent>(BIND_EVENT(Application::OnWindowClose));//窗口关闭
+		dispatcher.Dispatcher<WindowResizeEvent>(BIND_EVENT(Application::OnWindowResized));//调整窗口大小
+		
 		//遍历应用程序层栈，处理各层事件
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
-			(*--it)->OnEvent(e);
-			if (e.Handled() == true)
+			(*--it)->OnEvent(event);
+			if (event.Handled() == true)
 			{
 				break;
 			}

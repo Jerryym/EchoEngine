@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -14,8 +13,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#ifndef ECHO_PLATFORM_WINDOWS
-	#include <Windows.h>
-#endif // !ECHO_PLATFORM_WINDOWS
+#include <Windows.h>
 
 #include <Utils/Log.h>

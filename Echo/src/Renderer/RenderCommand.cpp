@@ -7,7 +7,7 @@ namespace Echo {
 
 	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
 
-	void RenderCommand::Initialize()
+	void RenderCommand::InitRenderer()
 	{
 		s_RendererAPI->Init();
 	}
@@ -27,9 +27,9 @@ namespace Echo {
 		s_RendererAPI->Clear();
 	}
 
-	void RenderCommand::DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount)
+	void RenderCommand::DrawIndexed(const Ref<VertexArray>& vertexArray)
 	{
-		s_RendererAPI->DrawIndexed(vertexArray, indexCount);
+		s_RendererAPI->DrawIndexed(vertexArray);
 	}
 
 }

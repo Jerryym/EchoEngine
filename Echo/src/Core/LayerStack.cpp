@@ -1,4 +1,4 @@
-#include "echopch.h"
+#include"echopch.h"
 #include "LayerStack.h"
 
 namespace Echo {
@@ -50,4 +50,5 @@ namespace Echo {
 		ECHO_CORE_ASSERT(index >= 0 && index < m_Layers.size());
 		return m_Layers[index];
 	}
+
 }
