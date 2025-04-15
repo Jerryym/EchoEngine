@@ -25,6 +25,11 @@ namespace Echo {
 	OpenGLShader::OpenGLShader(const std::string& sFilePath)
 	{
 		std::string sSources = ReadFile(sFilePath);
+		if (sSources.empty() == true)
+		{
+			ECHO_CORE_ERROR("Failed to read shader file!");
+			return;
+		}
 		auto ShaderSources = PreProcess(sSources);
 		Compile(ShaderSources);
 
@@ -157,6 +162,12 @@ namespace Echo {
 
 	std::string OpenGLShader::ReadFile(const std::string& sFilepath)
 	{
+		if (std::filesystem::exists(sFilepath) != true)
+		{
+			ECHO_CORE_ERROR("Shader file does not exist! FilePath: {0}", sFilepath);
+			return "";
+		}
+
 		std::string result;
 		std::ifstream in(sFilepath, std::ios::in | std::ios::binary);
 		if (in)
