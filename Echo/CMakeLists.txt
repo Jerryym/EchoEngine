@@ -55,6 +55,7 @@ set(ECHO_HEADERS
 	# Scene
 	src/Scene/Scene.h
 	src/Scene/Entity.h
+	src/Scene/Component.h
 
 	# Utils
 	src/Utils/Log.h
@@ -137,6 +138,7 @@ target_compile_definitions(${ECHO_LIB_NAME} PRIVATE
 	ECHO_BUILD_DLL
 	ECHO_PLATFORM_WINDOWS
 	GLFW_INCLUDE_NONE
+	GLM_ENABLE_EXPERIMENTAL
 )
 
 # 设置目标属性

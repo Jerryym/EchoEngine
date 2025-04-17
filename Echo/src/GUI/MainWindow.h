@@ -5,7 +5,7 @@
 namespace Echo {
 
 	/// @brief 窗口属性
-	typedef struct sWindowProp 
+	struct sWindowProp 
 	{
 		uint32_t m_iWidth;		//窗口宽
 		uint32_t m_iHeight;		//窗口高
@@ -15,7 +15,7 @@ namespace Echo {
 			: m_iWidth(iWidth), m_iHeight(iHeight), m_sTitle(sTitle)
 		{}
 
-	}sWindowProp;
+	};
 
 	/// @brief 主窗口类，此类为抽象类，需要继承并实现其纯虚函数
 	class MainWindow 

@@ -33,7 +33,7 @@ namespace Echo {
 	}
 
 	/// @brief 缓冲元素结构体: 描述顶点数据的属性
-	typedef struct ECHO_API BufferElement
+	struct ECHO_API BufferElement
 	{
 		/// @brief 属性名称
 		std::string m_sName;
@@ -76,7 +76,7 @@ namespace Echo {
 			ECHO_CORE_ASSERT(false, "Unknown ShaderDataType!");
 			return 0;
 		}
-	}BufferElement;
+	};
 
 	/// @brief 缓冲布局类: 用于描述顶点数据的布局
 	class ECHO_API BufferLayout

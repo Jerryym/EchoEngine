@@ -4,7 +4,7 @@
 namespace Echo {
 
 	/// @brief 帧缓冲配置
-	typedef struct FrameBufferConfiguration
+	struct FrameBufferConfiguration
 	{
 		/// @brief 宽度
 		uint32_t m_nWidth;
@@ -12,7 +12,7 @@ namespace Echo {
 		uint32_t m_nHeight;
 		/// @brief 是否为缓冲交换链目标
 		bool m_bSwapChainTarget = false;
-	} FrameBufferConfiguration;
+	};
 
 
 	class ECHO_API FrameBuffer

@@ -35,6 +35,7 @@ target_link_libraries(SandBox PUBLIC Echo)
 # 预处理宏定义
 target_compile_definitions(SandBox PRIVATE 
 	ECHO_PLATFORM_WINDOWS
+	GLM_ENABLE_EXPERIMENTAL
 )
 
 # 设置目标属性

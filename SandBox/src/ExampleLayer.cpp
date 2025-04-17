@@ -1,9 +1,6 @@
 #include "pch.h"
 #include "ExampleLayer.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
-#define GLM_ENABLE_EXPERIMENTAL
 #include<glm/gtc/matrix_transform.hpp>
 #include<glm/gtx/transform2.hpp>
 #include<glm/gtx/euler_angles.hpp>
