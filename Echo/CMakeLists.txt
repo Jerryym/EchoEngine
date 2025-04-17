@@ -52,6 +52,10 @@ set(ECHO_HEADERS
 	src/Platform/OpenGL/OpenGLTexture.h
 	src/Platform/OpenGL/OpenGLRendererAPI.h
 
+	# Scene
+	src/Scene/Scene.h
+	src/Scene/Entity.h
+
 	# Utils
 	src/Utils/Log.h
 	src/Utils/KeyCodes.h
@@ -91,6 +95,10 @@ set(ECHO_SOURCES
 	src/Platform/OpenGL/OpenGLTexture.cpp
 	src/Platform/OpenGL/OpenGLRendererAPI.cpp
 
+	# Scene
+	src/Scene/Scene.cpp
+	src/Scene/Entity.cpp
+
 	# Utils
 	src/Utils/Log.cpp
 	src/Utils/TimeStep.cpp
@@ -113,6 +121,7 @@ target_include_directories(${ECHO_LIB_NAME} PUBLIC
 	${PROJECT_SOURCE_DIR}/vendor/Glad/include
 	${PROJECT_SOURCE_DIR}/vendor/glm
 	${PROJECT_SOURCE_DIR}/vendor/stb_image
+	${PROJECT_SOURCE_DIR}/vendor/entt/include
 )
 
 # 添加GLFW
@@ -154,18 +163,20 @@ file(GLOB Base_SRC "src/*.h" "src/*.cpp")
 file(GLOB Core_SRC "src/Core/*.h" "src/Core/*.cpp")
 file(GLOB Event_SRC "src/Core/Events/*.h" "src/Core/Events/*.cpp")
 file(GLOB GUI_SRC "src/GUI/*.h" "src/GUI/*.cpp")
-file(GLOB Utils_SRC "src/Utils/*.h" "src/Utils/*.cpp")
-file(GLOB Renderer_SRC "src/Renderer/*.h" "src/Renderer/*.cpp")
 file(GLOB Windows_SRC "src/Platform/Windows/*.h" "src/Platform/Windows/*.cpp")
 file(GLOB OpenGL_SRC "src/Platform/OpenGL/*.h" "src/Platform/OpenGL/*.cpp")
+file(GLOB Renderer_SRC "src/Renderer/*.h" "src/Renderer/*.cpp")
+file(GLOB Scene_SRC "src/Scene/*.h" "src/Scene/*.cpp")
+file(GLOB Utils_SRC "src/Utils/*.h" "src/Utils/*.cpp")
 source_group("src" FILES ${Base_SRC})
 source_group("src\\Core" FILES ${Core_SRC})
 source_group("src\\Core\\Events" FILES ${Event_SRC})
 source_group("src\\GUI" FILES ${GUI_SRC})
-source_group("src\\Utils" FILES ${Utils_SRC})
-source_group("src\\Renderer" FILES ${Renderer_SRC})
 source_group("src\\Platform\\Windows" FILES ${Windows_SRC})
 source_group("src\\Platform\\OpenGL" FILES ${OpenGL_SRC})
+source_group("src\\Renderer" FILES ${Renderer_SRC})
+source_group("src\\Scene" FILES ${Scene_SRC})
+source_group("src\\Utils" FILES ${Utils_SRC})
 
 # 设置生成后事件
 add_custom_command(
