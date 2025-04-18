@@ -65,7 +65,4 @@ namespace Echo {
 		float m_rLastFrameTime = 0.0f;
 	};
 
-	// defined in Client
-	Application* CreateApplication();
-
 }

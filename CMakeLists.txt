@@ -11,6 +11,9 @@ set(ECHOENGINE_VERSION "${ECHOENGINE_VERSION_MAJOR}.${ECHOENGINE_VERSION_MINOR}.
 message(STATUS "EchoEngine Version: ${ECHOENGINE_VERSION}")
 project(EchoEngine VERSION ${ECHOENGINE_VERSION} LANGUAGES CXX)
 
+# 设置编译选项
+option(BUILD_EXAMPLE "Build SandBox" ON)
+
 # 设置C++版本
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -46,4 +49,9 @@ set(ECHO_PLATFORM "x64")
 # 添加子项目
 ##################################
 add_subdirectory(Echo)
-add_subdirectory(SandBox)
+
+# example
+if(BUILD_EXAMPLE)
+	message(STATUS "Build SandBox")
+	add_subdirectory(SandBox)
+endif()

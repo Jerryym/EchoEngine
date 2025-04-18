@@ -1,7 +1,4 @@
-#pragma once
-
-#ifdef ECHO_PLATFORM_WINDOWS
-extern Echo::Application* Echo::CreateApplication();
+#include "SandBoxApp.h"
 
 int main(int argc, char** argv)
 {
@@ -10,10 +7,10 @@ int main(int argc, char** argv)
 	ECHO_CORE_INFO("Initialized Log!");
 	ECHO_CLIENT_INFO("Hello, EchoEngine!");
 
-	auto app = Echo::CreateApplication();
+	//启动应用
+	SandBoxApp::SandBox* app = new SandBoxApp::SandBox;
 	app->Run();
 	delete app;
 
 	return 0;
 }
-#endif // ECHO_PLATFORM_WINDOWS

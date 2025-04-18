@@ -9,12 +9,13 @@ message(STATUS "SANDBOX_VERSION: ${SANDBOX_VERSION}")
 project(SandBox VERSION ${SANDBOX_VERSION} LANGUAGES CXX)
 
 set(SANDBOX_HEADERS
+	src/SandBoxApp.h
 	src/ExampleLayer.h
 )
 
 set(SANDBOX_SOURCES
 	src/ExampleLayer.cpp
-	src/SandBoxApp.cpp
+	src/main.cpp
 )
 
 add_executable(SandBox

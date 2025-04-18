@@ -17,6 +17,7 @@ namespace Echo {
 		operator bool() const;
 
 	public:
+		/// @brief 添加组件
 		template<typename T, typename... Args>
 		T& AddComponent(Args&&... args)
 		{
@@ -24,6 +25,7 @@ namespace Echo {
 			return m_pScene->AddComponent<T>(m_EntityHandle, std::forward<Args>(args)...);
 		}
 
+		/// @brief 获取组件
 		template<typename T>
 		T& GetComponent()
 		{
@@ -31,12 +33,14 @@ namespace Echo {
 			return m_pScene->GetComponent<T>(m_EntityHandle);
 		}
 
+		/// @brief 判断组件是否存在
 		template<typename T>
 		bool HasComponent() const
 		{
 			return m_pScene->HasComponent<T>(m_EntityHandle);
 		}
 
+		/// @brief 移除组件
 		template<typename T>
 		void RemoveComponent()
 		{

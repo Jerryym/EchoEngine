@@ -19,7 +19,6 @@ set(ECHO_HEADERS
 
 	# Core
 	src/Core/Application.h
-	src/Core/EntryPoint.h
 	src/Core/Events/Event.h
 	src/Core/Events/ApplicationEvent.h
 	src/Core/Events/KeyEvent.h

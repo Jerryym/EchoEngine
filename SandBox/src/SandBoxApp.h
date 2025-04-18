@@ -1,5 +1,4 @@
 #include <Echo.h>
-#include "Core/EntryPoint.h"
 
 #include "ExampleLayer.h"
 
@@ -15,9 +14,4 @@ namespace SandBoxApp {
 		~SandBox() = default;
 	};
 
-} // namespace SandBoxApp
-
-Echo::Application* Echo::CreateApplication()
-{
-	return new SandBoxApp::SandBox;
 }
